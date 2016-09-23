@@ -2,12 +2,13 @@
 
 ### Team Names
 
-* coDirection
+* coDirection +1
 * One-coDirection
 * Team Amp
 * Dream Team
 * Killer Bees
 * Team Gaga
+* gSpace
 
 ### APIs/Tech
 
