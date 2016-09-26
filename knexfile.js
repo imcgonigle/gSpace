@@ -7,6 +7,9 @@ module.exports = {
     connection: 'postgres://localhost/gspace',
 		migrations: {
 			directory: './database/migrations'
+		},
+		seed: {
+			directory: './database/seeds'
 		}
   },
 
