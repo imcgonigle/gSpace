@@ -67,5 +67,4 @@
 * Reddit - Karma
 * Foursquare - badges (read another article, get a badge, post a tutorial, get a point)
 
-
-
+..
