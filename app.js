@@ -30,7 +30,7 @@ app.use(cookieParser());
 
 
 app.use(session({
-  secret: process.env.SECRET,
+  secret: 'process SECRET',
   resave: false,
   saveUninitialized: true
 }))
