@@ -1,3 +1,4 @@
+// var passport = require('../passport');
 var express = require('express');
 var router = express.Router();
 

@@ -1,6 +1,6 @@
 
 exports.up = function(knex, Promise) {
-  return knex.schema.createTable('users', function(table){
+  return knex.schema.createTable('oldUsersTable', function(table){
     table.increments();
     table.string('username');
     table.text('biography');
@@ -8,7 +8,7 @@ exports.up = function(knex, Promise) {
     table.string('last_name');
     table.integer('cohort');
     table.string('city');
-    table.string('linkdn_url');
+    table.string('linkedin_url');
     table.string('github_url');
     table.string('website');
     table.string('email');
@@ -18,5 +18,5 @@ exports.up = function(knex, Promise) {
 };
 
 exports.down = function(knex, Promise) {
-  return knex.schema.dropTable('users');
+  return knex.schema.dropTable('oldUsersTable');
 };
