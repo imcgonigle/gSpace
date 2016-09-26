@@ -6,3 +6,23 @@ body {
 a {
   color: #00B7FF;
 }
+
+.topNavBar{
+  color: rgb(245, 122, 2);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: black;
+  max-height: 70px;
+  min-height: 60px;
+  width: 100%;
+}
+.logoandTitleContainer{
+  display: flex;
+  justify-content: flex-start;
+}
+.logo{
+  display: flex;
+  justify-content: flex-start;
+  max-height: 70px;
+}
