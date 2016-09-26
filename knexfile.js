@@ -3,10 +3,11 @@
 module.exports = {
 
   development: {
-    client: 'sqlite3',
-    connection: {
-      filename: './dev.sqlite3'
-    }
+    client: 'pg',
+    connection: 'postgres://localhost/gspace',
+		migrations: {
+			directory: './database/migrations'
+		}
   },
 
   staging: {
