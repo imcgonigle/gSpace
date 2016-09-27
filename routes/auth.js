@@ -13,8 +13,8 @@ router.get('/github/callback', passport.authenticate('github', { failureRedirect
 );
 
 router.get('/github/logout', function(req,res,next) {
-  var name = req.user.username;
-  console.log("LOGGIN OUT " + req.user.username)
+  var name = req.username;
+  console.log("LOGGIN OUT " + name)
   req.logout();
   res.redirect('/')
 })

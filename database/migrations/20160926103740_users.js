@@ -5,10 +5,9 @@ exports.up = function(knex, Promise) {
 		table.string('username');
 		table.string('avatar_url');
 		table.text('biography');
-		table.string('first_name');
-		table.string('last_name');
+		table.string('name');
 		table.integer('cohort');
-		table.string('city');
+		table.string('location');
 		table.string('linkedin_url');
 		table.string('github_url');
 		table.string('website');
