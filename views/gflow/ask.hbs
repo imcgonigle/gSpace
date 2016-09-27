@@ -1,0 +1,24 @@
+<h1 class='questionInput'></h1>
+<section class='createQuestion'>
+  <form class='add-item' action='/gflow/index' method='post'>
+    <div>
+      <label for='item-name'>user name </label>
+      <input type='hidden' name='name' class="inputBox" placeholder="user-name" value='{{this.user.id}}'></input>
+    </div>
+    <div>
+      <label for='item-title'>Title:  </label>
+      <input type='text' name='title' class="inputBox" placeholder="What's your programming question? Be specific." value=''></input>
+    </div>
+    <div>
+      <label for='item-question'>Question: </label>
+      <textarea name='question' placeholder='Insert your question here' class="inputBox postInputBox" rows='10' cols= '90'></textarea>
+    </div>
+    <div>
+      <label for='item-tags'>Tags: </label>
+      <input type='text' name='tags' class="inputBox" placeholder="at least one such as (javaScript database)" value=''></input>
+    </div>
+    <div>
+      <input type='submit' placeholder="Post Your Question"></input>
+    </div>
+  </form>
+</section>
