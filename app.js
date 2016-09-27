@@ -17,31 +17,31 @@ var users = require('./routes/users');
 var resources = require('./routes/resources');
 var projects = require('./routes/projects');
 var auths = require('./routes/auth');
-var gSpace = require('/routes/gSpace');
+var gflow = require('./routes/gflow');
 
 var app = express();
 
-hbs.registerHelper('navBarWithLinks', function(path) {
-  var path = window.location.pathname;
-  if (path == 'static/home') {
-    return <div class="topNavBar">
-      <div class="logoContainer">
-        <img src="../public/images/gSpace.jpg" alt="LOGO" class='logo'/>
-      </div>
-      <div class="navBarLinks">
-        <a href="/resources" class="logout white">Resources</a>
-        <a href="/gFlow" class="logout white">gFlow</a>
-        <a href="/collaborate" class="logout white">Collaborate</a>
-      </div>
-      <div class="chatPicContainer">
-        <img src="../public/images/chatIcon.jpg" alt="CHAT" class='chatButton'/>
-        <img src="../public/images/userImg.jpg" alt="PIC" class='picButton'/>
-      </div>
-    </div>
-  }else{
-
-    }
-});
+// hbs.registerHelper('navBarWithLinks', function(path) {
+//   var path = window.location.pathname;
+//   if (path !== 'static/home') {
+//     return <div class="topNavBar">
+//       <div class="logoContainer">
+//         <img src="../public/images/gSpace.jpg" alt="LOGO" class='logo'/>
+//       </div>
+//       <div class="navBarLinks">
+//         <a href="/resources" class="logout white">Resources</a>
+//         <a href="/gFlow" class="logout white">gFlow</a>
+//         <a href="/collaborate" class="logout white">Collaborate</a>
+//       </div>
+//       <div class="chatPicContainer">
+//         <img src="../public/images/chatIcon.jpg" alt="CHAT" class='chatButton'/>
+//         <img src="../public/images/userImg.jpg" alt="PIC" class='picButton'/>
+//       </div>
+//     </div>
+//   }else{
+//
+//     }
+// });
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -64,12 +64,22 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
+
+app.use(require('node-sass-middleware')({
+  src: path.join(__dirname, 'public'),
+  dest: path.join(__dirname, 'public'),
+  indentedSyntax: false,
+  sourceMap: true
+}));
+
 app.use(express.static(path.join(__dirname, 'public')));
+
 
 app.use('/', routes);
 app.use('/users', users);
 app.use('/resources', resources);
 app.use('/projects', projects);
+app.use('/gflow', gflow);
 app.use('/auth', auths);
 
 // catch 404 and forward to error handler
