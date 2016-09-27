@@ -1,1 +1,10 @@
 <h1>Meetups Homepage/Index</h1>
+{{#each meetups}}
+    <a href="/meetups/{{this.id}}">{{this.title}}</a>
+    <div>{{this.username}}</div>
+    <div>{{this.description}}</div>
+    <div>{{this.location}}</div>
+    <div>{{this.time}}</div>
+    <div>{{this.created_on}}</div>
+{{/each}}
+</div>

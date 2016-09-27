@@ -13,7 +13,7 @@ router.get('/gflow', function(req, res, next) {
      })
   });
 
-router.post('/gflow', function (req, res, next) {
+router.post('/gflow/ask', function (req, res, next) {
   console.log(req.body)
   query.newQuestionPost(req.body.questionid, req.body.name, req.body.title, req.body.question)
   .then(() =>{
@@ -27,8 +27,7 @@ router.post('/gflow', function (req, res, next) {
 
 router.post('/gflow/question/:id/addcomment',(req, res, next) => {
   console.log(req.body);
-  // res.json(req.body)
-  query.newBlogComment(req.body.question_post_id, req.body.subject, req.body.comment, req.body.user_id)
+  query.newQuestionComment(req.body.question_post_id, req.body.subject, req.body.comment, req.body.user_id)
   .then(() =>{
     res.redirect('/gflow/index/'+ req.params.id)
   })
@@ -40,7 +39,7 @@ router.post('/gflow/question/:id/addcomment',(req, res, next) => {
 
   router.get('/gflow/question/:id', (req, res, next) => {
     var id  = req.params.id;
-    query.blogPosts().where('questionid',id).then((posts) => {
+    query.questionPosts().where('questionid',id).then((posts) => {
     query.commentPosts().where('question_post_id', id).then((data) => {
     res.render('gflow/index', {
       items:posts,
