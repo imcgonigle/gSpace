@@ -17,6 +17,7 @@ var resources = require('./routes/resources');
 var projects = require('./routes/projects');
 var auths = require('./routes/auth');
 var gflow = require('./routes/gflow');
+var meetups = require('./routes/meetups');
 
 var app = express();
 
@@ -80,6 +81,8 @@ app.use('/resources', resources);
 app.use('/projects', projects);
 app.use('/gflow', gflow);
 app.use('/auth', auths);
+app.use('/meetups', meetups);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
