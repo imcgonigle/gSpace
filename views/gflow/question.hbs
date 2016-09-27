@@ -1,0 +1,60 @@
+<ul class="questionDivContainer">
+  {{#each items}}
+    <div class="questionDiv">
+      <div class="change">
+        <span class='deleteItem'><a href="/items/delete/{{this.questionid}}"><strong>x</strong></a></span>
+        <span class='modifyPost'><a href="/items/modify/{{this.questionid}}"><strong>edit</strong></a></span>
+      </div>
+      <h3 class="createdDate">Posted on: {{shortDate  this.created_at}}</h3>
+      <h2 class="postTitle">{{this.title}}</h2>
+      <h2>{{this.id}}</h2>
+      <p class="postContent">{{this.question}}</p>
+      <li class="postName"><strong>Written by: {{this.name}}</strong></li>
+    </div>
+    {{/each}}
+</ul>
+
+
+<h1 class="Comments">Comments</h1>
+<div class="commentPostDiv">
+  <ul class="comments">
+    {{#each data}}
+    <div class="borderDiv">
+      <div class="change">
+        <span class='deleteItem'><a href="/data/delete/{{this.id}}"><strong>x</strong></a></span>
+        <span class='modifyPost'><a href="/data/modify/{{this.id}}"><strong>edit</strong></a></span>
+      </div>
+      <p class="createdDate dateSmall">Posted on: {{shortDate this.created_at}}</p>
+      <h2 class="commentSubject">{{this.subject}}</h2>
+      <p class="postContent">{{this.comment}}</p>
+      <li class="postName"><strong>Written by: {{this.name}}</strong></li>
+    {{/each}}
+    </div>
+  </ul>
+</div>
+
+<h2 class="commentHead">Add Comments</h2><br>
+<div class="commentContainer">
+  {{#each items}}
+  <div class="Comments">
+<section>
+  <form class='add-comment' action='/gflow/index/{{this.id}}/addcomment' method='post'>
+    <div>
+      <input type='hidden' name='question_id' value='{{this.questionid}}'></input>
+    </div>
+    <div>
+      <label for='comment-subject'>Subject:</label>
+      <input type='text' name='subject' placeholder='subject' class="inputBox" value=''></input>
+    </div>
+    <div>
+      <label for='comment-comment'>Comment:</label>
+      <textarea name='comment' placeholder='comment' class="inputBox"rows='10' cols= '80'></textarea>
+    </div>
+    <div>
+      <input type='submit' id='commentSubmit' value="Submit"></input>
+    </div>
+  </form>
+</section>
+{{/each}}
+</div>
+</div>
