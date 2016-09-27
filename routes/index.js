@@ -23,6 +23,4 @@ router.get('/login', function(req, res, next) {
 
 });
 
-
->>>>>>> 1c18433d692f930f119acf3a3095605b7bd2ba38
 module.exports = router;
