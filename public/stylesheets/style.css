@@ -139,4 +139,27 @@ a {
   padding-left: 550%;
   padding-top: 180%; }
 
+.background-image {
+  background-image: url("../images/homepage.jpeg");
+  background-position: center;
+  background-size: cover;
+  min-height: 100vh; }
+  .background-image h1 {
+    font-family: Roboto, serif;
+    font-weight: 400;
+    font-color: #253037;
+    font-size: 2rem;
+    color: #f7911d;
+    font-size: 5rem;
+    padding-top: 10%;
+    padding-left: 5%; }
+  .background-image a {
+    font-family: Roboto, serif;
+    font-weight: 400;
+    font-color: #253037;
+    font-size: 2rem;
+    background-color: #ededed;
+    text-decoration: none;
+    color: #253037; }
+
 /*# sourceMappingURL=style.css.map */
