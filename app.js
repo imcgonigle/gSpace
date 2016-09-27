@@ -1,9 +1,12 @@
+require('dotenv').config();
 var express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var passport = require('passport');
+var session = require('express-session');
 
 
 var passport = require('passport');
@@ -11,6 +14,10 @@ var session = require('express-session');
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
+var resources = require('./routes/resources');
+var projects = require('./routes/projects');
+var auths = require('./routes/auth')
+
 
 var app = express();
 
@@ -27,7 +34,7 @@ app.use(cookieParser());
 
 
 app.use(session({
-  secret: process.env.SECRET,
+  secret: 'process SECRET',
   resave: false,
   saveUninitialized: true
 }))
@@ -35,12 +42,13 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
-
-
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
 app.use('/users', users);
+app.use('/resources', resources);
+app.use('/projects', projects);
+app.use('/auth', auths);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

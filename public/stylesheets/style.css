@@ -1,6 +1,10 @@
 body {
-  padding: 50px;
+  /*padding: 50px;*/
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  /*overflow: hidden;*/
+  background: gray;
+  height:100%;
+  max-width: 100%;
 }
 
 a {
@@ -16,13 +20,59 @@ a {
   max-height: 70px;
   min-height: 60px;
   width: 100%;
+  min-width: 100%;
+  padding:15px;
 }
-.logoandTitleContainer{
+.logoContainer{
   display: flex;
   justify-content: flex-start;
 }
 .logo{
+  padding-left: 10px;
   display: flex;
   justify-content: flex-start;
   max-height: 70px;
+}
+.chatButton, .picButton, .logo{
+  max-height: 70px;
+}
+.chatPicContainer{
+  padding:10px;
+  display: flex;
+  justify-content: flex-end;
+}
+.mainHomeDiv{
+  max-width: 100%;
+  display: flex;
+  /*justify-content: center;*/
+  -webkit-size: 100%;
+}
+
+.leftPic{
+  -webkit-clip-path: polygon(0 0, 80% 0, 60% 100%, 0 100%);
+  border: 2px solid black;
+  position: absolute;
+  z-index: 1;
+  max-height: 1040px;
+  display: block;
+  position: absolute;
+  }
+
+.middlePic{
+  -webkit-clip-path: polygon(20% 0, 80% 0, 60% 100%, 0 100%);
+  border: 2px solid black;
+  z-index: 2;
+  max-height: 1040px;
+  display: block;
+  position: relative;
+  left: 25%;
+  }
+
+.rightPic{
+  -webkit-clip-path: polygon(100% 0, 60% 0, 40% 100%, 100% 100%);
+  border: 2px solid black;
+  z-index: 3;
+  max-height: 1040px;
+  position: absolute;
+  right: 0px;
 }
