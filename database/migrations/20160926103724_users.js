@@ -8,7 +8,7 @@ exports.up = function(knex, Promise) {
     table.string('last_name');
     table.integer('cohort');
     table.string('city');
-    table.string('linkdn_url');
+    table.string('linkedin_url');
     table.string('github_url');
     table.string('website');
     table.string('email');
