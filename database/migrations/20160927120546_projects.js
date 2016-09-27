@@ -4,7 +4,7 @@ exports.up = function(knex, Promise) {
 		table.increments('id');
 		table.integer('creator_id');
 		table.string('title');
-		table.body('text');
+		table.text('body');
 		table.string('repository_url');
 		table.integer('likes');
 		table.dateTime('created_on');
