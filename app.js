@@ -16,8 +16,8 @@ var routes = require('./routes/index');
 var users = require('./routes/users');
 var resources = require('./routes/resources');
 var projects = require('./routes/projects');
-var auths = require('./routes/auth')
-
+var auths = require('./routes/auth');
+var gSpace = require('/routes/gSpace');
 
 var app = express();
 
