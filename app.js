@@ -21,27 +21,27 @@ var gflow = require('./routes/gflow');
 
 var app = express();
 
-hbs.registerHelper('navBarWithLinks', function(path) {
-  var path = window.location.pathname;
-  if (path == 'static/home') {
-    return <div class="topNavBar">
-      <div class="logoContainer">
-        <img src="../public/images/gSpace.jpg" alt="LOGO" class='logo'/>
-      </div>
-      <div class="navBarLinks">
-        <a href="/resources" class="logout white">Resources</a>
-        <a href="/gFlow" class="logout white">gFlow</a>
-        <a href="/collaborate" class="logout white">Collaborate</a>
-      </div>
-      <div class="chatPicContainer">
-        <img src="../public/images/chatIcon.jpg" alt="CHAT" class='chatButton'/>
-        <img src="../public/images/userImg.jpg" alt="PIC" class='picButton'/>
-      </div>
-    </div>
-  }else{
-
-    }
-});
+// hbs.registerHelper('navBarWithLinks', function(path) {
+//   var path = window.location.pathname;
+//   if (path == 'static/home') {
+//     return <div class="topNavBar">
+//       <div class="logoContainer">
+//         <img src="../public/images/gSpace.jpg" alt="LOGO" class='logo'/>
+//       </div>
+//       <div class="navBarLinks">
+//         <a href="/resources" class="logout white">Resources</a>
+//         <a href="/gFlow" class="logout white">gFlow</a>
+//         <a href="/collaborate" class="logout white">Collaborate</a>
+//       </div>
+//       <div class="chatPicContainer">
+//         <img src="../public/images/chatIcon.jpg" alt="CHAT" class='chatButton'/>
+//         <img src="../public/images/userImg.jpg" alt="PIC" class='picButton'/>
+//       </div>
+//     </div>
+//   }else{
+//
+//     }
+// });
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
