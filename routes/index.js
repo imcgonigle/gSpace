@@ -3,8 +3,6 @@ var express = require('express');
 var router = express.Router();
 var passport = require('../passport')
 
-var meetupsFile = require('../database/queries/meetups.js')
-
 router.get('/', function(req, res, next) {
 
 	if (req.isAuthenticated()) {
