@@ -13,7 +13,7 @@ router.get('/gflow', function(req, res, next) {
      })
   });
 
-router.post('/ask', function (req, res, next) {
+router.post('/gflow/ask', function (req, res, next) {
   console.log(req.body)
   query.newQuestionPost(req.body.questionid, req.body.name, req.body.title, req.body.question)
   .then(() =>{
