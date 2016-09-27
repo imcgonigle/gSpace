@@ -4,6 +4,10 @@ function Projects() = {
 	return knex('projects');
 };
 
+function Projects_Users() = {
+	return knex('projects_users');
+};
+
 
 module.exports = {
 	getAllProjects: Projects,
@@ -38,5 +42,11 @@ module.exports = {
 		return Projects().where('id', project_id).update({
 			likes: likes += 1
 		});
+	},
+	joinProject: function(user_id, project_id){
+		return Projects_Users().insert({
+			user_id: user_id,
+			project_id: project_id
+		}).returning('project_id');
 	}
 }
