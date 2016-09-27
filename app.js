@@ -17,7 +17,7 @@ var users = require('./routes/users');
 var resources = require('./routes/resources');
 var projects = require('./routes/projects');
 var auths = require('./routes/auth');
-var gSpace = require('/routes/gSpace');
+var gSpace = require('./routes/gspace');
 
 var app = express();
 
@@ -42,7 +42,16 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
+
+app.use(require('node-sass-middleware')({
+  src: path.join(__dirname, 'public'),
+  dest: path.join(__dirname, 'public'),
+  indentedSyntax: false,
+  sourceMap: true
+}));
+
 app.use(express.static(path.join(__dirname, 'public')));
+
 
 app.use('/', routes);
 app.use('/users', users);
