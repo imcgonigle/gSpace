@@ -1,9 +1,9 @@
-// var passport = require('../passport');
 var express = require('express');
 var router = express.Router();
 
+/* GET home page. */
 router.get('/', function(req, res, next) {
-	res.render('static/home');
+  res.render('meetups/index', { title: 'Meetups Homepage' });
 });
 
 module.exports = router;
