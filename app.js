@@ -5,9 +5,8 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-var passport = require('passport');
-var session = require('express-session');
 var hbs = require('hbs');
+
 
 var passport = require('passport');
 var session = require('express-session');
@@ -23,7 +22,7 @@ var app = express();
 
 // hbs.registerHelper('navBarWithLinks', function(path) {
 //   var path = window.location.pathname;
-//   if (path == 'static/home') {
+//   if (path !== 'static/home') {
 //     return <div class="topNavBar">
 //       <div class="logoContainer">
 //         <img src="../public/images/gSpace.jpg" alt="LOGO" class='logo'/>

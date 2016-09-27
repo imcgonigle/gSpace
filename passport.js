@@ -1,5 +1,6 @@
 var passport = require('passport')
 var GithubStrategy = require('passport-github2').Strategy
+var session = require('express-session')
 
 passport.use(new GithubStrategy({
   clientID: process.env.GH_CLIENTID,
@@ -7,22 +8,20 @@ passport.use(new GithubStrategy({
   callbackURL: process.env.GH_CALLBACK
 },
   function (accessToken, refreshToken, profile, done) {
-    console.log(arguments);
-    return (null, profile)
+    //console.log(arguments);
+    return done(null, profile)
   }
 ))
 
 passport.serializeUser(function (user, done) {
 
-   done(null, user.id);
+   done(null, user);
 
 })
 
-passport.deserializeUser(function (id) {
+passport.deserializeUser(function (user, done) {
 
-  User.findById(id, function(err, user) {
-  done(err, user);
-});
+done(null, user)
 
 })
 
