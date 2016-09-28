@@ -87,57 +87,53 @@ a {
   display: flex;
   justify-content: flex-end; }
 
-.mainHomeDiv {
-  max-width: 100%;
-  display: flex;
-  -webkit-size: 100%; }
+html {
+  height: 100%; }
 
-.leftPic {
-  -webkit-clip-path: polygon(0 0, 80% 0, 60% 100%, 0 100%);
-  border: 4px solid black;
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-size: 16px;
+  font-family: Arial;
+  background-image: url("../images/stack_of_books.jpg"); }
+
+h1, a {
+  text-align: center;
+  text-decoration: none;
+  margin: 0;
+  padding: 250px 0;
+  font-size: 2em;
+  color: white; }
+
+.textBackground {
+  background: #cccccc;
+  /* Fallback for older browsers without RGBA-support */
+  background: rgba(204, 204, 204, 0.5);
+  padding: 25px 10px 10px 10px;
+  border-radius: 5px; }
+
+.diagonal {
+  overflow: hidden;
+  position: relative;
+  transform: skewY(4deg); }
+
+.diagonal .background {
+  background-image: url("../images/Collaboration.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 0 0;
+  position: absolute;
+  top: -50%;
+  bottom: -50%;
+  left: 0;
+  right: 0;
+  transform: skewY(-4deg); }
+
+.diagonal .content {
+  position: relative;
   z-index: 1;
-  max-height: 1040px;
-  display: block;
-  position: absolute; }
-
-.middlePic {
-  -webkit-clip-path: polygon(15% 0, 80% 0, 60% 100%, 0 100%);
-  border: 4px solid black;
-  z-index: 2;
-  max-height: 1040px;
-  display: block;
-  position: absolute;
-  left: 27%; }
-
-.rightPic {
-  -webkit-clip-path: polygon(100% 0, 60% 0, 45% 100%, 100% 100%);
-  border: 4px solid black;
-  z-index: 3;
-  max-height: 1040px;
-  display: block;
-  position: absolute;
-  right: 0px; }
-
-.bring2front {
-  vertical-align: text-top;
-  z-index: 4;
-  color: white;
-  align-self: center;
-  font-size: 40px;
-  display: block;
-  position: relative; }
-
-.leftImg {
-  padding-left: 100%;
-  padding-top: 200%; }
-
-.midImg {
-  padding-left: 650%;
-  padding-top: 345%; }
-
-.rightImg {
-  padding-left: 550%;
-  padding-top: 180%; }
+  transform: skewY(-4deg); }
 
 .background-image {
   background-image: url("../images/homepage.jpeg");
