@@ -27,13 +27,35 @@ exports.seed = function(knex, Promise) {
         }),
         knex('meetups').insert({
           id: 3,
-          users_id: '3',
+          users_id: '4',
           title: 'title3',
           likes: 7,
           description: 'description3',
           location: 'location3',
           time: '2006-04-10T13:40:23.83-05:03',
           created_on: '2006-04-10T13:40:23.83-05:03',
+          updated_on: '2006-04-10T13:40:23.83-05:01'
+        }),
+        knex('meetups').insert({
+          id: 4,
+          users_id: '4',
+          title: 'title4',
+          likes: 0,
+          description: 'description4',
+          location: 'location4',
+          time: '2006-04-10T13:40:23.83-05:02',
+          created_on: '2006-04-10T13:40:23.83-05:02',
+          updated_on: '2006-04-10T13:40:23.83-05:01'
+        }),
+        knex('meetups').insert({
+          id: 5,
+          users_id: '4',
+          title: 'title5',
+          likes: 5,
+          description: 'description5',
+          location: 'location5',
+          time: '2006-04-10T13:40:23.83-05:02',
+          created_on: '2006-04-10T13:40:23.83-05:02',
           updated_on: '2006-04-10T13:40:23.83-05:01'
         })
       ]);
