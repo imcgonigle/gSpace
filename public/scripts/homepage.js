@@ -5,5 +5,5 @@ $(document).ready(function() {
     $('.diagonal .background').css({
       'background-position': '0 ' + top
     });
-  });\q
+  });
 });

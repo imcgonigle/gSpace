@@ -1,10 +1,10 @@
 exports.up = function(knex, Promise) {
-    return knex.schema.createTable('meetups_tags', function(table) {
-        table.integer('meetup_id')
+    return knex.schema.createTable('resources_tags', function(table) {
+        table.integer('resource_id')
             .unsigned()
             .notNullable()
             .references('id')
-            .inTable('meetups')
+            .inTable('resource')
             .onDelete('CASCADE')
         table.integer('tag_id')
             .unsigned()
@@ -16,5 +16,5 @@ exports.up = function(knex, Promise) {
 };
 
 exports.down = function(knex, Promise) {
-    return knex.schema.dropTable('meetups_tags');
+    return knex.schema.dropTable('resources_tags');
 };
