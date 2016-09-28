@@ -1,10 +1,11 @@
 exports.up = function(knex, Promise) {
   return knex.schema.createTable('gflow_questions', function(table){
-    table.increments('questionid').primary();
-    table.string('name');
-    table.string('title').notNullable();
+    table.increments('id').primary();
+    table.integer('users_id').references('id').inTable('users');
     table.text('question').notNullable();
-    table.timestamps(true,true);
+    table.integer('likes');
+    table.dateTime('created_on');
+    table.dateTime('updated_on');
   })
 };
 
