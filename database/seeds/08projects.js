@@ -6,7 +6,7 @@ exports.seed = function(knex, Promise) {
         // Inserts seed entries
         knex('projects').insert({
           id: 1,
-          creator_id: '1',
+          users_id: '1',
           title: 'title1',
           body: 'body1',
           repository_url: 'repository_url1',
@@ -16,7 +16,7 @@ exports.seed = function(knex, Promise) {
         }),
         knex('projects').insert({
           id: 2,
-          creator_id: '2',
+          users_id: '2',
           title: 'title2',
           body: 'body2',
           repository_url: 'repository_url2',
@@ -26,7 +26,7 @@ exports.seed = function(knex, Promise) {
         }),
         knex('projects').insert({
           id: 3,
-          creator_id: '1',
+          users_id: '1',
           title: 'title3',
           body: 'body3',
           repository_url: 'repository_url3',

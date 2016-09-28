@@ -6,7 +6,7 @@ exports.seed = function(knex, Promise) {
                 // Inserts seed entries
                 knex('questions').insert({
                     id: 1,
-                    user_id: '1',
+                    users_id: '1',
                     title: 'title1',
                     body: 'body1',
                     likes: 14,
@@ -15,7 +15,7 @@ exports.seed = function(knex, Promise) {
                 }),
                 knex('questions').insert({
                     id: 2,
-                    user_id: '3',
+                    users_id: '3',
                     title: 'title2',
                     body: 'body2',
                     likes: 140,
@@ -24,7 +24,7 @@ exports.seed = function(knex, Promise) {
                 }),
                 knex('questions').insert({
                     id: 3,
-                    user_id: '3',
+                    users_id: '3',
                     title: 'title3',
                     body: 'body3',
                     likes: 0,
@@ -33,7 +33,7 @@ exports.seed = function(knex, Promise) {
                 }),
                 knex('questions').insert({
                     id: 4,
-                    user_id: '2',
+                    users_id: '2',
                     title: 'title4',
                     body: 'body4',
                     likes: 4,

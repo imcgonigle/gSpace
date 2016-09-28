@@ -1,7 +1,7 @@
 exports.up = function(knex, Promise) {
   return knex.schema.createTable('questions', function(table) {
 		table.increments('id');
-		table.integer('user_id');
+		table.integer('users_id').references('id').inTable('users');
 		table.string('title');
 		table.text('body');
 		table.integer('likes');
