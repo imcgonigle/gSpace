@@ -1,10 +1,49 @@
 <h1>Resources Homepage/Index</h1>
-<div class="cards">
-  {{#each resource}}
-    <div class="container">
-      
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#add-resource">Add New Resource</button>
+
+<!-- Modal -->
+<form class="resources" action="index.html" method="post">
+
+    <div class="modal fade" id="add-resource" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h2>Add New Resource</h2>
+                </div>
+                <div class="modal-body">
+                    <div class="input-group input-group-lg">
+                        <input name="title" type="text" class="form-control" placeholder="Title" aria-describedby="sizing-addon1">
+                    </div>
+                    <div class="input-group">
+                        <span class="input-group-addon" id="basic-addon3">https://</span>
+                        <input id="link" placeholder="Enter Link" name="link" type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+                    </div>
+                    <div class="input-group">
+                        <textarea placeholder="Description" name="description" class="form-control"></textarea>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </div>
+        </div>
     </div>
-    <h1>{{title}}</h1>
-    <h2>{{}}</h2>
-  {{/each}}
+</form>
+<div class="container cards">
+    <div class="row">
+        {{#each resource}}
+            <div class="col-sm-6">
+                <div class="card card-block">
+                    <h3 class="card-title">{{title}}</h3>
+                    <p class="card-text">{{description}}</p>
+                    <a href="/:id/page" class="btn btn-primary">Visit Resource</a>
+                </div>
+            </div>
+        {{/each}}
+    </div>
 </div>
