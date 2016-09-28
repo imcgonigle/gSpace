@@ -1,7 +1,10 @@
 
 exports.up = function(knex, Promise) {
   return knex.schema.createTable('users', function(table) {
-		table.integer('id').primary();
+
+		table.integer('id')
+		.unique()
+		.primary();
 		table.string('username');
 		table.string('avatar_url');
 		table.text('biography');
