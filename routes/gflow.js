@@ -1,11 +1,12 @@
 var express = require('express');
 var router = express.Router();
+var query = require('../database/queries/gflow');
 
-router.get('/gflow', function(req, res, next) {
-  query.questions()
+router.get('/', function(req, res, next) {
+  query.questionPosts()
   .then( (data) => {
-      console.log(data);
-      res.render('/gflow/index', {items: data});
+      // console.log(data);
+      res.render('gflow/index', {items: data});
     })
     .catch((err)=>{
        console.error("Error getting from the database");
@@ -13,20 +14,30 @@ router.get('/gflow', function(req, res, next) {
      })
   });
 
-router.post('/gflow/ask', function (req, res, next) {
-  console.log(req.body)
-  query.newQuestionPost(req.body.questionid, req.body.name, req.body.title, req.body.question)
+router.post('/ask/new', function (req, res, next) {
+  console.log(req.body);
+  query.newQuestionPost(req.body.questionid, req.user.username, req.body.title, req.body.question)
   .then(() =>{
-      res.redirect('/gflow/index/')
+      res.redirect('/gflow')
     })
   .catch(function(err) {
     next(err)
     })
   })
-
+	//
+	// router.post('question/add', function (req, res, next) {
+	//   console.log('testing' + req.body);
+	//   query.newQuestionPost(req.body.questionid, req.user.username, req.body.title, req.body.question)
+	//   .then(() =>{
+	//       res.redirect('/gflow')
+	//     })
+	//   .catch(function(err) {
+	//     next(err)
+	//     })
+	//   })
 
 router.post('/gflow/question/:id/addcomment',(req, res, next) => {
-  console.log(req.body);
+  // console.log(req.body);
   query.newQuestionComment(req.body.question_post_id, req.body.subject, req.body.comment, req.body.user_id)
   .then(() =>{
     res.redirect('/gflow/index/'+ req.params.id)

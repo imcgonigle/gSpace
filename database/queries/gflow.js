@@ -1,13 +1,5 @@
 var knex = require('./knex.js');
 
-router.use(bodyParser.urlencoded(
-  {extended: true}
-));
-
-router.use(cookieParser());
-router.use(bodyParser.json());
-
-
 function questionPosts() {
   return knex('gflow_questions');
 }
