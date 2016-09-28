@@ -1,9 +1,11 @@
 <h1>{{meetup.title}}</h1>
 <button type="button" name="like">like</button>
 {{#if isOwner}}
-    <a href="{{meetups.id}}/edit">edit</a>
-    <!-- /meetups/{{this.id}} -->
+    <a href="meetups/{{meetups.id}}/edit">edit</a>
+    <!-- {{#else}}<a href="/edit">for nonOwner</a> -->
 {{/if}}
+
+
 {{meetups.username}}
 {{meetups.description}}
 {{meetups.location}}

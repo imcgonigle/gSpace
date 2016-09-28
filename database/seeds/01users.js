@@ -45,6 +45,20 @@ exports.seed = function(knex, Promise) {
                     email: 'email3',
                     first_login: '2006-04-10T13:42:23.83-05:00',
                     last_login: '2006-04-10T13:42:23.83-05:00'
+                }),
+                knex('users').insert({
+                    username: 'zenvercoder',
+                    avatar_url: 'avatar_url4',
+                    biography: 'biography4',
+                    name: 'first_name4',
+                    cohort: '31',
+                    location: 'city4',
+                    linkedin_url: 'linkedin_url4',
+                    github_url: 'github_url4',
+                    website: 'website4',
+                    email: 'email4',
+                    first_login: '2006-04-10T13:42:23.83-05:00',
+                    last_login: '2006-04-10T13:42:23.83-05:00'
                 })
             ]);
         });
