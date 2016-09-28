@@ -3,7 +3,6 @@ exports.up = function(knex, Promise) {
     table.increments();
     table.integer('users_id').references('id').inTable('users');
     table.integer('question_id').references('id').inTable('gflow_questions').notNullable();
-    table.string('subject').notNullable();
     table.text('comment').notNullable();
     table.integer('likes');
     table.dateTime('created_on');
