@@ -1,20 +1,26 @@
 <form action="/meetups/{{meetup.id}}/edit" method="POST">
     <h2>{{meetup.title}}</h2>
-    <textarea type="text" rows="10" id="description" name="description">{{meetup.description}}</textarea>
+    <textarea type="text" rows="10" id="description" name="description">
+        {{meetup.description}}
+      </textarea>
     <label for="description">description</label>
 
-    <textarea type="text" rows="2" id="location" name="location">{{meetup.location}}</textarea>
+    <textarea type="text" rows="2" id="location" name="location">
+      {{meetup.location}}
+    </textarea>
     <label for="location">location</label>
 
-    <textarea type="dateTime" rows="1" id="time" name="time">{{meetup.time}}</textarea>
+    <textarea type="dateTime" rows="1" id="time" name="time">
+      {{meetup.time}}
+    </textarea>
     <label for="time">time</label>
 
-    <textarea type="dateTime" rows="1" id="created_on" name="created_on">{{meetup.created_on}}</textarea>
+    <textarea type="dateTime" rows="1" id="created_on" name="created_on">
+      {{meetup.created_on}}
+    </textarea>
     <label for="created_on">created on</label>
 
     <button type="submit">save</button>
 
     <button type="submit" formaction="delete">delete</button>
 </form>
-</div>
-</div>

@@ -1,10 +1,12 @@
-<h1>One meetups</h1>
-<button type="button" name="favorite">favorite</button>
+<h1>{{meetup.title}}</h1>
+<button type="button" name="like">like</button>
 {{#if isOwner}}
-    <a href="{{meetup.id}}/edit">create</a>
+    <a href="{{meetups.id}}/edit">edit</a>
+    <!-- /meetups/{{this.id}} -->
 {{/if}}
-{{meetup.title}}
-{{meetup.title}}
-{{meetup.title}}
-{{meetup.title}}
-{{meetup.title}}
+{{meetups.username}}
+{{meetups.description}}
+{{meetups.location}}
+{{meetups.time}}
+{{meetups.created_on}}
+{{meetups.time}}
