@@ -6,8 +6,17 @@ var passport = require('../passport')
 /* GET users listing. */
 router.get('/new', function(req, res, next) {
   var user = req.user._json
-  res.render('newUser', {user:user});
+  res.render('user/newUser', {user:user});
 });
+
+router.get('/profile', function(req, res, next) {
+  var username = req.user.username
+  queries.getUserByUsername(username)
+    .then(function(user) {
+      console.log(user)
+      res.render('user/profile', {user:user[0]})
+    })
+})
 
 router.post('/', function(req, res, next) {
   queries.getUserByUsername(req.user.username)
