@@ -37,9 +37,12 @@
   <div class="commentContainer">
     <div class="Comments">
       <section>
-        <form class='add-comment' action='/gflow/index/{{this.id}}/addcomment' method='post'>
+        <form class='add-comment' action='/gflow/question/{{this.id}}/addcomment' method='post'>
           <div>
             <input type='hidden' name='question_id' value='{{this.questionid}}'></input>
+          </div>
+          <div>
+            <input type='hidden' name='username' value='{{this.users.username}}'></input>
           </div>
           <div>
             <label for='comment-subject' class= "subjectLabel"><strong>Subject:</strong></label>

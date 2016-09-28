@@ -8,15 +8,14 @@ function commentPosts() {
   return knex('gflow_comments');
 }
 
-function newQuestionPost(questionid, name, title, question, created_at, updated_at) {
+function newQuestionPost(username, title, question) {
   return knex('gflow_questions').insert({
-    questionid: questionid,
-    name: name,
+    username: username,
     title: title,
     question: question,
-    created_at:created_at,
-    updated_at:updated_at
-  });
+    created_at: new Date(),
+    updated_at: new Date()
+  }).returning('questionid');
 }
 
 function newQuestionComment(question_post_id, subject, comment, user_id, created_at, updated_at) {
