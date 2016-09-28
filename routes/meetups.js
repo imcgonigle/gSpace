@@ -38,6 +38,28 @@ router.get('/:id/page', function(req, res, next) {
         })
 });
 
+router.get('/new', function(req, res, next){
+  res.render('meetups/new', {
+      title: 'Start a new meetup'
+  });
+});
+
+router.post('/new', function(req, res, next) {
+        var id = req.params.id;
+        var title = req.body.title;
+        var description = req.body.description;
+        var location = req.body.location;
+        var time = req.body.time;
+
+        queries.addMeetup(id, title, description, location, time)
+        .then(function() {
+            res.redirect('/id/page');
+        })
+        .catch(function(error){
+          return next(error);
+        })
+});
+
 router.get('/:id/edit', function(req, res, next) {
     queries.getMeetup(req.params.id)
         .then(function(data) {
