@@ -1,30 +1,61 @@
-<form class="" action="/newUser" method="POST">
-  <h2>New User</h2>
-
-  <label for="first-name">Name</label>
-  <input type="text" maxlength="255" name="first-name" id="first-name" required="required">
-
-  <label for="username">Username</label>
-  <input type="text" name="username" id="username">
-
-  <label for="email">Email</label>
-  <input type="email" name="email" id="email">
-
-  <label for="cohort">Cohort</label>
-  <input type="number" name="cohort" id="cohort">
-
-  <label for="city">City</label>
-  <input type="text" name="city" id="city">
-
-  <label for="biography">About</label>
-  <textarea name="biography" id="biography">Write a bio...</textarea>
-
-  <label for="linkedin">Linkedin Profile</label>
-  <input type="url" name="linkedin" id="linkedin">
-
-  <label for="github">Github Profile</label>
-  <input type="url" name="github" id="github">
-
-  <label for="website">Personal Website</label>
-  <input type="url" name="website" id="website">
-</form>
+<div class="container">
+  <form class="form-horizontal" action="/user" method="POST">
+    <fieldset>
+      <legend>New User</legend>
+      <div class="form-group">
+        <label for="name" class="col-lg-2 control-label" maxlength="255">Name</label>
+        <div class="col-lg-10">
+          <input type="text" class="form-control" id="name" placeholder="{{user.name}}">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="email" class="col-lg-2 control-label">Email</label>
+        <div class="col-lg-10">
+          <input type="email" class="form-control" id="email" placeholder="{{user.email}}">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="cohort" class="col-lg-2 control-label" maxlength="255">Cohort</label>
+        <div class="col-lg-10">
+          <input type="text" class="form-control" id="cohort" placeholder="Cohort">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="location" class="col-lg-2 control-label" maxlength="255">Location</label>
+        <div class="col-lg-10">
+          <input type="text" class="form-control" id="location" placeholder="{{user.location}}">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="bio" class="col-lg-2 control-label">Bio</label>
+        <div class="col-lg-10">
+          <textarea class="form-control" rows="3" id="bio">{{user.bio}}</textarea>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="github" class="col-lg-2 control-label">Github</label>
+        <div class="col-lg-10">
+          <input type="url" class="form-control" id="github" placeholder="{{user.html_url}}">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="linkedin" class="col-lg-2 control-label">LinkedIn</label>
+        <div class="col-lg-10">
+          <input type="url" class="form-control" id="linkedin" placeholder="">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="website" class="col-lg-2 control-label">Personal Website</label>
+        <div class="col-lg-10">
+          <input type="url" class="form-control" id="website" placeholder="">
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="col-lg-10 col-lg-offset-2">
+          <button type="reset" class="btn btn-default">Cancel</button>
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+      </div>
+    </fieldset>
+  </form>
+</div>
