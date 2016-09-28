@@ -2,25 +2,27 @@
 
 ### Team Names
 
-* coDirection +1
-* One-coDirection
-* Team Amp
-* Dream Team
-* Killer Bees
-* Team Gaga
-* gSpace +1
+* letmeforkyourrepository
+
+### Notes to self
+
+* http://stackoverflow.com/questions/36225381/reattach-a-detached-fork-in-github
+
+###Git Workflow
+* add, commit, push to your own forked repo
+* git pull upstream master
+* push those changes up to your forked repo
+* pull request
 
 ### APIs/Tech
 
-* SendGrid
 * Maps for pages/events
-
+* Google Calendar
 
 ### Tasks
 
 * Pivotal - Matt
 * Github - Ian
-
 
 ### Features
 
@@ -50,21 +52,3 @@
 
 * Games
 * Pair Programming Games
-
-### Documentation
-
-### Things we like about other sites
-
-* Medium - Layout, tags you follow, reading roulette, editor's picks
-(What is your overall impression of the content of your reading list?
- It never has anything I’m interested inIt rarely has something I’m interested inIt sometimes has content I’m interested inIt often has content I’m interested inIt always has content I’m interested in
- How can it be better for you?)
-* Slack -
-* Facebook - like login to other websites. Pics of nieces and nephews,
-###helps remember birthdays.
-* Dislikes: design, amt of people on it, political stuff posted, nonsense, game notifications, cluttered and NSA factor
-* StrictlyVC - new people, jobs, essential readings. aggregates everything in a newsletter
-* Reddit - Karma
-* Foursquare - badges (read another article, get a badge, post a tutorial, get a point)
-
-..
