@@ -7,6 +7,17 @@
 		<h1>{{project.title}}</h1>
 		<h2><a href="{{project.repository_url}}">project.repository_url</a></h2>
 
+		{{#if isOwner}}
+
+			<div class="functions">
+
+				<a href="/projects/{{project.id}}/delete">Delete</a>
+				<a href="/projects/{{project.id}}/edit">Edit</a>
+				
+			</div> {{!-- end of functions --}}
+
+		{{/if}}
+
 	</div> {{!-- end of project-page-header --}}
 
 	<div class="project-page-body">
@@ -14,7 +25,7 @@
 		<!-- <p>
 			Proposal by: {{project.username}}
 		</p> -->
-		
+
 		<p>
 			{{project.body}}
 		</p>

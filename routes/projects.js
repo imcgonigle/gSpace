@@ -39,10 +39,12 @@ router.get('/:id/edit', function(req, res, next) {
 		var project = data[0];
 
 		if(project.user_id == req.user.id){
+
 			res.render('pojects/edit', {
 				user: req.user,
 				project: project
-			})
+			});
+
 		} else{
 			res.redirect('/projects/' + project.id + '/page');
 		}
@@ -94,6 +96,42 @@ router.post('/:id/edit', function(req, res, next) {
 
 });
 
+router.post('/:id/delete', function(req, res, next) {
+
+	if(req.isAuthenticated()) {
+
+		var project_id = req.params.id;
+
+		query.getProjectByID(project_id)
+		.then(function(data) {
+
+			var project = data[0];
+
+			if(req.user.id == project.user_id) {
+
+				query.deleteProject(project.id)
+				.then(function(data) {
+					res.redirect('/projects/');
+				})
+				.catch(function(err) {
+					return next(err);
+				})
+
+			} else{
+				res.redirect('/project/' + project.id + '/page');
+			}
+
+		})
+		.catch(function(err) {
+			return next(err);
+		});
+
+	} else {
+			res.redirect('/login');
+	};
+
+});
+
 router.get('/new', function(req, res, next) {
 
 	if(req.isAuthenticated()) {
@@ -123,8 +161,8 @@ router.post('/new', function(req, res, next) {
 
 	} else {
 		res.redirect('/login');
-	}
+	};
 
-})
+});
 
 module.exports = router;
