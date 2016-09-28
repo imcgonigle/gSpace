@@ -153,7 +153,7 @@ router.post('/new', function(req, res, next) {
 
 		query.addProject(creator_id, title, body, repository_url)
 		.then(function(project_id) {
-			res.redirect('/projects/project_id');
+			res.redirect('/projects/' + project_id + '/page');
 		})
 		.catch(function(err) {
 			return next(err);
