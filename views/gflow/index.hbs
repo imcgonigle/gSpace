@@ -4,11 +4,11 @@
   {{#each items}}
     <div class="questionDiv">
       <div class="change">
-        <span class='deleteItem'><a href="/items/delete/{{this.questionid}}"><strong>delete</strong></a></span>
+        <span class='deleteItem'><a href="/gflow/delete/{{this.questionid}}"><strong>delete</strong></a></span>
         <button type="submit" formaction="delete">deleteB</button>
-        <span class='modifyPost'><a href="/items/modify/{{this.questionid}}"><strong>edit</strong></a></span>
+        <span class='modifyPost'><a href="/gflow/modify/{{this.questionid}}"><strong>edit</strong></a></span>
       </div>
-      <h3 class="createdDate">Posted on: {{shortDate  this.created_at}}</h3>
+      <h3 class="createdDate">Posted on: {{shortDate this.created_at}}</h3>
       <h2 class="postTitle">{{this.title}}</h2>
       <h2>{{this.id}}</h2>
       <p class="postContent">{{this.question}}</p>
