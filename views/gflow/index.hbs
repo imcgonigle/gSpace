@@ -10,13 +10,13 @@
       <h2>{{this.id}}</h2>
       <p class="postContent">{{this.content}}</p>
       <li class="postName"><strong>Written by: {{this.name}}</strong></li>
-      <a href="question/{{this.blogid}}" class="read_more_button">Read More</a>
+      <a href="/gflow/question/{{this.questionid}}" class="read_more_button">Read More</a>
     </div>
     {{/each}}
 </ul>
 <h1 class='questionInput'></h1>
 <section class='createQuestion'>
-  <form class='add-item' action='/gflow/ask/new' method='post'>
+  <form class='add-item' action='/gflow/ask/new/:id' method='post'>
     <!-- <div>
       <label for='item-name'>user name </label>
       <input type='hidden' name='name' class="inputBox" placeholder="user-name" value='{{this.user.id}}'></input>

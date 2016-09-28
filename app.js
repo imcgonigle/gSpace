@@ -43,6 +43,18 @@ var app = express();
 //     }
 // });
 
+hbs.registerHelper('dotdotdot', function(str) {
+  if (str.length > 400)
+    return str.substring(0,400) + '...';
+  return str;
+});
+
+hbs.registerHelper('shortDate', function(str) {
+  var date = str;
+  var shorten = date.toString().split(" ");
+  return shorten[1]+ ' ' +shorten[2]+ ', ' +shorten[3];
+});
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');

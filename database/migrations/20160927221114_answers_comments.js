@@ -1,11 +1,9 @@
-
 exports.up = function(knex, Promise) {
-  return knex.schema.createTable('projects', function(table) {
+  return knex.schema.createTable('answers_comments', function(table) {
 		table.increments('id');
     table.integer('users_id').references('id').inTable('users');
-		table.string('title');
+    table.integer('answers_id').references('id').inTable('answers');
 		table.text('body');
-		table.string('repository_url');
 		table.integer('likes');
 		table.dateTime('created_on');
 		table.dateTime('updated_on');
@@ -13,5 +11,5 @@ exports.up = function(knex, Promise) {
 };
 
 exports.down = function(knex, Promise) {
-	return knex.schema.dropTable('projects');
+	return knex.schema.dropTable('answers_comments');
 };
