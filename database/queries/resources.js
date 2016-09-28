@@ -41,6 +41,8 @@ module.exports = {
     return Resources().where('id', resource_id).del();
   },
   addLikeToResource: function (resource_id, likes) {
-    
+    return Resources().where('id', resource_id).update({
+      likes: likes +=1
+    })
   }
 }
