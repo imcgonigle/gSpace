@@ -1,0 +1,25 @@
+<h1>Project page</h1>
+
+<div class="project-page-container">
+
+	<div class="project-page-header">
+
+		<h1>{{project.title}}</h1>
+		<h2><a href="{{project.repository_url}}">project.repository_url</a></h2>
+
+	</div> {{!-- end of project-page-header --}}
+
+	<div class="project-page-body">
+		<!-- <p>
+			Proposal by: {{project.username}}
+		</p> -->
+		<p>
+			{{project.body}}
+		</p>
+	</div> {{!-- end of project-page-body --}}
+
+	<div class="project-page-footer">
+		<span>{{project.likes}}</span>
+	</div> {{!-- end of project-page-footer --}}
+
+</div> {{!-- end of project-page-container --}}
