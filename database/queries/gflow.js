@@ -8,6 +8,14 @@ function commentPosts() {
   return knex('gflow_comments');
 }
 
+function getQuestionPostbyId(id) {
+  return knex('gflow_questions').where('questionid', id);
+}
+
+function getCommentPostbyId(id) {
+  return knex('gflow_comments').where('question_post_id', id);
+}
+
 function newQuestionPost(username, title, question) {
   return knex('gflow_questions').insert({
     username: username,
@@ -15,17 +23,17 @@ function newQuestionPost(username, title, question) {
     question: question,
     created_at: new Date(),
     updated_at: new Date()
-  }).returning('questionid');
+  }).return('questionid');
 }
 
-function newQuestionComment(question_post_id, subject, comment, user_id, created_at, updated_at) {
+function newQuestionComment(question_post_id, subject, comment, username) {
   return knex('gflow_comments').insert({
     question_post_id:question_post_id,
     subject: subject,
     comment: comment,
-    user_id: user_id,
-    created_at:created_at,
-    updated_at:updated_at
+    username: username,
+    created_at: new Date(),
+    updated_at:new Date()
   })
 }
 
@@ -47,8 +55,10 @@ function modifyQuestionComment(id) {
 
 
 module.exports = {
-  questionPosts,
+  questionPosts: questionPosts,
   commentPosts,
+  getQuestionPostbyId,
+  getCommentPostbyId,
   newQuestionPost,
   newQuestionComment,
   deleteQuestionComment,
