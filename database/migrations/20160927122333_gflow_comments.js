@@ -4,7 +4,7 @@ exports.up = function(knex, Promise) {
     table.integer('question_post_id').references('questionid').inTable('gflow_questions').notNullable();
     table.string('subject').notNullable();
     table.text('comment').notNullable();
-    table.integer('user_id');
+    table.string('username');
     table.timestamps(true,true);
   })
 };

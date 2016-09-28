@@ -1,7 +1,7 @@
 exports.up = function(knex, Promise) {
   return knex.schema.createTable('gflow_questions', function(table){
     table.increments('questionid').primary();
-    table.string('name');
+    table.string('username');
     table.string('title').notNullable();
     table.text('question').notNullable();
     table.timestamps(true,true);

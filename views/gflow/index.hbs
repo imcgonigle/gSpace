@@ -1,40 +1,19 @@
+<a href="gflow/ask"><strong>Ask a question!</strong></a>
+
 <ul class="questionDivContainer">
   {{#each items}}
     <div class="questionDiv">
       <div class="change">
-        <span class='deleteItem'><a href="/items/delete/{{this.question_id}}"><strong>x</strong></a></span>
-        <span class='modifyPost'><a href="/items/modify/{{this.question_id}}"><strong>edit</strong></a></span>
+        <span class='deleteItem'><a href="/items/delete/{{this.questionid}}"><strong>delete</strong></a></span>
+        <button type="submit" formaction="delete">deleteB</button>
+        <span class='modifyPost'><a href="/items/modify/{{this.questionid}}"><strong>edit</strong></a></span>
       </div>
       <h3 class="createdDate">Posted on: {{shortDate  this.created_at}}</h3>
       <h2 class="postTitle">{{this.title}}</h2>
       <h2>{{this.id}}</h2>
-      <p class="postContent">{{this.content}}</p>
-      <li class="postName"><strong>Written by: {{this.name}}</strong></li>
+      <p class="postContent">{{this.question}}</p>
+      <li class="postName"><strong>Written by: {{this.username}}</strong></li>
       <a href="/gflow/question/{{this.questionid}}" class="read_more_button">Read More</a>
     </div>
     {{/each}}
 </ul>
-<h1 class='questionInput'></h1>
-<section class='createQuestion'>
-  <form class='add-item' action='/gflow/ask/new/:id' method='post'>
-    <!-- <div>
-      <label for='item-name'>user name </label>
-      <input type='hidden' name='name' class="inputBox" placeholder="user-name" value='{{this.user.id}}'></input>
-    </div> -->
-    <div>
-      <label for='item-title'>Title:  </label>
-      <input type='text' name='title' class="inputBox" placeholder="What's your programming question? Be specific." value=''></input>
-    </div>
-    <div>
-      <label for='item-question'>Question: </label>
-      <textarea name='question' placeholder='Insert your question here' class="inputBox postInputBox" rows='10' cols= '90'></textarea>
-    </div>
-    <div>
-      <label for='item-tags'>Tags: </label>
-      <input type='text' name='tags' class="inputBox" placeholder="at least one such as (javaScript database)" value=''></input>
-    </div>
-    <div>
-      <input type='submit' placeholder="Post Your Question"></input>
-    </div>
-  </form>
-</section>
