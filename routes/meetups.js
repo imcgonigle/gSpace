@@ -38,6 +38,10 @@ router.get('/:id/page', function(req, res, next) {
         })
 });
 
+router.get('/new', function(req, res, next){
+  res.render('new');
+})
+
 router.get('/:id/edit', function(req, res, next) {
     queries.getMeetup(req.params.id)
         .then(function(data) {
