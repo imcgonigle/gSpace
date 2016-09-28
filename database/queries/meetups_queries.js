@@ -20,13 +20,6 @@ function getMeetup(id) {
 function getMeetups() {
     return Meetups()
         .join('users', 'meetups.users_id', 'users.id')
-        // .select(
-        //     'meetups.title',
-        //     'meetups.description',
-        //     'meetups.location',
-        //     'username',
-        //     'meetups.time')
-        // .orderBy('id', 'desc');
 }
 
 function addMeetup(user_id, title, decription, location, time) {
