@@ -1,14 +1,14 @@
 var knex = require('./knex.js')
 
-function Resources() = {
+function Resources()  {
   return knex('resource')
 }
 
-function Resources_Tags() = {
+function Resources_Tags()  {
   return knex('resources_tags')
 }
 
-function Comments() = {
+function Comments()  {
   return knex('comments')
 }
 
@@ -33,7 +33,7 @@ module.exports = {
       title: title,
       description: description,
       link: link,
-      updated_on: new Date();
+      updated_on: new Date()
     })
     .returning('id');
   },

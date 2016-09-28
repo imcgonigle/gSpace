@@ -1,7 +1,9 @@
 var express = require('express');
 var router = express.Router();
+var queries = require('../database/queries/resources')
+var passport = require('../passport')
 
-router.get('/', function(req, res, next) {
+router.get('/index', function(req, res, next) {
 	queries.getAllResources()
 		.then(function(resource) {
 			res.render('resources/index', {
