@@ -158,4 +158,8 @@ h1, a {
     text-decoration: none;
     color: #253037; }
 
+.project-container {
+  height: 100px;
+  background: white; }
+
 /*# sourceMappingURL=style.css.map */
