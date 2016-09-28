@@ -1,6 +1,8 @@
-<h1>Meetups Homepage/Index</h1>
+<h1>All the meetups</h1>
 {{#each meetups}}
-    <a href="/meetups/{{this.id}}">{{this.title}}</a>
+    <a href="/meetups/{{this.id}}/page">{{this.title}}</a>
+    <!-- <a href="/{{meetups.id}}/page">{{this.title}}</a> -->
+
     <div>{{this.username}}</div>
     <div>{{this.description}}</div>
     <div>{{this.location}}</div>

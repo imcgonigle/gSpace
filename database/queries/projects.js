@@ -8,7 +8,6 @@ function Projects_Users() {
 	return knex('projects_users');
 };
 
-
 module.exports = {
 	getAllProjects: Projects,
 	getProjectByID: function(project_id) {

@@ -9,8 +9,9 @@ module.exports = {
   getUserByUsername: function (username) {
     return Users().where("username", username)
   },
-  createUser: function (username, avatar_url, github_url, email, biography, location, name, first_login) {
+  createUser: function (id, username, avatar_url, github_url, email, biography, location, name, first_login) {
     return Users().insert({
+			id: id,
       username: username,
       avatar_url: avatar_url,
       biography: biography,
