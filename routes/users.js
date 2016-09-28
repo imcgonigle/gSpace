@@ -8,16 +8,17 @@ router.get('/new', function(req, res, next) {
 });
 
 router.post('/', function(req, res, next) {
-  knex('users').update({
-    name: req.body.name,
-    email: req.body.email,
-    cohort: req.body.cohort,
-    location: req.body.location,
-    biography: req.body.bio,
-    website: req.body.website,
-    github_url: req.body.github,
-    linkedin_url: req.body.linkedin
-  }).where('username', req.user.username)
+  queries.getUserByUsername(req.user.username)
+  .then(function (data) {
+    var user = data[0]
+    queries.updateUserInfo(req.user.username, req.user.bio, req.user.name, req.user.location, req.user.email, req.user.github, req.user.linkedin, req.user.website, req.user.cohort)
+    .then(function(data) {
+      res.redirect('static/home')
+    })
+    .catch(function(error) {
+      return next(error)
+    })
+  })
 })
 
 module.exports = router;
