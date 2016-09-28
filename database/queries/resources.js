@@ -17,9 +17,9 @@ module.exports = {
   getResourceById: function(resource_id) {
     return Projects().where('id', resource_id);
   },
-  addResource: function (user_id, title, description, link) {
+  addResource: function (users_id, title, description, link) {
     return Resources().insert({
-      user_id: user_id,
+      users_id: users_id,
       title: title,
       description: description,
       link: link,

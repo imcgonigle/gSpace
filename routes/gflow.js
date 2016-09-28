@@ -41,7 +41,7 @@ router.post('/ask', function (req, res, next) {
 
 })
 
-router.get('/quetion/:id', function(req, res, next) {
+router.get('/question/:id', function(req, res, next) {
 	query.getQuestionById(req.params.id)
 	.then(function(data) {
 		var question = data[0];

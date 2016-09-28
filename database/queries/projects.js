@@ -1,13 +1,13 @@
 var knex = require('./knex.js');
 
-function Projects()  {
+
+function Projects(){
 	return knex('projects');
 };
 
-function Projects_Users()  {
+function Projects_Users(){
 	return knex('projects_users');
 };
-
 
 module.exports = {
 	getAllProjects: Projects,

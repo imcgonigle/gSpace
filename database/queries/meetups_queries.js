@@ -6,27 +6,20 @@ function Meetups() {
 
 function getMeetup(id) {
     return Meetups().where('meetups.id', id)
-        .join('users', 'meetups.user_id', '=', 'users.id')
+        .join('users', 'meetups.users_id', '=', 'users.id')
         .select(
             'meetups.title',
             'meetups.description',
             'meetups.location',
             'meetups.time',
             'meetups.created_on',
-            'meetups.owner_id'
+            'meetups.users_id'
         )
 }
 
 function getMeetups() {
     return Meetups()
-        .join('users', 'meetups.users_id', 'users.id')
-        // .select(
-        //     'meetups.title',
-        //     'meetups.description',
-        //     'meetups.location',
-        //     'username',
-        //     'meetups.time')
-        // .orderBy('id', 'desc');
+        .join('users', 'meetups.users_id', '=', 'users.id')
 }
 
 function addMeetup(user_id, title, decription, location, time) {
