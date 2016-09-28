@@ -8,6 +8,7 @@ router.get('/', function(req, res, next) {
     res.render('gflow/index', {items: data});
   })
     .catch((err)=>{
+<<<<<<< HEAD
       return next(err)
     })
 });
@@ -30,9 +31,39 @@ router.post('/ask', function (req, res, next) {
     })
   .catch(function(err) {
     return next(err)
+=======
+       return next(err)
+     })
+  });
+
+router.get('/ask', function(req, res, next) {
+
+  if(isAuthenticated()) {
+		res.render('gflow/ask', {user: req.user});
+	} else {
+		res.redirect('/login');
+	}
+
+});
+
+
+router.post('/ask', function (req, res, next) {
+
+	var username = req.user.username;
+	var title = req.body.title;
+	var question = req.body.question;
+
+
+  query.newQuestionPost(username, title, question)
+  .then((page_id) =>{
+      res.redirect('/question/' + page_id + '/addcomment');
+>>>>>>> 190bed55a0533cb9791240165470bf8c300cc622
     })
+  .catch((err) =>{
+    return next(err)
   })
 
+<<<<<<< HEAD
 router.get('/question/:id',(req, res, next) => {
   var id = req.params.id;
   query.getQuestionPostbyId(id).then((posts) => {
@@ -56,6 +87,25 @@ router.post('/question/:id',(req, res, next) => {
   var comment = req.body.comment;
   var question_post_id = req.params.id;
   query.newQuestionComment(question_post_id, subject, comment, username)
+=======
+})
+
+router.get('/quetion/:id', function(req, res, next) {
+	query.getQuestionById(req.params.id)
+	.then(function(data) {
+		var question = data[0];
+		res.render('gflow/question', {question: question, user: req.user})
+	})
+	.catch(function(err) {
+		return next(err);
+	})
+})
+
+
+router.post('/question/:id/addcomment',(req, res, next) => {
+  // console.log(req.body);
+  query.newQuestionComment(req.body.question_post_id, req.body.subject, req.body.comment, req.user.username)
+>>>>>>> 190bed55a0533cb9791240165470bf8c300cc622
   .then(() =>{
     res.redirect('/gflow/question/'+req.params.id)
   })
@@ -64,6 +114,7 @@ router.post('/question/:id',(req, res, next) => {
   })
 });
 
+<<<<<<< HEAD
 router.post('/items/delete/:id', function(req, res, next) {
   query.getQuestionPostbyId(req.params.id)
   .then(function(data) {
@@ -79,6 +130,35 @@ router.post('/items/delete/:id', function(req, res, next) {
     } else {
       res.redirect('/')
     }
+=======
+
+router.get('/gflow/question/:id', (req, res, next) => {
+  var id  = req.params.id;
+  query.questionPosts().where('questionid',id).then((posts)=> {
+  query.commentPosts().where('question_post_id', id).then((data) => {
+  res.render('gflow/question/'+ req.params.id, {
+    items:posts,
+    data:data
+      })
+    })
+  })
+  .catch((err)=>{
+  console.error("Error getting from the database");
+  next(err)
+  })
+});
+
+
+  router.get('/items/delete/:id', function(req, res, next) {
+    console.log("deleting question "+ req.params.id);
+    query.deleteQuestionPost(req.params.id)
+    .then(function() {
+      res.redirect('/gflow/index/');
+    })
+    .catch(function(err) {
+      return next(err)
+    })
+>>>>>>> 190bed55a0533cb9791240165470bf8c300cc622
   })
   .catch(function(error){
     return next(error);

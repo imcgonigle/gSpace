@@ -8,6 +8,7 @@ function commentPosts() {
   return knex('gflow_comments');
 }
 
+<<<<<<< HEAD
 function getQuestionPostbyId(id) {
   return knex('gflow_questions').where('questionid', id);
 }
@@ -16,13 +17,19 @@ function getCommentPostbyId(id) {
   return knex('gflow_comments').where('question_post_id', id);
 }
 
+=======
+>>>>>>> 190bed55a0533cb9791240165470bf8c300cc622
 function newQuestionPost(username, title, question) {
   return knex('gflow_questions').insert({
     username: username,
     title: title,
     question: question,
     created_at: new Date(),
+<<<<<<< HEAD
     updated_at:new Date()
+=======
+    updated_at: new Date()
+>>>>>>> 190bed55a0533cb9791240165470bf8c300cc622
   }).returning('questionid');
 }
 

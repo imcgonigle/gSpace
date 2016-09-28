@@ -1,17 +1,17 @@
 exports.up = function(knex, Promise) {
-  return knex.schema.createTable('meetups', function(table) {
+  return knex.schema.createTable('comments', function(table) {
 		table.increments('id');
+    // ex projects
+    table.string('type');
+    // id of the project/meetup/article
+    table.integer('uid');
     table.integer('users_id').references('id').inTable('users');
-		table.string('title');
     table.integer('likes');
-		table.text('description');
-		table.string('location');
-    table.dateTime('time');
     table.dateTime('created_on');
     table.dateTime('updated_on');
 	});
 };
 
 exports.down = function(knex, Promise) {
-	return knex.schema.dropTable('meetups');
+	return knex.schema.dropTable('comments');
 };
