@@ -16,7 +16,7 @@ router.get('/', function(req, res, next) {
         })
 });
 
-router.get(':id/page', function(req, res, next) {
+router.get('/:id/page', function(req, res, next) {
     queries.getMeetup(req.params.id)
         .then(function(data) {
             if (data[0].user_id == req.user.id) {

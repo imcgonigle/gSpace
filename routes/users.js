@@ -10,7 +10,6 @@ router.get('/new', function(req, res, next) {
 });
 
 router.post('/', function(req, res, next) {
-  console.log(req.body.name)
   queries.getUserByUsername(req.user.username)
   .then(function (data) {
     queries.updateUserInfo(req.user.username, req.body.biography, req.body.name, req.body.location, req.body.email, req.body.github_url, req.body.linkedin_url, req.body.website, req.body.cohort)
