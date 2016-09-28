@@ -5,6 +5,7 @@ exports.seed = function(knex, Promise) {
             return Promise.all([
                 // Inserts seed entries
                 knex('users').insert({
+                    id: 1,
                     username: 'username1',
                     avatar_url: 'avatar_url1',
                     biography: 'biography1',
@@ -19,6 +20,7 @@ exports.seed = function(knex, Promise) {
                     last_login: '2006-04-10T13:40:23.83-05:00'
                 }),
                 knex('users').insert({
+                    id: 2,
                     username: 'username2',
                     avatar_url: 'avatar_url2',
                     biography: 'biography2',
@@ -33,6 +35,7 @@ exports.seed = function(knex, Promise) {
                     last_login: '2006-04-10T13:41:23.83-05:00'
                 }),
                 knex('users').insert({
+                    id: 3,
                     username: 'username3',
                     avatar_url: 'avatar_url3',
                     biography: 'biography3',
@@ -43,6 +46,36 @@ exports.seed = function(knex, Promise) {
                     github_url: 'github_url3',
                     website: 'website3',
                     email: 'email3',
+                    first_login: '2006-04-10T13:42:23.83-05:00',
+                    last_login: '2006-04-10T13:42:23.83-05:00'
+                }),
+                knex('users').insert({
+                    id: 4,
+                    username: 'username4',
+                    avatar_url: 'avatar_url4',
+                    biography: 'biography4',
+                    name: 'first_name4',
+                    cohort: '31',
+                    location: 'city4',
+                    linkedin_url: 'linkedin_url4',
+                    github_url: 'github_url4',
+                    website: 'website4',
+                    email: 'email4',
+                    first_login: '2006-04-10T13:42:23.83-05:00',
+                    last_login: '2006-04-10T13:42:23.83-05:00'
+                }),
+                knex('users').insert({
+                    id: 500,
+                    username: 'username500',
+                    avatar_url: 'avatar_url500',
+                    biography: 'biography500',
+                    name: 'first_name500',
+                    cohort: '310',
+                    location: 'city500',
+                    linkedin_url: 'linkedin_url500',
+                    github_url: 'github_url500',
+                    website: 'website500',
+                    email: 'email500',
                     first_login: '2006-04-10T13:42:23.83-05:00',
                     last_login: '2006-04-10T13:42:23.83-05:00'
                 })

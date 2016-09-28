@@ -1,7 +1,7 @@
 exports.up = function(knex, Promise) {
   return knex.schema.createTable('meetups', function(table) {
 		table.increments('id');
-    table.integer('user_id')
+    table.integer('users_id')
 		.unsigned()
 		.notNullable()
 		.references('id')
