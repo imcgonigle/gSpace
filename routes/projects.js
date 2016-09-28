@@ -39,10 +39,12 @@ router.get('/:id/edit', function(req, res, next) {
 		var project = data[0];
 
 		if(project.user_id == req.user.id){
+
 			res.render('pojects/edit', {
 				user: req.user,
 				project: project
-			})
+			});
+
 		} else{
 			res.redirect('/projects/' + project.id + '/page');
 		}
