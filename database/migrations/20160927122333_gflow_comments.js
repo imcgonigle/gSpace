@@ -1,11 +1,13 @@
 exports.up = function(knex, Promise) {
   return knex.schema.createTable('gflow_comments', function(table){
     table.increments();
-    table.integer('question_post_id').references('questionid').inTable('gflow_questions').notNullable();
+    table.integer('users_id').references('id').inTable('users');
+    table.integer('question_id').references('id').inTable('gflow_questions').notNullable();
     table.string('subject').notNullable();
     table.text('comment').notNullable();
-    table.integer('user_id');
-    table.timestamps(true,true);
+    table.integer('likes');
+    table.dateTime('created_on');
+    table.dateTime('updated_on');
   })
 };
 

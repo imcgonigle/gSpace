@@ -3,10 +3,12 @@ exports.up = function(knex, Promise) {
 		table.increments('id');
     table.integer('users_id').references('id').inTable('users');
 		table.string('title');
+    table.integer('likes');
 		table.text('description');
 		table.string('location');
     table.dateTime('time');
     table.dateTime('created_on');
+    table.dateTime('updated_on');
 	});
 };
 
