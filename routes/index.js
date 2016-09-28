@@ -10,7 +10,7 @@ router.get('/', function(req, res, next) {
 			.then(function (data) {
 				var user = data[0]
 				if (user == undefined) {
-					queries.createUser(req.user.username, req.user.avatar_url, req.user.github_url, req.user.email, req.user.bio, req.user.location, req.user.name)
+					queries.createUser(req.user.username, req.user._json.avatar_url, req.user._json.github_url, req.user._json.email, req.user._json.bio, req.user._json.location, req.user._json.name)
 					.then(function(data) {
 						res.redirect('/users/new')
 					})

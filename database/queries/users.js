@@ -26,7 +26,7 @@ module.exports = {
       last_login: new Date()
     })
   },
-  updateUserInfo: function (username) {
+  updateUserInfo: function (username, biography, name, location, email, github_url, linkedin_url, website, cohort) {
     return Users().where("username", username).update({
       biography: biography,
       name: name,

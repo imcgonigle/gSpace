@@ -1,5 +1,7 @@
 var express = require('express');
 var router = express.Router();
+var queries = require('../database/queries/users')
+var passport = require('../passport')
 
 /* GET users listing. */
 router.get('/new', function(req, res, next) {
@@ -8,12 +10,12 @@ router.get('/new', function(req, res, next) {
 });
 
 router.post('/', function(req, res, next) {
+  console.log(req.body.name)
   queries.getUserByUsername(req.user.username)
   .then(function (data) {
-    var user = data[0]
-    queries.updateUserInfo(req.user.username, req.user.bio, req.user.name, req.user.location, req.user.email, req.user.github, req.user.linkedin, req.user.website, req.user.cohort)
+    queries.updateUserInfo(req.user.username, req.body.biography, req.body.name, req.body.location, req.body.email, req.body.github_url, req.body.linkedin_url, req.body.website, req.body.cohort)
     .then(function(data) {
-      res.redirect('static/home')
+      res.redirect('/')
     })
     .catch(function(error) {
       return next(error)
