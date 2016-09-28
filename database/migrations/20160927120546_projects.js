@@ -2,7 +2,10 @@
 exports.up = function(knex, Promise) {
   return knex.schema.createTable('projects', function(table) {
 		table.increments('id');
-    table.integer('users_id').references('id').inTable('users');
+    table.integer('user_id')
+		.references('id')
+		.inTable('users')
+		.onDelete('CASCADE');
 		table.string('title');
 		table.text('body');
 		table.string('repository_url');
