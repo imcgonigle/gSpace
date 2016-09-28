@@ -3,7 +3,13 @@ var router = express.Router();
 var query = require('../database/queries/projects');
 
 router.get('/', function(req, res, next) {
-	res.render('projects/index', {user: req.user});
+	query.getAllProjects()
+	.then(function(data) {
+		res.render('projects/index', {user: req.user, projects: data})
+	})
+	.catch(function(err){
+		return next(err);
+	});
 });
 
 router.get('/:id/page', function(req, res, next) {
