@@ -161,7 +161,7 @@ router.post('/new', function(req, res, next) {
 
 	} else {
 		res.redirect('/login');
-	}
+	};
 
 });
 
