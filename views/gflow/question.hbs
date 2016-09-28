@@ -1,17 +1,15 @@
 <ul class="questionDivContainer">
-  {{#each items}}
     <div class="questionDiv">
       <div class="change">
-        <span class='deleteItem'><a href="/items/delete/{{this.questionid}}"><strong>x</strong></a></span>
-        <span class='modifyPost'><a href="/items/modify/{{this.questionid}}"><strong>edit</strong></a></span>
+        <span class='deleteItem'><a href="/items/delete/{{item.questionid}}"><strong>delete</strong></a></span>
+        <span class='modifyPost'><a href="/items/modify/{{item.questionid}}"><strong>edit</strong></a></span>
       </div>
-      <h3 class="createdDate">Posted on: {{shortDate  this.created_at}}</h3>
-      <h2 class="postTitle">{{this.title}}</h2>
-      <h2>{{this.id}}</h2>
-      <p class="postContent">{{this.question}}</p>
-      <li class="postName"><strong>Written by: {{this.name}}</strong></li>
+      <h3 class="createdDate">Posted on: {{shortDate item.created_at}}</h3>
+      <h2 class="postTitle">Title:{{item.title}}</h2>
+      <h2>{{item.id}}</h2>
+      <p class="postContent">Question:{{item.question}}</p>
+      <li class="postName"><strong>Written by: {{item.username}}</strong></li>
     </div>
-    {{/each}}
 </ul>
 
 
@@ -21,13 +19,13 @@
     {{#each data}}
     <div class="borderDiv">
       <div class="change">
-        <span class='deleteItem'><a href="/data/delete/{{this.id}}"><strong>x</strong></a></span>
+        <span class='deleteItem'><a href="/data/delete/{{this.id}}"><strong>delete</strong></a></span>
         <span class='modifyPost'><a href="/data/modify/{{this.id}}"><strong>edit</strong></a></span>
       </div>
       <p class="createdDate dateSmall">Posted on: {{shortDate this.created_at}}</p>
       <h2 class="commentSubject">{{this.subject}}</h2>
       <p class="postContent">{{this.comment}}</p>
-      <li class="postName"><strong>Written by: {{this.name}}</strong></li>
+      <li class="postName"><strong>Written by: {{this.username}}</strong></li>
     {{/each}}
     </div>
   </ul>
@@ -37,13 +35,7 @@
   <div class="commentContainer">
     <div class="Comments">
       <section>
-        <form class='add-comment' action='/gflow/question/{{this.id}}/addcomment' method='post'>
-          <div>
-            <input type='hidden' name='question_id' value='{{this.questionid}}'></input>
-          </div>
-          <div>
-            <input type='hidden' name='username' value='{{this.users.username}}'></input>
-          </div>
+        <form class='add-comment' action='/gflow/question/{{item.questionid}}' method='post'>
           <div>
             <label for='comment-subject' class= "subjectLabel"><strong>Subject:</strong></label>
             <textarea type='text' name='subject' placeholder='subject' class="subjectInputBox" cols= '80' value=''></textarea>
@@ -53,7 +45,7 @@
             <textarea name='comment' placeholder='comment' class="commentInputBox" rows='10' cols= '80'></textarea>
           </div>
           <div class="commentButton">
-            <input type='submit' id='commentSubmit' value="Submit"></input>
+            <input type='submit' id='commentSubmit' value="Submit Comment"></input>
           </div>
           </form>
         </section>
