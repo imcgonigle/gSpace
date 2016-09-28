@@ -1,5 +1,11 @@
 <h1> Projects Homepage/Index </h1>
+{{#if user}}
 
+<div class="user-controls">
+	<a href="/projects/new">Add New Project</a>
+</div>{{!-- end of user-controls --}}
+
+{{/if}}
 {{#each projects}}
 
 <div class="project-container">
