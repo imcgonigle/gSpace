@@ -1,1 +1,21 @@
 <h1> Projects Homepage/Index </h1>
+{{#each projects}}
+<div class="project-container">
+	<div class="container-header">
+		<h1><a href="/projects/{{this.id}}">{{this.title}}</a></h1>
+	</div>
+	<div class="container-body">
+		<a href="{{this.repository_url}}">{{this.repository_url}}</a>
+		<p>
+			Proposed by: {{this.username}}
+		</p>
+		<p>
+			{{this.content}}
+		</p>
+	</div>
+	<div class="container-footer">
+		{{this.created_on}}
+		{{this.likes}}
+	</div>
+</div>
+{{/each}}
