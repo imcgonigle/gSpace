@@ -3,7 +3,7 @@ var router = express.Router();
 var query = require('../database/queries/projects');
 
 router.get('/', function(req, res, next) {
-	res.render('projects/index');
+	res.render('projects/index', {user: req.user});
 });
 
 router.get('/:id/page', function(req, res, next) {
