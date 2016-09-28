@@ -27,6 +27,8 @@ router.post('/new', function(req, res, next) {
 		})
 })
 
+router.post('/new/like')
+
 
 
 module.exports = router;
