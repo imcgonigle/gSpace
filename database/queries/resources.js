@@ -1,7 +1,7 @@
 var knex = require('./knex.js')
 
 function Resources() = {
-  return knex('resources')
+  return knex('resource')
 }
 
 function Resources_Tags() = {
