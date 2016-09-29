@@ -13,7 +13,8 @@ function Comments()  {
 }
 
 module.exports = {
-  getAllResources: Resources,
+  getAllResources: function () {
+    return Resources().orderBy('created_on', 'desc')},
   getResourceById: function(resource_id) {
     return Resources().where('id', resource_id);
   },

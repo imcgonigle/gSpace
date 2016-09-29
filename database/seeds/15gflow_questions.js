@@ -11,6 +11,7 @@ exports.seed = function(knex, Promise) {
                     question: 'whut is code?',
                     likes: 14,
                     user_id: 1,
+                    tags: 'ruby javascript css',
                     created_at:'2003-01-02 00:01:00',
                     updated_on:'2003-01-02 00:01:00'
                 }),
@@ -21,6 +22,7 @@ exports.seed = function(knex, Promise) {
                     question: 'whut is javascript?',
                     likes: 2,
                     user_id: 2,
+                    tags: 'ruby javascript css',
                     created_at:'2003-01-02 00:01:00',
                     updated_on:'2003-01-02 00:01:00'
                 }),
@@ -31,6 +33,7 @@ exports.seed = function(knex, Promise) {
                     question: 'how do you javascript?',
                     likes: 3,
                     user_id: 337474,
+                    tags: 'ruby javascript css',
                     created_at:'2003-01-02 00:01:00',
                     updated_on:'2003-01-02 00:01:00'
                 }),
@@ -41,6 +44,7 @@ exports.seed = function(knex, Promise) {
                     question: 'how old is google?',
                     likes:3,
                     user_id: 4,
+                    tags: 'ruby javascript css',
                     created_at:'2003-01-02 00:01:00',
                     updated_on:'2003-01-02 00:01:00'
                 }),
@@ -51,6 +55,7 @@ exports.seed = function(knex, Promise) {
                     question: 'how do you jQuery',
                     likes: 0,
                     user_id: 1,
+                    tags: 'ruby javascript css',
                     created_at:'2003-01-02 00:01:00',
                     updated_on:'2003-01-02 00:01:00'
                 }),
@@ -61,6 +66,7 @@ exports.seed = function(knex, Promise) {
                     question: 'what is the internet?',
                     likes: 1400,
                     user_id: 27474,
+                    tags: 'ruby javascript css',
                     created_at:'2003-01-02 00:01:00',
                     updated_on:'2003-01-02 00:01:00'
                 })
