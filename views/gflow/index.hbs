@@ -9,12 +9,12 @@
                   <img class="media-object img-rounded" src="..." alt="Generic placeholder image">
                 </a>
                 <div class="questionDiv">
-                  <p class="createdDate">Posted on: {{shortDate this.created_at}}</p>
                   <h2 class="postTitle">{{this.title}}</h2>
                   <h2>{{this.id}}</h2>
                   <p class="postContent">{{this.question}}</p>
                   <p class="postContent"><strong>Tags: </strong>{{this.tags}}</p>
-                  <p class="postName"><strong>Written by: </strong>{{this.username}}</p>
+                  <p class="">asked <time class="timeago" datetime='{{this.created_at}}'>{{this.created_at}}</time>
+ by {{this.username}}</p>
                   <a href="/gflow/question/{{this.questionid}}" class="read_more_button">Read More</a>
                 </div>
                 {{/each}}
