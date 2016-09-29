@@ -19,6 +19,19 @@ router.get('/', function(req, res, next) {
 	})
 });
 
+router.get('/page/:id', function (req,res,next) {
+	var resource_id = req.params.id
+	console.log(resource_id)
+	queries.getResourceById(resource_id)
+	.then(function (data) {
+		var resource = data[0]
+		console.log(resource)
+		res.render('resources/single-resource', {
+			resource: resource
+		})
+	})
+})
+
 router.post('/new', function(req, res, next) {
 	queries.addResource(req.user.id, req.body.title, req.body.description, req.body.link)
 		.then(function (data) {
@@ -45,6 +58,11 @@ router.post('/new/like/:id', function(req, res ,next) {
 	// .catch(function(error) {
 	// 	return next(error)
 	// })
+})
+
+router.delete('/delete/:id', function (req, res, next) {
+	query.getQuestionPostbyId(req.params.id)
+	.then(function(data))
 })
 
 
