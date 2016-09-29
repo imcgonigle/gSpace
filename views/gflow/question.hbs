@@ -20,9 +20,8 @@
     <div class="borderDiv">
       <div class="change">
         <span class='deleteItem'><a href="/gflow/delete/{{this.id}}"><strong>delete</strong></a></span>
-        <span class='modifyPost'><a href="/gflow/{{this.id}}/edit"><strong>edit</strong></a></span>
       </div>
-      <p class="createdDate dateSmall">Posted on: {{this.created_at}}</p>
+      <p class="createdDate dateSmall">Posted on: {{shortDate this.created_at}}</p>
       <h2 class="commentSubject">{{this.subject}}</h2>
       <p class="postContent">{{this.comment}}</p>
       <li class="postName"><strong>Written by: {{this.username}}</strong></li>

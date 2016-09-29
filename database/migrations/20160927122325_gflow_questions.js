@@ -8,6 +8,7 @@ exports.up = function(knex, Promise) {
     table.dateTime('created_at');
     table.dateTime('updated_on');
     table.integer('user_id');
+    table.string('tags');
   })
 };
 
