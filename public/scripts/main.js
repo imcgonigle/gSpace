@@ -10,10 +10,12 @@ $('button').on('click', function() {
     success: function (data) {
 
       var likes = data
-      var id = 
+
       console.log(likes)
+
+      $('#'+id.id).text(likes[0])
+      $('#'+id.id).prepend('<i id="heart" class="fa fa-heart-o" aria-hidden="true"></i>')
       $('#heart').css("color", "red")
-      $('#id').text(data)
     }
   })
 })
