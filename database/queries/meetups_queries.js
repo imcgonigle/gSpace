@@ -22,12 +22,12 @@ function getMeetups() {
         .join('users', 'meetups.users_id', '=', 'users.id')
 }
 
-function addMeetup(user_id, title, decription, location, time) {
+function addMeetup(users_id, title, description, location, time) {
     if (!title || !description || !location || !time) {
         return false
     }
     return Meetups().insert({
-            user_id: user_id,
+            users_id: users_id,
             title: title,
             description: description,
             location: location,
@@ -53,7 +53,7 @@ function deleteMeetup(id) {
 }
 
 module.exports = {
-    add: addMeetup,
+    addMeetup: addMeetup,
     getMeetups: getMeetups,
     getMeetup: getMeetup,
     updateMeetup: updateMeetup,

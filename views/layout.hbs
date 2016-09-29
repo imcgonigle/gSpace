@@ -7,8 +7,9 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.4/css/bootstrap.min.css" integrity="sha384-2hfp1SzUoho7/TsGGGDaFdsuuDL0LX2hnUp6VkX3CUQ2K4K+xjboZdsXyp4oUHZj" crossorigin="anonymous">
     <link rel='stylesheet' href='/stylesheets/style.css' />
 </head>
-<nav class="navbar navbar-light bg-faded">
-    <ul class="nav navbar-nav">
+<nav class="navb main-nav navbar navbar-light bg-faded">
+	<div class="container-fluid">
+		<ul class="nav navbar-nav">
         <li class="nav-item active">
             <a class="nav-link" href="/">Home<span class="sr-only">(current)</span></a>
         </li>
@@ -24,13 +25,22 @@
         <li class="nav-item">
             <a class="nav-link" href="/projects">Projects</a>
         </li>
-        <li class="nav-item">
-            <a class="nav-link" href="/users/profile">Profile</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="/auth/github/logout">Logout</a>
-        </li>
-    </ul>
+		</ul>
+		<ul class="user-controls nav navbar-nav navbar-right">
+			{{#if user}}
+				<li class="nav-item">
+						<a class="nav-link" href="/users/profile">Profile</a>
+				</li>
+				<li class="nav-item">
+						<a class="nav-link" href="/auth/github/logout">Logout</a>
+				</li>
+			{{else}}
+				<li>
+					<a class="nav-link" href="/auth/github">Login</a>
+				</li>
+			{{/if}}
+		</ul>
+	</div>
 </nav>
 <!-- {{{navBarWithLinks}}} -->
 

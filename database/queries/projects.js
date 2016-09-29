@@ -11,6 +11,9 @@ function Projects_Users() {
 
 module.exports = {
 	getAllProjects: Projects,
+	getAllProjectsWithUsers: function() {
+		return Projects().join('users', 'users.id', 'projects.creator_id');
+	},
 	getProjectByID: function(project_id) {
 		return Projects().where('id', project_id);
 	},

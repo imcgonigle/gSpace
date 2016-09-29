@@ -1,88 +1,80 @@
-body {
-  /*padding: 50px;*/
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-  /*overflow: hidden;*/
-  background: gray;
-  height:100%;
-  max-width: 100%;
-  a {
-    color: #00B7FF;
-  }
-}
-.topNavBar{
-  color: rgb(245, 122, 2);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: black;
-  max-height: 70px;
-  min-height: 60px;
-  width: 100%;
-  min-width: 100%;
-  padding:15px;
-}
-.logoContainer{
-  display: flex;
-  justify-content: flex-start;
-}
-.logo{
-  padding-left: 10px;
-  display: flex;
-  justify-content: flex-start;
-  max-height: 70px;
-}
-.chatButton, .picButton, .logo{
-  max-height: 70px;
-}
-.chatPicContainer{
-  padding:10px;
-  display: flex;
-  justify-content: flex-end;
-}
-html {
-  height: 100%;
-}
-body {
-  margin:0;
-  padding:0;
-  height: 100%;
-  font-size:16px;
-  font-family:Arial;
-  background-image: url('../images/stack_of_books.jpg');
-}
-h1, a {
-  text-align: center;
-  text-decoration: none;
-  margin: 0;
-  padding: 250px 0;
-  font-size: 2em;
-  color: white;
-}
-.textBackground{
-  background: rgb(204, 204, 204); /* Fallback for older browsers without RGBA-support */
-  background: rgba(204, 204, 204, 0.5);
-  padding: 25px 10px 10px 10px;
-  border-radius: 5px;
-}
-.diagonal {
-  overflow:hidden;
-  position: relative;
-  transform: skewY(4deg);
-}
-.diagonal .background {
-  background-image: url('../images/Collaboration.jpg');
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position:0 0;
-  position:absolute;
-  top:-50%;
-  bottom:-50%;
-  left:0;
-  right:0;
-  transform: skewY(-4deg);
-}
-.diagonal .content {
-  position:relative;
-  z-index:1;
-  transform: skewY(-4deg);
+
+.homepage {
+	.topNavBar{
+	  color: rgb(245, 122, 2);
+	  display: flex;
+	  justify-content: space-between;
+	  align-items: center;
+	  background-color: black;
+	  max-height: 70px;
+	  min-height: 60px;
+	  width: 100%;
+	  min-width: 100%;
+	  padding:15px;
+	}
+	.logoContainer{
+	  display: flex;
+	  justify-content: flex-start;
+	}
+	.logo{
+	  padding-left: 10px;
+	  display: flex;
+	  justify-content: flex-start;
+	  max-height: 70px;
+	}
+	.chatButton, .picButton, .logo{
+	  max-height: 70px;
+	}
+	.chatPicContainer{
+	  padding:10px;
+	  display: flex;
+	  justify-content: flex-end;
+	}
+	html {
+	  height: 100%;
+	}
+	body {
+	  margin:0;
+	  padding:0;
+	  height: 100%;
+	  font-size:16px;
+	  font-family:Arial;
+	  background-image: url('../images/stack_of_books.jpg');
+	}
+	h1, a {
+	  text-align: center;
+	  text-decoration: none;
+	  margin: 0;
+	  padding: 250px 0;
+	  font-size: 2em;
+	  color: white;
+	}
+	.textBackground{
+	  background: rgb(204, 204, 204); /* Fallback for older browsers without RGBA-support */
+	  background: rgba(204, 204, 204, 0.5);
+	  padding: 25px 10px 10px 10px;
+	  border-radius: 5px;
+	}
+	.diagonal {
+	  overflow:hidden;
+	  position: relative;
+	  transform: skewY(4deg);
+	}
+	.diagonal .background {
+	  background-image: url('../images/Collaboration.jpg');
+	  background-repeat: no-repeat;
+	  background-size: cover;
+	  background-position:0 0;
+	  position:absolute;
+	  top:-50%;
+	  bottom:-50%;
+	  left:0;
+	  right:0;
+	  transform: skewY(-4deg);
+	}
+	.diagonal .content {
+	  position:relative;
+	  z-index:1;
+	  transform: skewY(-4deg);
+	}
 }

@@ -3,7 +3,14 @@ var router = express.Router();
 var query = require('../database/queries/projects');
 
 router.get('/', function(req, res, next) {
-	res.render('projects/index');
+	query.getAllProjectsWithUsers()
+	.then(function(data) {
+		console.log(data);
+		res.render('projects/index', {user: req.user, projects: data})
+	})
+	.catch(function(err){
+		return next(err);
+	});
 });
 
 router.get('/:id/page', function(req, res, next) {
@@ -40,7 +47,7 @@ router.get('/:id/edit', function(req, res, next) {
 
 		if(project.user_id == req.user.id){
 
-			res.render('pojects/edit', {
+			res.render('projects/edit', {
 				user: req.user,
 				project: project
 			});
@@ -64,7 +71,7 @@ router.post('/:id/edit', function(req, res, next) {
 
 		var project_id = req.params.id;
 
-		query.getProjectByID(post_id)
+		query.getProjectByID(project_id)
 		.then(function(data) {
 
 			var project = data[0];
@@ -153,7 +160,7 @@ router.post('/new', function(req, res, next) {
 
 		query.addProject(creator_id, title, body, repository_url)
 		.then(function(project_id) {
-			res.redirect('/projects/project_id');
+			res.redirect('/projects/' + project_id + '/page');
 		})
 		.catch(function(err) {
 			return next(err);
