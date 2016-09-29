@@ -46,15 +46,15 @@ function deleteQuestionComment(id) {
   return knex('gflow_comments').where('id', id).del();
 }
 
-function modifyQuestionPost(id) {
+function modifyQuestionPost(title, question, updated_on) {
   return knex('gflow_questions').where('questionid', id).update({
-    title: title,
-    question: question,
+    title:title,
+    question:question,
     updated_on: new Date()
   }).returning('questionid');
 }
 
-function modifyQuestionComment(id) {
+function modifyQuestionComment(subject, comment, updated_on) {
   return knex('gflow_comments').where('id', id).update({
     subject: subject,
     comment: comment,

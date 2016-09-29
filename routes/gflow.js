@@ -5,7 +5,10 @@ var query = require('../database/queries/gflow');
 router.get('/', function(req, res, next) {
   query.questionPosts()
   .then( (data) => {
-    res.render('gflow/index', {items: data})
+    res.render('gflow/index', {
+      items: data,
+      user: req.user
+    })
   })
     .catch((err)=>{
       return next(err)
@@ -138,15 +141,13 @@ router.post('/:id/edit', function(req, res, next) {
 
 		query.getQuestionPostbyId(post_id)
 		.then(function(data) {
-
       var post = data[0];
-
     if(post.user_id == req.user.id) {
       var questionid = req.params.id;
       var username = req.user.username;
       var title = req.body.title;
       var question = req.body.question;
-      query.modifyQuestionPost(questionid, username, title, question)
+      query.modifyQuestionPost(title, question)
         .then(function() {
           res.redirect('/gflow')
         })
