@@ -3,8 +3,9 @@ var router = express.Router();
 var query = require('../database/queries/projects');
 
 router.get('/', function(req, res, next) {
-	query.getAllProjects()
+	query.getAllProjectsWithUsers()
 	.then(function(data) {
+		console.log(data);
 		res.render('projects/index', {user: req.user, projects: data})
 	})
 	.catch(function(err){
@@ -17,7 +18,13 @@ router.get('/:id/page', function(req, res, next) {
 	query.getProjectByID(project_id)
 	.then(function(data) {
 		var project = data[0];
+<<<<<<< HEAD
 		var isOwner = (project.user_id == req.user.id);
+=======
+
+		var isOwner = (req.isAuthenticated() && project.user_id == req.user.id);	
+
+>>>>>>> b396673d6574c019fc690fa0826890abca339722
 		res.render('projects/page', {
 			project: project,
 			user: req.user,
@@ -38,9 +45,9 @@ router.get('/:id/edit', function(req, res, next) {
 
 		var project = data[0];
 
-		if(project.user_id == req.user.id){
+		if(req.isAuthenticated() && project.user_id == req.user.id){
 
-			res.render('pojects/edit', {
+			res.render('projects/edit', {
 				user: req.user,
 				project: project
 			});
@@ -64,7 +71,7 @@ router.post('/:id/edit', function(req, res, next) {
 
 		var project_id = req.params.id;
 
-		query.getProjectByID(post_id)
+		query.getProjectByID(project_id)
 		.then(function(data) {
 
 			var project = data[0];

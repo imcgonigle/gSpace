@@ -9,7 +9,8 @@ router.get('/', function(req, res, next) {
 		.then(function(resource) {
 			res.render('resources/index', {
 				title: 'Resources Homepage',
-				resource: resource
+				resource: resource,
+				user: req.user
 			})
 		})
 	.catch(function(error) {
