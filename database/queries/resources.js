@@ -60,7 +60,7 @@ module.exports = {
     return Resources().where('id')
   },
   getResourceTags: function (resource_id) {
-    return Resources().select('resource.id as resource_id', 'resource.id as resource_title', "resource.link", 'likes')
+    return Resources().select('resource.id as resource_id', 'resource.title as resource_title', "resource.link as link", 'resource.likes as likes', 'description')
     .then(function (resourceData) {
       return Tags().join('resources_tags', 'tags.id', 'resources_tags.tag_id')
       .then(function (tagData) {
@@ -73,6 +73,7 @@ module.exports = {
             }
           }
         }
+        console.log(resourceData)
         return resourceData
       })
     })
