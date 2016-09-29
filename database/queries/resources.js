@@ -56,7 +56,7 @@ module.exports = {
     getResourceLikes: function(resource_id) {
         return Resources().where('id', resource_id)
     },
-    getRourceComments: function(resource_id) {
+    getResourceComments: function(resource_id) {
         return Resources().where('id')
     },
     getResourceTags: function(resource_id) {
@@ -89,5 +89,9 @@ module.exports = {
             created_at: new Date()
         })
     },
+    search: function (tag) {
+      
+    }
+
 
 }
