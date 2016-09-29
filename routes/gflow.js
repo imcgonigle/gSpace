@@ -24,9 +24,11 @@ router.post('/ask', function (req, res, next) {
   var username = req.user.username;
   var title = req.body.title;
   var question = req.body.question;
-  query.newQuestionPost(username, title, question)
-  .then((questionid) =>{
-      res.redirect('/question/'+ questionid)
+  var user_id = req.user.id;
+  var likes = 0;
+  query.newQuestionPost(username, title, question, user_id, likes)
+  .then(() =>{
+      res.redirect('/gflow')
     })
   .catch((err) =>{
     return next(err)
@@ -105,48 +107,21 @@ router.get('/delete/:id', function(req, res, next) {
     return next(err)
   })
 })
-  // router.get('/items/modify/:id', function(req, res, next) {
-  //   console.log("modifying question "+ req.params.id);
-  //   query.modifyQuestionPost(req.params.id)
-  //   .then(function() {
-  //     res.redirect('/gflow/index/');
-  //   })
-  //   .catch(function(err) {
-  //     return next(err)
-  //   })
-  // })
-  //
-	// router.get('/data/delete/:id', function(req, res, next) {
-  //   console.log("deleting comment "+ req.params.id);
-  //   query.deleteCommentPost(req.params.id)
-  //   .then(function() {
-  //     res.redirect('/gflow/index/');
-  //   })
-  //   .catch(function(err) {
-  //     return next(err)
-  //   })
-  // })
-  //
-  // router.get('/data/modify/:id', function(req, res, next) {
-  //   console.log("modifying comment "+ req.params.id);
-  //   query.modifyCommentPost(req.params.id)
-  //   .then(function() {
-  //     res.redirect('/gflow/index/');
-  //   })
-  //   .catch(function(err) {
-  //     return next(err)
-  //   })
-  // })
 
 router.get('/:id/edit', function(req, res, next) {
-  query.getQuestionPostbyId(req.params.id)
+  var post_id = req.params.id;
+  query.getQuestionPostbyId(post_id)
         .then(function(data) {
+          console.log(data);
           var post = data[0];
-            if (!req.user.id == req.user.username) {
+            if (!post.user_id == req.user.id) {
                 res.redirect('/');
                 return;
             } else {
-                res.render('edit', {item: post})
+                res.render('gflow/edit', {
+                  item: post,
+                  user: req.user
+                })
             }
         })
         .catch((err)=>{
@@ -154,18 +129,39 @@ router.get('/:id/edit', function(req, res, next) {
         })
 })
 
-  router.post('/:id/edit', function(req, res, next) {
-    var id = req.params.id;
-    var username = req.user.username;
-    var title = req.body.title;
-    var question = req.body.question;
-    queries.updateMeetup(id, username, title, question)
-    .then(function() {
-        res.redirect('/gflow/question/'+req.params.id)
-    })
+router.post('/:id/edit', function(req, res, next) {
+  if(!req.isAuthenticated()) {
+		res.redirect('/login');
+	} else {
+
+    var post_id = req.params.id;
+
+		query.getQuestionPostbyId(post_id)
+		.then(function(data) {
+
+      var post = data[0];
+
+    if(post.user_id == req.user.id) {
+      var questionid = req.params.id;
+      var username = req.user.username;
+      var title = req.body.title;
+      var question = req.body.question;
+      query.modifyQuestionPost(questionid, username, title, question)
+        .then(function() {
+          res.redirect('/gflow')
+        })
     .catch((err)=>{
       return next(err)
     })
+      } else {
+        res.redirect('/question/' + post_id)
+      }
+
+    })
+    .catch(function(err){
+      return next(err);
+    })
+  }
 })
 
 module.exports = router;

@@ -1,12 +1,12 @@
 <ul class="questionDivContainer">
     <div class="questionDiv">
       <div class="change">
-        <span class='deleteItem'><a href="/items/delete/{{item.questionid}}"><strong>delete</strong></a></span>
-        <span class='modifyPost'><a href="/items/modify/{{item.questionid}}"><strong>edit</strong></a></span>
+        <span class='deleteItem'><a href="/gflow/delete/{{item.questionid}}"><strong>delete</strong></a></span>
+        <span class='modifyPost'><a href="/gflow/{{item.questionid}}/edit"><strong>edit</strong></a></span>
       </div>
-      <h3 class="createdDate">Posted on: {{shortDate item.created_at}}</h3>
+      <h3 class="createdDate">Posted on: {{item.created_at}}</h3>
       <h2 class="postTitle">Title:{{item.title}}</h2>
-      <h2>{{item.id}}</h2>
+      <h2>{{item.questionid}}</h2>
       <p class="postContent">Question:{{item.question}}</p>
       <li class="postName"><strong>Written by: {{item.username}}</strong></li>
     </div>
@@ -19,10 +19,10 @@
     {{#each data}}
     <div class="borderDiv">
       <div class="change">
-        <span class='deleteItem'><a href="/data/delete/{{this.id}}"><strong>delete</strong></a></span>
-        <span class='modifyPost'><a href="/data/modify/{{this.id}}"><strong>edit</strong></a></span>
+        <span class='deleteItem'><a href="/gflow/delete/{{this.id}}"><strong>delete</strong></a></span>
+        <span class='modifyPost'><a href="/gflow/{{this.id}}/edit"><strong>edit</strong></a></span>
       </div>
-      <p class="createdDate dateSmall">Posted on: {{shortDate this.created_at}}</p>
+      <p class="createdDate dateSmall">Posted on: {{this.created_at}}</p>
       <h2 class="commentSubject">{{this.subject}}</h2>
       <p class="postContent">{{this.comment}}</p>
       <li class="postName"><strong>Written by: {{this.username}}</strong></li>

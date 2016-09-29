@@ -16,25 +16,26 @@ function getCommentPostbyId(id) {
   return knex('gflow_comments').where('question_post_id', id);
 }
 
-function newQuestionPost(username, title, question) {
+function newQuestionPost(username, title, question, user_id, created_at, updated_at) {
   return knex('gflow_questions').insert({
     username: username,
     title: title,
     question: question,
+    user_id:user_id,
     created_at: new Date(),
-    updated_at: new Date()
-  }).return('questionid');
+    updated_on: new Date()
+  }).returning('questionid');
 }
 
-function newQuestionComment(question_post_id, subject, comment, username) {
+function newQuestionComment(question_post_id, subject, comment, username, created_at, updated_at) {
   return knex('gflow_comments').insert({
     question_post_id:question_post_id,
     subject: subject,
     comment: comment,
     username: username,
     created_at: new Date(),
-    updated_at:new Date()
-  })
+    updated_on: new Date()
+  }).returning('id');
 }
 
 function deleteQuestionPost(id) {
@@ -46,13 +47,20 @@ function deleteQuestionComment(id) {
 }
 
 function modifyQuestionPost(id) {
-  return knex('gflow_questions').where('questionid', id).update();
+  return knex('gflow_questions').where('questionid', id).update({
+    title: title,
+    question: question,
+    updated_on: new Date()
+  }).returning('questionid');
 }
 
 function modifyQuestionComment(id) {
-  return knex('gflow_comments').where('id', id).update();
+  return knex('gflow_comments').where('id', id).update({
+    subject: subject,
+    comment: comment,
+    updated_on: new Date()
+  });
 }
-
 
 module.exports = {
   questionPosts: questionPosts,

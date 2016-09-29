@@ -1,14 +1,12 @@
-<form action="/gflow/{{questionid}}/edit" method="POST">
+<form action="/gflow/{{item.questionid}}/edit/" method="POST">
 
     <h2>Modify your question here:</h2>
 
-    <textarea type="text" rows="10" id="title" name="title">{{post.title}}</textarea>
+    <textarea type="text" rows="10" id="title" name="title" placeholder="{{item.title}}">{{post.title}}</textarea>
     <label for="title">title</label>
 
-    <textarea type="text" rows="10" id="question" name="question">{{post.question}}</textarea>
+    <textarea type="text" rows="10" id="question" name="question" placeholder="{{item.question}}">{{post.question}}</textarea>
     <label for="question">question</label>
 
     <button type="submit">save</button>
-
-    <button type="submit" formaction="delete">delete</button>
 </form>

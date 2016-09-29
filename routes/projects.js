@@ -13,26 +13,20 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/:id/page', function(req, res, next) {
-
 	var project_id = req.params.id;
-
 	query.getProjectByID(project_id)
 	.then(function(data) {
-
 		var project = data[0];
 		var isOwner = (project.user_id == req.user.id);
-
 		res.render('projects/page', {
 			project: project,
 			user: req.user,
 			isOwner: isOwner
 		});
-
 	})
 	.catch(function(err) {
 		return next(err);
 	});
-
 });
 
 router.get('/:id/edit', function(req, res, next) {
