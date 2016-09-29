@@ -1,13 +1,20 @@
-<h1>{{meetup.title}}</h1>
-<button type="button" name="like">like</button>
-{{#if isOwner}}
-    <a href="meetups/{{meetups.id}}/edit">edit</a>
-{{/if}}
+<div class="container cards">
+    <div class="row">
+            <div class="col-sm-6">
+                <div class="card card-block">
+                    <h3 class="card-title">
+                      {{meetup.title}}
+                    </h3>
+                    <p class="card-text">{{meetup.username}}</p>
+                    <p class="card-text">{{meetup.description}}</p>
+                    <p class="card-text">{{meetup.location}}</p>
+                    <button type="submit" id="likes" class="btn btn-secondary"><i class="fa fa-heart-o" aria-hidden="true"></i>{{likes}}</button>
+                    {{#if isOwner}}
+                        <a href="meetups/{{meetups.id}}/edit">edit</a>
+                    {{/if}}
+                </div>
+            </div>
+    </div>
+</div>
 
-
-{{meetup.username}}
-{{meetup.description}}
-{{meetup.location}}
-{{meetup.time}}
-{{meetup.created_on}}
-{{meetup.time}}
+<a href="meetups/new">start your own meetup</a>
