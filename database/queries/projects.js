@@ -12,7 +12,9 @@ function Projects_Users() {
 module.exports = {
 	getAllProjects: Projects,
 	getAllProjectsWithUsers: function() {
-		return Projects().join('users', 'users.id', 'projects.creator_id');
+		return knex('projects')
+		.select('projects.id AS project_id', 'creator_id', 'projects.body', 'projects.title', 'projects.created_on', 'projects.updated_on', 'users.username')
+		.join('users', 'users.id', 'projects.creator_id');
 	},
 	getProjectByID: function(project_id) {
 		return Projects().where('id', project_id);
