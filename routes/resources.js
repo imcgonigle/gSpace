@@ -5,14 +5,14 @@ var passport = require('../passport')
 
 router.get('/', function(req, res, next) {
 
-    queries.getAllResources()
-        .then(function(resource) {
+    queries.getResourceTags().then((resource) => {
 
-            res.render('resources/index', {
-                title: 'Resources Homepage',
-                resource: resource,
-                user: req.user
+        res.render('resources/index', {
+            title: 'Resources Homepage',
+            resource: resource,
+            user: req.user
             })
+                
         })
         .catch(function(error) {
             return next(error)
