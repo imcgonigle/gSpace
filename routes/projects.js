@@ -3,21 +3,29 @@ var router = express.Router();
 var query = require('../database/queries/projects');
 
 router.get('/', function(req, res, next) {
+
 	query.getAllProjectsWithUsers()
 	.then(function(data) {
+
 		res.render('projects/index', {user: req.user, projects: data})
+
 	})
 	.catch(function(err){
+
 		return next(err);
+
 	});
+
 });
 
 router.get('/:id/page', function(req, res, next) {
+
 	var project_id = req.params.id;
+
 	query.getProjectByID(project_id)
 	.then(function(data) {
-		var project = data[0];
 
+		var project = data[0];
 		var isOwner = (req.isAuthenticated() && project.creator_id == req.user.id);
 
 
@@ -26,10 +34,14 @@ router.get('/:id/page', function(req, res, next) {
 			user: req.user,
 			isOwner: isOwner
 		});
+
 	})
 	.catch(function(err) {
+
 		return next(err);
+
 	});
+	
 });
 
 router.get('/:id/edit', function(req, res, next) {
