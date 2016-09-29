@@ -5,7 +5,6 @@ var query = require('../database/queries/projects');
 router.get('/', function(req, res, next) {
 	query.getAllProjectsWithUsers()
 	.then(function(data) {
-		console.log(data);
 		res.render('projects/index', {user: req.user, projects: data})
 	})
 	.catch(function(err){
@@ -40,7 +39,7 @@ router.get('/:id/edit', function(req, res, next) {
 
 		var project = data[0];
 
-		if(req.isAuthenticated() && project.user_id == req.user.id){
+		if(req.isAuthenticated() && project.creator_id== req.user.id){
 
 			res.render('projects/edit', {
 				user: req.user,
@@ -71,13 +70,13 @@ router.post('/:id/edit', function(req, res, next) {
 
 			var project = data[0];
 
-			if(project.user_id == req.user.id) {
+			if(project.creator_id == req.user.id) {
 
-				var title = req.params.title;
-				var body = req.params.body;
-				var repository_url = req.params.repository_url;
+				var title = req.body.title;
+				var body = req.body.body;
+				var repository_url = req.body.repository_url;
 
-				query.updateProject(project_id, title, body, repository_url)
+				query.updateProject(project.id, title, body, repository_url)
 				.then(function(id) {
 					res.redirect('/projects/' + id + '/page');
 				})
@@ -86,11 +85,38 @@ router.post('/:id/edit', function(req, res, next) {
 				});
 
 			} else {
-				res.redirect('/projects/' + project_id + '/page')
+				res.redirect('/projects/')
 			}
 
 		})
 		.catch(function(err){
+			return next(err);
+		});
+
+	}
+
+});
+
+router.get('/:id/delete', function(req, res, next) {
+	if(req.isAuthenticated()) {
+
+		var project_id = req.params.id;
+
+		query.getProjectByID(project_id)
+		.then(function(data) {
+			var project = data[0];
+
+			if(req.user.id == project.creator_id) {
+				res.render('projects/delete', {
+					project: project,
+					user: req.user
+				});
+			} else {
+				res.redirect('/projects/');
+			}
+
+		})
+		.catch(function(err) {
 			return next(err);
 		});
 
@@ -109,7 +135,7 @@ router.post('/:id/delete', function(req, res, next) {
 
 			var project = data[0];
 
-			if(req.user.id == project.user_id) {
+			if(req.user.id == project.creator_id) {
 
 				query.deleteProject(project.id)
 				.then(function(data) {
