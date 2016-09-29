@@ -1,12 +1,12 @@
 
-$('button').on('click', function() {
+$('.likeButton').on('click', function() {
 
   var id = {
     id: $(this).attr('id')
   }
   $.ajax({
     type: "POST",
-    url: "resources/new/like/" + id.id + "",
+    url: "/gflow/question/like/" + id.id,
     success: function (data) {
 
       var likes = data
