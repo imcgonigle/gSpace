@@ -21,22 +21,22 @@ $('button').on('click', function() {
 })
 
 
-$('button2').on('click', function() {
+$('.likeButton').on('click', function() {
 
   var id = {
-    id: $(this).attr('questionid')
+    id: $(this).attr('id')
   }
   $.ajax({
     type: "POST",
-    url: "gflow/question/like/" + id.questionid,
+    url: "/gflow/question/like/" + id.id,
     success: function (data) {
 
       var likes = data
 
       console.log(likes)
 
-      $('#'+id.questionid).text(likes[0])
-      $('#'+id.questionid).prepend('<i id="heart" class="fa fa-heart-o" aria-hidden="true"></i>')
+      $('#'+id.id).text(likes[0])
+      $('#'+id.id).prepend('<i id="heart" class="fa fa-heart-o" aria-hidden="true"></i>')
       $('#heart').css("color", "red")
     }
   })
