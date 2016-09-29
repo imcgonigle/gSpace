@@ -1,4 +1,4 @@
-<img src="{{user.avatar_url}}" alt="" />
+<!-- <img src="{{user.avatar_url}}" alt="" />
 <h2>{{user.name}}</h2>
 <h2>{{user.location}}</h2>
 <h2>g{{user.cohort}}</h2>
@@ -6,4 +6,23 @@
 <h2>user.biography</h2>
 <a href="{{user.website}}">Website</a>
 <a href="{{user.github_url}}">Github</a>
-<a href="{{user.linkedin_url}}">LinkedIn</a>
+<a href="{{user.linkedin_url}}">LinkedIn</a> -->
+
+<div class="container cards">
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="card card-block">
+          <img class="card-img-top img-fluid img-thumbnail" style="max-width:100%; height:250px; width:250px;" src="{{user.avatar_url}}" alt="user avatar">
+          <h4 class="card-title">{{user.name}}</h4>
+          <h2 class="card-title">{{user.location}}</h3>
+          <h2 class="card-title">{{user.cohort}}</h3>
+          <h2 class="card-title">{{user.email}}</h3>
+          <h3 class="card-title">{{user.biography}}</h3>
+          <a href="{{user.website}}" class="btn-link">Website</a>
+          <a href="{{user.github_url}}" class="btn-link">Github</a>
+          <a href="{{user.linkedin_url}}" class="btn-link">LinkedIn</a>
+          <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+      </div>
+    </div>
+  </div>
+</div>
