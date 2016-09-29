@@ -21,7 +21,8 @@ router.get('/:id/page', function(req, res, next) {
 	.then(function(data) {
 
 		var project = data[0];
-		var isOwner = (project.user_id == req.user.id);
+
+		var isOwner = (req.isAuthenticated() && project.user_id == req.user.id);	
 
 		res.render('projects/page', {
 			project: project,
@@ -45,7 +46,7 @@ router.get('/:id/edit', function(req, res, next) {
 
 		var project = data[0];
 
-		if(project.user_id == req.user.id){
+		if(req.isAuthenticated() && project.user_id == req.user.id){
 
 			res.render('projects/edit', {
 				user: req.user,
