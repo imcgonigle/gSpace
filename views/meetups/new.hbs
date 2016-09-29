@@ -1,24 +1,67 @@
-<form action="/meetups/new" method="POST">
-    <textarea type="text" rows="10" id="title" name="title">
-    </textarea>
-    <label for="title">title</label>
+<head>
+    <link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/css/bootstrap-combined.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" media="screen"
+          href="http://tarruda.github.com/bootstrap-datetimepicker/assets/css/bootstrap-datetimepicker.min.css">
+</head>
 
-    <textarea type="text" rows="10" id="description" name="description">
-    </textarea>
-    <label for="description">description</label>
+<body>
 
-    <textarea type="text" rows="2" id="location" name="location">
-    </textarea>
-    <label for="location">location</label>
+<div class="container cards">
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="card card-block">
+                <form action="/meetups/new" method="POST">
+                    <div>
+                        <label for="title">title</label>
 
-    <textarea type="dateTime" rows="1" id="time" name="time">
-    </textarea>
-    <label for="time">time</label>
+                        <input type="text" id="title" name="title">
+                        </input>
+                    </div>
 
-    <textarea type="dateTime" rows="1" id="created_on" name="created_on">
-    </textarea>
-    <label for="created_on">created on</label>
+                    <div><label for="description">description</label>
+                        <textarea type="text" rows="3" id="description" name="description">
+                        </textarea>
+                    </div>
+                    <div>
+                        <label for="location">location</label>
+                        <input type="text" id="location" name="location">
+                    </div>
 
-    <button type="submit">save</button>
-    <button type="submit" formaction="delete">delete</button>
-</form>
+                    <div id="datetimepicker" class="input-append date">
+                        <label for="time">Time</label>
+                        <input type="text" name="time" id="time">
+                        <span class="add-on">
+                        <i data-time-icon="icon-time" data-date-icon="icon-calendar"></i>
+                      </span>
+
+                    </div>
+                    <button type="submit" id="likes" class="btn btn-secondary"><i class="fa fa-heart-o"
+                                                                                  aria-hidden="true"></i>{{likes}}
+                    </button>
+                    <!-- FIXME: This anchor is not valid. If you are creating a NEW meetup, there is no ID yet, not until insertion -->
+                    <a href="meetups/{{meetups.id}}/edit">edit</a>
+                    <button type="submit">save</button>
+                    <button type="submit" formaction="delete">delete</button>
+                </form>
+                <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.8.3/jquery.min.js">
+                </script>
+                <script type="text/javascript"
+                        src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/js/bootstrap.min.js">
+                </script>
+                <script type="text/javascript"
+                        src="http://tarruda.github.com/bootstrap-datetimepicker/assets/js/bootstrap-datetimepicker.min.js">
+                </script>
+                <script type="text/javascript"
+                        src="http://tarruda.github.com/bootstrap-datetimepicker/assets/js/bootstrap-datetimepicker.pt-BR.js">
+                </script>
+                <script type="text/javascript">
+                    $('#datetimepicker').datetimepicker({
+                        format: 'dd/MM/yyyy hh:mm:ss',
+                        language: 'en'
+                    });
+                </script>
+            </div>
+        </div>
+    </div>
+</div>
+</body>

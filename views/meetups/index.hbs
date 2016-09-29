@@ -1,15 +1,23 @@
 <h1>All the meetups</h1>
-{{#each meetups}}
-    <a href="/meetups/{{this.id}}/page">{{this.title}}</a>
-    <!-- <a href="/{{meetups.id}}/page">{{this.title}}</a> -->
-
-    <div>{{this.username}}</div>
-    <div>{{this.description}}</div>
-    <div>{{this.location}}</div>
-    <div>{{this.time}}</div>
-    <div>{{this.created_on}}</div>
-{{/each}}
-
-<!-- <a href="meetups/new_meetup">start a new meetup</a> -->
 
 <a href="meetups/new">start a meetup</a>
+<a href="meetups/new">TODO order by most popular</a>
+
+<div class="container cards">
+    <div class="row">
+        {{#each meetups}}
+            <div class="col-sm-6">
+                <div class="card card-block">
+                    <h3 class="card-title">
+                      <a href="/meetups/{{this.id}}/page">{{this.title}}</a>
+                    </h3>
+                    <p class="card-text">{{this.username}}</p>
+                    <p class="card-text">{{this.description}}</p>
+                    <p class="card-text">{{this.location}}</p>
+                    <a href="/meetups/{{this.id}}/page" class="btn btn-primary">View Meetup</a>
+                    <button type="submit" id="likes" class="btn btn-secondary"><i class="fa fa-heart-o" aria-hidden="true"></i>{{likes}}</button>
+                </div>
+            </div>
+        {{/each}}
+    </div>
+</div>
