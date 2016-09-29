@@ -54,5 +54,23 @@ module.exports = {
 			user_id: user_id,
 			project_id: project_id
 		}).returning('project_id');
+	},
+	addCommentToProject: function(project_id, user_id, body) {
+		return knex('comments').insert({
+			type: 'project',
+			uid: project_id,
+			user_id: user_id,
+			body: body,
+			likes: 0,
+			created_on: new Date(),
+			updated_on: new Date()
+		}).returning('uid')
+	},
+	getAllProjectComments: function(project_id) {
+		return Comments().where({
+			uid: project_id,
+			type: 'project'
+		}).orderBy('created_on', 'desc')
 	}
+
 }

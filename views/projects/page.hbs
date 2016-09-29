@@ -29,7 +29,29 @@
 		<p>
 			{{project.body}}
 		</p>
+
 	</div> {{!-- end of project-page-body --}}
+
+	<div class="project-page-comments">
+		{{#if user}}
+		<div class="comment-form">
+
+			<form class="new-comment" action="/projects/{{project.id}}/page/comment" method="post">
+
+				<textarea name="comment" rows="8" cols="40" placeholder="Comment..."></textarea>
+
+				<button type="submit" name="new-comment-button">Post Comment</button>
+
+			</form>
+
+		</div>{{!-- end of comment-form --}}
+		{{else}}
+		<p>
+			<a href="/login">Login</a> to comment.
+		</p>
+		{{/if}}
+		
+	</div> {{!-- end of project-page-comments --}}
 
 	<div class="project-page-footer">
 		<span>{{project.likes}}</span>

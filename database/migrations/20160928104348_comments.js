@@ -6,6 +6,7 @@ exports.up = function(knex, Promise) {
     // id of the project/meetup/article
     table.integer('uid');
     table.integer('users_id').references('id').inTable('users');
+		table.text('body');
     table.integer('likes');
     table.dateTime('created_on');
     table.dateTime('updated_on');
