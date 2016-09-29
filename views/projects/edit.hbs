@@ -1,6 +1,6 @@
 <h1>Edit Project Proposal</h1>
 
-<form class="new-project" action="/projects/new" method="post">
+<form class="new-project" action="/projects/{{project.id}}/edit" method="post">
 
 	<label for="title">Project Title</label>
 	<input type="text" name="title" value="{{project.title}}">
