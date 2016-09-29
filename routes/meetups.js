@@ -46,7 +46,7 @@ router.get('/new', function(req, res, next){
 });
 
 router.post('/new', function(req, res, next) {
-        var id = req.params.id;
+        var user_id = req.user.id;
         var title = req.body.title;
         var description = req.body.description;
         var location = req.body.location;
@@ -55,13 +55,13 @@ router.post('/new', function(req, res, next) {
         // queries.addMeetup(id)
         // queries.addMeetup(req.params.id, req.body.title, req.body.description, req.body.location, req.body.time)
 
-        queries.addMeetup(id, title, description, location, time)
-        // .then(function(){
+        queries.addMeetup(user_id, title, description, location, time)
+         .then(function(){
             res.redirect('/id/page');
-        // })
-        // .catch(function(error){
-          // return next(error);
-        // })
+         })
+         .catch(function(error){
+           return next(error);
+         })
 });
 
 router.get('/:id/edit', function(req, res, next) {
