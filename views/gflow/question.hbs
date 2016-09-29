@@ -6,6 +6,7 @@
         <span class='modifyPost'><a href="/gflow/{{item.questionid}}/edit"><strong>edit</strong></a></span>
       </div>
       {{/if}}
+      <button type="button2" id="{{item.questionid}}" class="btn btn-secondary likes"><i id="heart" class="fa fa-heart-o" aria-hidden="true"></i>{{likes}}</button>
       <p class="createdDate"><strong>Posted on: </strong>{{shortDate item.created_at}}</p>
       <h2 class="postTitle"><strong>Title: </strong>{{item.title}}</h2>
       <p class="postContent"><strong>Question: </strong>{{item.question}}</p>

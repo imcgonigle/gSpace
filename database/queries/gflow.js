@@ -56,6 +56,16 @@ function modifyQuestionPost(title, question, questionid) {
   })
 }
 
+function addLikeToQuestion(questionid, likes) {
+  return knex('gflow_questions').where('questionid', questionid).update({
+  likes: likes +=1
+}).returning('likes','questionid')
+}
+
+function getQuestionLikes (questionid) {
+  return knex('gflow_questions').where('questionid', questionid)
+}
+
 module.exports = {
   questionPosts: questionPosts,
   commentPosts,
@@ -65,5 +75,7 @@ module.exports = {
   newQuestionComment,
   deleteQuestionComment,
   deleteQuestionPost,
-  modifyQuestionPost
+  modifyQuestionPost,
+  addLikeToQuestion,
+  getQuestionLikes
 }

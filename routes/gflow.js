@@ -176,4 +176,19 @@ router.post('/:id/edit', function(req, res, next) {
   }
 })
 
+router.post('/question/like/:id', function(req, res, next) {
+
+    var question_post_id = req.params.id
+    query.getQuestionPostbyId(question_post_id)
+        .then(function(data) {
+            var likes = data[0].likes;
+            var id = data[0].questionid;
+            query.addLikeToQuestion(id, likes)
+                .then(function(data) {
+                    console.log(data)
+                    res.send(data)
+                })
+        })
+      })
+
 module.exports = router;
