@@ -1,10 +1,14 @@
-$('#likes').on('click', function(event) {
-  event.preventDefault();
+
+$('button').on('click', function() {
+
+  var id = {
+    id: $(this).attr('id')
+  }
   $.ajax({
     type: "POST",
-    url: "/new/like",
+    url: "resources/new/like/" + id.id + "",
     success: function () {
-      
+      $('#heart').css("color", "red")
     }
   })
 })

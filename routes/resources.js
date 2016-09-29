@@ -7,6 +7,7 @@ router.get('/', function(req, res, next) {
 	console.log(req.user)
 	queries.getAllResources()
 		.then(function(resource) {
+			console.log(resource)
 			res.render('resources/index', {
 				title: 'Resources Homepage',
 				resource: resource,
@@ -28,7 +29,23 @@ router.post('/new', function(req, res, next) {
 		})
 })
 
-router.post('/new/like')
+router.post('/new/like/:id', function(req, res ,next) {
+
+	var resource_id = req.params.id
+	queries.getResourceById(resource_id)
+	.then(function(data) {
+		var likes = data[0].likes
+		var id =data[0].id
+		queries.addLikeToResource(id,likes)
+			.then(function(data) {
+				console.log(data)
+				res.send({data:data})
+			})
+	})
+	// .catch(function(error) {
+	// 	return next(error)
+	// })
+})
 
 
 
