@@ -10,7 +10,7 @@ $('button').on('click', function() {
     success: function (data) {
 
       var likes = data
-      var id = 
+      var id =
       console.log(likes)
       $('#heart').css("color", "red")
       $('#id').text(data)
