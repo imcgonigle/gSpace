@@ -1,9 +1,4 @@
-<<<<<<< HEAD
 $('button').on('click', function() {
-=======
-
-$('.likes').on('click', function() {
->>>>>>> 49793f39bbd4f9d5b22c5ffe15988b11b24fbed2
 
   var id = {
     id: $(this).attr('id')
@@ -22,5 +17,5 @@ $('.likes').on('click', function() {
       $('#heart').css("color", "red")
     }
   })
-})
+});
 

@@ -16,8 +16,6 @@ function Tags() {
   return knex('tags')
 }
 
-
-
 module.exports = {
   getAllResources: function () {
     return Resources().orderBy('created_on', 'desc')
@@ -56,7 +54,7 @@ module.exports = {
   getResourceLikes: function (resource_id) {
     return Resources().where('id', resource_id)
   },
-  getRourceComments: function (resource_id) {
+  getResourceComments: function (resource_id) {
     return Resources().where('id')
   },
   getResourceTags: function (resource_id) {
