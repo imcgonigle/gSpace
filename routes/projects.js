@@ -41,8 +41,30 @@ router.get('/:id/page', function(req, res, next) {
 		return next(err);
 
 	});
-	
+
 });
+
+router.post('/projects/:id/page/comment', function(req, res, next) {
+
+	if(req.isAuthenticated()){
+
+		var project_id = req.params.id;
+		var user_id = req.user.id;
+		var body = req.body.comment;
+
+		query.addCommentToProject(project_id, user_id, body)
+		.then(function(data) {
+			res.redirect('projects/' + data + '/page');
+		})
+		.catch(function(err) {
+			return next(err);
+		});
+
+	} else{
+		res.redirect('/login');
+	}
+	
+})
 
 router.get('/:id/edit', function(req, res, next) {
 
