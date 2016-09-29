@@ -14,7 +14,8 @@ module.exports = {
 	getAllProjectsWithUsers: function() {
 		return knex('projects')
 		.select('projects.id AS project_id', 'creator_id', 'projects.body', 'projects.title', 'projects.created_on', 'projects.updated_on', 'users.username')
-		.join('users', 'users.id', 'projects.creator_id');
+		.join('users', 'users.id', 'projects.creator_id')
+		.orderBy('created_on', 'desc');
 	},
 	getProjectByID: function(project_id) {
 		return Projects().where('id', project_id);
