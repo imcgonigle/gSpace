@@ -72,7 +72,7 @@ router.post('/:id/edit', function(req, res, next) {
 
 			var project = data[0];
 
-			if(project.creator_id == req.user.id) {
+			if (project.creator_id == req.user.id) {
 
 				var title = req.body.title;
 				var body = req.body.body;
