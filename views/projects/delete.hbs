@@ -1,38 +1,41 @@
-<div class="project-page-container">
+<div class="container">
+	<div class="project-page-container">
 
-	<div class="project-page-header">
+		<div class="project-page-header">
 
-		<h1>{{project.title}}</h1>
-		<h2><a href="{{project.repository_url}}">{{project.repository_url}}</a></h2>
+			<h1>{{project.title}}</h1>
+			<h2><a href="{{project.repository_url}}">{{project.repository_url}}</a></h2>
 
-		{{#if isOwner}}
+			{{#if isOwner}}
 
-			<div class="functions">
+				<div class="functions">
 
-				<a href="/projects/{{project.id}}/delete">Delete</a>
-				<a href="/projects/{{project.id}}/edit">Edit</a>
+					<a href="/projects/{{project.id}}/delete">Delete</a>
+					<a href="/projects/{{project.id}}/edit">Edit</a>
 
-			</div> {{!-- end of functions --}}
+				</div> {{!-- end of functions --}}
 
-		{{/if}}
+			{{/if}}
 
-	</div> {{!-- end of project-page-header --}}
+		</div> {{!-- end of project-page-header --}}
 
-	<div class="project-page-body">
+		<div class="project-page-body">
 
-		<!-- <p>
-			Proposal by: {{project.username}}
-		</p> -->
+			<!-- <p>
+				Proposal by: {{project.username}}
+			</p> -->
 
-		<p>
-			{{project.body}}
-		</p>
-	</div> {{!-- end of project-page-body --}}
+			<p>
+				{{project.body}}
+			</p>
+		</div> {{!-- end of project-page-body --}}
 
-	<div class="project-page-footer">
-		<span>{{project.likes}}</span>
-	</div> {{!-- end of project-page-footer --}}
-	<form class="delete" action="/projects/{{project.id}}/delete" method="post">
-		<button type="submit" name="delete">Delete This Project</button>
-	</form>
-</div> {{!-- end of project-page-container --}}
+		<div class="project-page-footer">
+			<span>{{project.likes}}</span>
+		</div> {{!-- end of project-page-footer --}}
+		<form class="delete" action="/projects/{{project.id}}/delete" method="post">
+			<button type="submit" name="delete">Delete This Project</button>
+		</form>
+	</div> {{!-- end of project-page-container --}}
+
+</div>

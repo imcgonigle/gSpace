@@ -1,16 +1,32 @@
-<h1>New Project proposal</h1>
 
-<form class="new-project" action="/projects/new" method="post">
+<div class="container">
 
-	<label for="title">Project Title</label>
-	<input type="text" name="title" placeholder="Projects title">
+	<h1>New Project</h1>
 
-	<label for="proposal-body">Proposal body</label>
-	<textarea name="body" rows="8" cols="40" placeholder="This is where the body of your project proposal goes..."></textarea>
+	<div class="row">
+		
+		<div class="col-lg-9 offset-lg-1">
 
-	<label for="repository_url">Repository URL</label>
-	<input type="text" name="repository_url" placeholder="Put the github url of your project repository.">
+			<form class="new-project" action="/projects/new" method="post">
 
-	<button type="submit" name="new-proposal">Post Project</button>
+				<div class="form-group">
+					<label for="title">Project Title</label>
+					<input class="form-control" type="text" name="title" placeholder="Projects title">
+				</div>
 
-</form>
+				<div class="form-group">
+					<label for="proposal-body">Proposal body</label>
+					<textarea class="form-control" name="body" rows="8" cols="40" placeholder="This is where the body of your project proposal goes..."></textarea>
+				</div>
+
+				<div class="form-group">
+					<label for="repository_url">Repository URL</label>
+					<input class="form-control" type="text" name="repository_url" placeholder="Put the github url of your project repository.">
+				</div>
+
+				<input class='btn btn-primary pull-xs-right' type="submit" name="new-proposal" value="Post Project">
+			</form>
+		</div>
+	</div>
+
+</div>
