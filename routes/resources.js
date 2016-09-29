@@ -158,6 +158,10 @@ router.post('/:id/edit', function(req, res, next) {
     }
 })
 
+router.post('/search', function(req,res,next) {
+  
+})
+
 
 
 

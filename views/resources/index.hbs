@@ -2,7 +2,24 @@
     <h1>Resources Feed</h1>
 
     <!-- Button trigger modal -->
-    <button type="button" class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#add-resource"><i class="fa fa-plus" aria-hidden="true"></i></button>
+    <div class="row">
+        <div class="col-sm-1">
+            <button type="button" class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#add-resource"><i class="fa fa-plus" aria-hidden="true"></i></button>
+        </div>
+
+        <form class="" action="/resources/search" method="POST">
+            <div class="col-sm-3">
+                <div class=" input-group">
+                    <input name="search" type="text" class="form-control" placeholder="Search tags...">
+                    <span class="input-group-btn">
+                  <button class="btn btn-secondary" type="submit">Go!</button>
+                </span>
+                </div>
+            </div>
+        </form>
+
+    </div>
+
 
     <!-- Modal -->
     <form class="resources" action="/resources/new" method="POST">
@@ -54,7 +71,7 @@
                             </p>
                             <button type="button" id="{{resource_id}}" class="btn btn-secondary likes"><i id="heart" class="fa fa-heart-o" aria-hidden="true"></i>{{likes}}</button>
                             {{#each tags}}
-                            <span class="tag tag-default">{{this}}</span>
+                                <span class="tag tag-default">{{this}}</span>
                             {{/each}}
                         </div>
                     </div>
