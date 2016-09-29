@@ -31,8 +31,6 @@ router.get('/:id/page', function(req, res, next) {
 		query.getAllProjectComments(project_id)
 		.then(function(data) {
 
-			console.log(data);
-			
 			res.render('projects/page', {
 				project: project,
 				comments: data,
@@ -54,7 +52,7 @@ router.get('/:id/page', function(req, res, next) {
 
 });
 
-router.post('/projects/:id/page/comment', function(req, res, next) {
+router.post('/:id/page', function(req, res, next) {
 
 	if(req.isAuthenticated()){
 
@@ -64,7 +62,7 @@ router.post('/projects/:id/page/comment', function(req, res, next) {
 
 		query.addCommentToProject(project_id, user_id, body)
 		.then(function(data) {
-			res.redirect('projects/' + data + '/page');
+			res.redirect('/projects/' + data + '/page');
 		})
 		.catch(function(err) {
 			return next(err);
@@ -74,7 +72,7 @@ router.post('/projects/:id/page/comment', function(req, res, next) {
 		res.redirect('/login');
 	}
 
-})
+});
 
 router.get('/:id/edit', function(req, res, next) {
 

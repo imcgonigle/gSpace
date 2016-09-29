@@ -63,7 +63,7 @@ module.exports = {
 		return knex('comments').insert({
 			type: 'project',
 			uid: project_id,
-			user_id: user_id,
+			users_id: user_id,
 			body: body,
 			likes: 0,
 			created_on: new Date(),
