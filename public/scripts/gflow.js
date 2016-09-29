@@ -46,9 +46,9 @@ $('.viewClick').on('click', function() {
 
       console.log(views)
 
-      $('#'+id.id).text(views[0])
-      $('#'+id.id).prepend('<i id="" class="" aria-hidden="true"></i>')
-      $('#').css("color", "green")
+      $('#'+numOfViews.id).text(views[0])
+      $('#'+numOfViews.id).prepend('<i id="" class="" aria-hidden="true"></i>')
+      $('#'+numOfViews.id).css("color", "green")
     }
   })
 })
@@ -67,9 +67,9 @@ $('.commentClick').on('click', function() {
 
       console.log(comments)
 
-      $('#'+id.id).text(comments[0])
-      $('#'+id.id).prepend('<i id="" class="" aria-hidden="true"></i>')
-      $('#').css("color", "green")
+      $('#'+numOfComments.id).text(comments[0])
+      $('#'+numOfComments.id).prepend('<i id="" class="" aria-hidden="true"></i>')
+      $('#'+numOfComments.id).css("color", "green")
     }
   })
 })
