@@ -30,7 +30,7 @@ exports.seed = function(knex, Promise) {
                     title: 'blah',
                     question: 'how do you javascript?',
                     likes: 3,
-                    user_id: 3,
+                    user_id: 337474,
                     created_at:'2003-01-02 00:01:00',
                     updated_on:'2003-01-02 00:01:00'
                 }),
@@ -60,7 +60,7 @@ exports.seed = function(knex, Promise) {
                     title: 'blah',
                     question: 'what is the internet?',
                     likes: 1400,
-                    user_id: 8,
+                    user_id: 27474,
                     created_at:'2003-01-02 00:01:00',
                     updated_on:'2003-01-02 00:01:00'
                 })

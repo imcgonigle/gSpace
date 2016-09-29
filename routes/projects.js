@@ -18,13 +18,10 @@ router.get('/:id/page', function(req, res, next) {
 	query.getProjectByID(project_id)
 	.then(function(data) {
 		var project = data[0];
-<<<<<<< HEAD
-		var isOwner = (project.user_id == req.user.id);
-=======
 
-		var isOwner = (req.isAuthenticated() && project.user_id == req.user.id);	
+		var isOwner = (req.isAuthenticated() && project.user_id == req.user.id);
 
->>>>>>> b396673d6574c019fc690fa0826890abca339722
+
 		res.render('projects/page', {
 			project: project,
 			user: req.user,
