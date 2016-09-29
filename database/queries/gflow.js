@@ -23,20 +23,16 @@ function newQuestionPost(username, title, question, user_id, tags) {
     title: title,
     question: question,
     tags: tags,
-    likes: 0,
-    created_at: new Date(),
-    updated_on: new Date()
+    likes: 0
   }).returning('questionid');
 }
 
-function newQuestionComment(question_post_id, subject, comment, username, created_at, updated_at) {
+function newQuestionComment(question_post_id, subject, comment, username) {
   return knex('gflow_comments').insert({
     question_post_id:question_post_id,
     subject: subject,
     comment: comment,
-    username: username,
-    created_at: new Date(),
-    updated_on: new Date()
+    username: username
   }).returning('id');
 }
 
@@ -52,7 +48,7 @@ function modifyQuestionPost(title, question, questionid) {
   return knex('gflow_questions').where('questionid', questionid).update({
     title:title,
     question:question,
-    updated_on: new Date()
+    // updated_on: new Date()
   })
 }
 

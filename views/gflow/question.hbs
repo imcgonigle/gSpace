@@ -7,7 +7,7 @@
       </div>
       {{/if}}
       <button type="button" id="{{item.questionid}}" class="likeButton btn btn-secondary likes"><i id="heart" class="fa fa-heart-o" aria-hidden="true"></i>{{likes}}</button>
-      <p class="createdDate"><strong>Posted on: </strong>{{shortDate item.created_at}}</p>
+      <p class="createdDate"><strong>Posted on: </strong>{{item.created_at}}</p>
       <h2 class="postTitle"><strong>Title: </strong>{{item.title}}</h2>
       <p class="postContent"><strong>Question: </strong>{{item.question}}</p>
       <p class="tags"><strong>Tags: </strong> {{item.tags}}</p>

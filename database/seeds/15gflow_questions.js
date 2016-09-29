@@ -13,7 +13,7 @@ exports.seed = function(knex, Promise) {
                     user_id: 1,
                     tags: 'ruby javascript css',
                     created_at:'2003-01-02 00:01:00',
-                    updated_on:'2003-01-02 00:01:00'
+                    updated_at:'2003-01-02 00:01:00'
                 }),
                 knex('gflow_questions').insert({
                     questionid: 2,
@@ -24,7 +24,7 @@ exports.seed = function(knex, Promise) {
                     user_id: 2,
                     tags: 'ruby javascript css',
                     created_at:'2003-01-02 00:01:00',
-                    updated_on:'2003-01-02 00:01:00'
+                    updated_at:'2003-01-02 00:01:00'
                 }),
                 knex('gflow_questions').insert({
                     questionid: 3,
@@ -35,7 +35,7 @@ exports.seed = function(knex, Promise) {
                     user_id: 337474,
                     tags: 'ruby javascript css',
                     created_at:'2003-01-02 00:01:00',
-                    updated_on:'2003-01-02 00:01:00'
+                    updated_at:'2003-01-02 00:01:00'
                 }),
                 knex('gflow_questions').insert({
                     questionid: 4,
@@ -46,7 +46,7 @@ exports.seed = function(knex, Promise) {
                     user_id: 4,
                     tags: 'ruby javascript css',
                     created_at:'2003-01-02 00:01:00',
-                    updated_on:'2003-01-02 00:01:00'
+                    updated_at:'2003-01-02 00:01:00'
                 }),
                 knex('gflow_questions').insert({
                     questionid: 5,
@@ -57,7 +57,7 @@ exports.seed = function(knex, Promise) {
                     user_id: 1,
                     tags: 'ruby javascript css',
                     created_at:'2003-01-02 00:01:00',
-                    updated_on:'2003-01-02 00:01:00'
+                    updated_at:'2003-01-02 00:01:00'
                 }),
                 knex('gflow_questions').insert({
                     questionid: 6,
@@ -68,7 +68,7 @@ exports.seed = function(knex, Promise) {
                     user_id: 27474,
                     tags: 'ruby javascript css',
                     created_at:'2003-01-02 00:01:00',
-                    updated_on:'2003-01-02 00:01:00'
+                    updated_at:'2003-01-02 00:01:00'
                 })
             ]);
         });
