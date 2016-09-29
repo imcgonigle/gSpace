@@ -31,6 +31,7 @@ router.get('/:id/page', function(req, res, next) {
 		query.getAllProjectComments(project_id)
 		.then(function(data) {
 
+
 			res.render('projects/page', {
 				project: project,
 				comments: data,
@@ -45,9 +46,7 @@ router.get('/:id/page', function(req, res, next) {
 
 	})
 	.catch(function(err) {
-
 		return next(err);
-
 	});
 
 });

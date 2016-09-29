@@ -1,40 +1,75 @@
-<h1> Projects Homepage/Index </h1>
-{{#if user}}
 
-<div class="user-controls">
-	<a href="/projects/new">Add New Project</a>
-</div>{{!-- end of user-controls --}}
+<div class="container">
 
-{{/if}}
-{{#each projects}}
+	<div class="row">
 
-<div class="project-container">
+		<div class="col-lg-11">
 
-	<div class="container-header">
-		<h1><a href="/projects/{{this.project_id}}/page">{{this.title}}</a></h1>
-	</div> {{!-- end container-footer --}}
+			<nav class="navbar navbar-light" style="background-color: #e3f2fd; margin-bottom: 30px;">
 
-	<div class="container-body">
+				<a class="navbar-brand" href="/projects/">Projects</a>
 
-		<a href="{{this.repository_url}}">{{this.repository_url}}</a>
+				{{#if user}}
+					<a class="nav-link btn btn-success pull-xs-right" href="/projects/new">New Project</a>
+				{{else}}
+					<p class=" pull-xs-right"><a href="/login">Login</a> to create a new project</p>
+				{{/if}}
+			  <!-- <form class="form-inline pull-xs-right">
+			    <input class="form-control" type="text" placeholder="Search">
+			    <button class="btn btn-outline-success" type="submit">Search</button>
+			  </form> -->
 
-		<p>
-			Proposed by: {{this.username}}
-		</p>
+			</nav>
 
-		<p>
-			{{this.body}}
-		</p>
+		</div>
 
-	</div> {{!-- end container-body --}}
+	</div>
 
-	<div class="container-footer">
+<div class="container">
+	<div class="row">
 
-		{{this.created_on}}
-		{{this.likes}}
 
-	</div> {{!-- end container-footer --}}
+		{{#each projects}}
+		<div class="col-lg-8">
+			<div class="card">
+				<div class="card-block">
 
-</div>  {{!-- end project-container --}}
 
-{{/each}}
+					<h3 class="card-title">
+						<a href="/projects/{{this.project_id}}/page">{{this.title}}</a>
+					</h3>
+
+
+
+					<p class="card-text">
+						{{this.body}}
+					</p>
+
+
+			</div>
+
+			<div class="card-footer">
+				<p class="card-text">
+					{{this.created_on}}
+					{{this.likes}}
+
+					<span class="card-text pull-xs-right">
+						Proposed by: {{this.username}}
+					</span>
+				</p>
+			</div>
+		</div>  {{!-- end of card-block --}}
+
+
+
+	</div>
+
+		{{/each}}
+
+	</div>
+</div>
+
+
+
+
+</div>
