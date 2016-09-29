@@ -13,6 +13,7 @@ exports.seed = function(knex, Promise) {
         knex('projects_tags').insert({projects_id: 3, tag_id: 13}),
         knex('projects_tags').insert({projects_id: 1, tag_id: 15}),
         knex('projects_tags').insert({projects_id: 3, tag_id: 10})
+
       ]);
     });
 };
