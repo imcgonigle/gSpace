@@ -4,10 +4,11 @@
         <span class='deleteItem'><a href="/gflow/delete/{{item.questionid}}"><strong>delete</strong></a></span>
         <span class='modifyPost'><a href="/gflow/{{item.questionid}}/edit"><strong>edit</strong></a></span>
       </div>
-      <h3 class="createdDate">Posted on: {{item.created_at}}</h3>
-      <h2 class="postTitle">Title:{{item.title}}</h2>
+      <h3 class="createdDate">Posted on: {{shortDate item.created_at}}</h3>
+      <h2 class="postTitle">Title: {{item.title}}</h2>
       <h2>{{item.questionid}}</h2>
       <p class="postContent">Question:{{item.question}}</p>
+      <p class="tags"><strong>Tags: </strong> {{item.tags}}</p>
       <li class="postName"><strong>Written by: {{item.username}}</strong></li>
     </div>
 </ul>
@@ -21,10 +22,10 @@
       <div class="change">
         <span class='deleteItem'><a href="/gflow/delete/{{this.id}}"><strong>delete</strong></a></span>
       </div>
-      <p class="createdDate dateSmall">Posted on: {{shortDate this.created_at}}</p>
-      <h2 class="commentSubject">{{this.subject}}</h2>
-      <p class="postContent">{{this.comment}}</p>
-      <li class="postName"><strong>Written by: {{this.username}}</strong></li>
+      <p class="createdDate dateSmall"><strong>Posted on:</strong> {{shortDate this.created_at}}</p>
+      <h3 class="commentSubject"><strong>Subject: </strong>{{this.subject}}</h3>
+      <p class="postContent"><strong>Comment: </strong>{{this.comment}}</p>
+      <p class="postName"><strong>Written by: </strong>{{this.username}}</p>
     {{/each}}
     </div>
   </ul>
