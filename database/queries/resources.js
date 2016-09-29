@@ -79,7 +79,7 @@ module.exports = {
     // .leftJoin('resources_tags', 'resource.id', 'resources_tags.resource_id')
     // .join('tags', 'resources_tags.tag_id', 'tags.id')
     // .orderBy('title')
-    getAllResources: function() {
+    getAllResources: function(){
         return Resources().orderBy('created_on', 'desc')
     },
     getResourceById: function(resource_id) {
@@ -148,7 +148,6 @@ module.exports = {
             name: name,
             created_at: new Date()
         })
-    },
->>>>>>> 53bd0d5389a02e8ebf178f194e46e8b079597d7e
+    }
 
 }
