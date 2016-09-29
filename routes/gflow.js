@@ -76,7 +76,6 @@ router.post('/question/:id',(req, res, next) => {
 router.post('/delete/:id', function(req, res, next) {
   query.getQuestionPostbyId(req.params.id)
   .then(function(data) {
-    console.log(data);
     if(req.user.username == data[0].username){
       query.deleteQuestionPost(req.params.id)
       .then(function() {
@@ -97,8 +96,6 @@ router.post('/delete/:id', function(req, res, next) {
 router.get('/delete/:id', function(req, res, next) {
   query.getQuestionPostbyId(req.params.id)
   .then(function(data) {
-    console.log(data);
-
     if(req.user.username == data[0].username){
       query.deleteQuestionPost(req.params.id)
       .then(function() {

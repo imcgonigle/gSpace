@@ -16,14 +16,16 @@ function getCommentPostbyId(id) {
   return knex('gflow_comments').where('question_post_id', id);
 }
 
-function newQuestionPost(username, title, question, user_id, tags) {
+function newQuestionPost(username, title, question, user_id, tags, comments, views) {
   return knex('gflow_questions').insert({
     username: username,
     user_id:user_id,
     title: title,
     question: question,
     tags: tags,
-    likes: 0
+    likes: 0,
+    comments: 0,
+    views: 0
   }).returning('questionid');
 }
 

@@ -23,3 +23,8 @@ $('.likeButton').on('click', function() {
 jQuery(document).ready(function() {
   jQuery("time.timeago").timeago();
 });
+
+var clicks = 0;
+function linkClick() {
+    document.getElementById('clicked').value = ++clicks;
+}
