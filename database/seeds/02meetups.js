@@ -11,6 +11,8 @@ exports.seed = function(knex, Promise) {
           likes: 5,
           description: 'description1',
           location: 'location1',
+          date: '09-09-2016',
+          time: '11:10:30',
           created_on: '2006-04-10T13:40:23.83-05:00',
           updated_on: '2006-04-10T13:40:23.83-05:01'
         }),
@@ -21,7 +23,7 @@ exports.seed = function(knex, Promise) {
           likes: 6,
           description: 'description2',
           location: 'location2',
-          time: '2006-04-10T13:40:23.83-05:02',
+          time: '11:10:30',
           created_on: '2006-04-10T13:40:23.83-05:02',
           updated_on: '2006-04-10T13:40:23.83-05:01'
         }),
@@ -32,7 +34,7 @@ exports.seed = function(knex, Promise) {
           likes: 7,
           description: 'description3',
           location: 'location3',
-          time: '2006-04-10T13:40:23.83-05:03',
+          time: '11:10:30',
           created_on: '2006-04-10T13:40:23.83-05:03',
           updated_on: '2006-04-10T13:40:23.83-05:01'
         }),
@@ -43,7 +45,7 @@ exports.seed = function(knex, Promise) {
           likes: 0,
           description: 'description4',
           location: 'location4',
-          time: '2006-04-10T13:40:23.83-05:02',
+          time: '11:10:30',
           created_on: '2006-04-10T13:40:23.83-05:02',
           updated_on: '2006-04-10T13:40:23.83-05:01'
         }),
@@ -54,10 +56,13 @@ exports.seed = function(knex, Promise) {
           likes: 5,
           description: 'description5',
           location: 'location5',
-          time: '2006-04-10T13:40:23.83-05:02',
+          time: '11:10:30',
           created_on: '2006-04-10T13:40:23.83-05:02',
           updated_on: '2006-04-10T13:40:23.83-05:01'
         })
-      ]);
+      ])
+          .then(function(){
+            return knex.raw('ALTER SEQUENCE meetups_id_seq RESTART WITH 6;')
+          })
     });
 };

@@ -22,8 +22,8 @@ function getMeetups() {
         .join('users', 'meetups.users_id', '=', 'users.id')
 }
 
-function addMeetup(users_id, title, description, location, time) {
-    if (!title || !description || !location || !time) {
+function addMeetup(users_id, title, description, location, time, date) {
+    if (!title || !description || !location || !time || !date) {
         return false
     }
     return Meetups().insert({
@@ -32,7 +32,8 @@ function addMeetup(users_id, title, description, location, time) {
             description: description,
             location: location,
             time: time,
-            created_on: new Date()
+            date: date
+            // created_on: new Date()
         })
         .returning('id')
 }
