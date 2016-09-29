@@ -5,6 +5,7 @@ var query = require('../database/queries/projects');
 router.get('/', function(req, res, next) {
 	query.getAllProjectsWithUsers()
 	.then(function(data) {
+		console.log(data);
 		res.render('projects/index', {user: req.user, projects: data})
 	})
 	.catch(function(err){
