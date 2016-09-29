@@ -28,11 +28,21 @@ router.get('/:id/page', function(req, res, next) {
 		var project = data[0];
 		var isOwner = (req.isAuthenticated() && project.creator_id == req.user.id);
 
+		query.getAllProjectComments(project_id)
+		.then(function(data) {
 
-		res.render('projects/page', {
-			project: project,
-			user: req.user,
-			isOwner: isOwner
+			console.log(data);
+			
+			res.render('projects/page', {
+				project: project,
+				comments: data,
+				user: req.user,
+				isOwner: isOwner
+			});
+
+		})
+		.catch(function(err) {
+			return next(err);
 		});
 
 	})
@@ -63,7 +73,7 @@ router.post('/projects/:id/page/comment', function(req, res, next) {
 	} else{
 		res.redirect('/login');
 	}
-	
+
 })
 
 router.get('/:id/edit', function(req, res, next) {
