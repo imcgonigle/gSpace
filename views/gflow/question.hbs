@@ -1,9 +1,11 @@
 <ul class="questionDivContainer">
     <div class="questionDiv">
+      {{#if isOwner}}
       <div class="change">
         <span class='deleteItem'><a href="/gflow/delete/{{item.questionid}}"><strong>delete</strong></a></span>
         <span class='modifyPost'><a href="/gflow/{{item.questionid}}/edit"><strong>edit</strong></a></span>
       </div>
+      {{/if}}
       <p class="createdDate"><strong>Posted on: </strong>{{shortDate item.created_at}}</p>
       <h2 class="postTitle"><strong>Title: </strong>{{item.title}}</h2>
       <p class="postContent"><strong>Question: </strong>{{item.question}}</p>
@@ -18,9 +20,11 @@
   <ul class="comments">
     {{#each data}}
     <div class="borderDiv">
+      {{#if isOwner}}
       <div class="change">
         <span class='deleteItem'><a href="/gflow/delete/{{this.id}}"><strong>delete</strong></a></span>
       </div>
+      {{/if}}
       <p class="createdDate dateSmall"><strong>Posted on:</strong> {{shortDate this.created_at}}</p>
       <h3 class="commentSubject"><strong>Subject: </strong>{{this.subject}}</h3>
       <p class="postContent"><strong>Comment: </strong>{{this.comment}}</p>

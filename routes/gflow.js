@@ -42,11 +42,15 @@ router.get('/question/:id',(req, res, next) => {
   var id = req.params.id;
   query.getQuestionPostbyId(id).then((posts) => {
   query.getCommentPostbyId(id).then((data) => {
+
+    var isOwner = (req.isAuthenticated() && posts[0].user_id == req.user.id);
+
     console.log(posts);
     res.render('gflow/question', {
       item:posts[0],
       data:data,
-      user:req.user
+      user:req.user,
+      isOwner:isOwner
       })
     })
   })
@@ -94,6 +98,7 @@ router.get('/delete/:id', function(req, res, next) {
   query.getQuestionPostbyId(req.params.id)
   .then(function(data) {
     console.log(data);
+
     if(req.user.username == data[0].username){
       query.deleteQuestionPost(req.params.id)
       .then(function() {
@@ -116,14 +121,18 @@ router.get('/:id/edit', function(req, res, next) {
   query.getQuestionPostbyId(post_id)
         .then(function(data) {
           console.log(data);
+
+          var isOwner = (req.isAuthenticated() && posts[0].user_id == req.user.id);
           var post = data[0];
+
             if (!post.user_id == req.user.id) {
                 res.redirect('/');
                 return;
             } else {
                 res.render('gflow/edit', {
                   item: post,
-                  user: req.user
+                  user: req.user,
+                  isOwner: isOwner
                 })
             }
         })
