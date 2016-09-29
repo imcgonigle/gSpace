@@ -51,9 +51,12 @@ router.post('/new', function(req, res, next) {
         var description = req.body.description;
         var location = req.body.location;
         var time = req.body.time;
+        
+        // queries.addMeetup(id)
+        // queries.addMeetup(req.params.id, req.body.title, req.body.description, req.body.location, req.body.time)
 
         queries.addMeetup(id, title, description, location, time)
-        .then(function() {
+        .then(function(){
             res.redirect('/id/page');
         })
         .catch(function(error){
