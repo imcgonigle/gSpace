@@ -50,7 +50,19 @@
 			<a href="/login">Login</a> to comment.
 		</p>
 		{{/if}}
-
+		{{#each comments}}
+		<div class="comment-card">
+			<div class="comment-header">
+				<h1>{{username}}</h1>
+			</div>
+			<div class="comment-body">
+				{{comment}}
+			</div>
+			<div class="comment-footer">
+				{{posted_on}}
+			</div>
+		</div>
+		{{/each}}
 	</div> {{!-- end of project-page-comments --}}
 
 	<div class="project-page-footer">
