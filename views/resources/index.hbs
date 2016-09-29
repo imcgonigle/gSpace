@@ -42,9 +42,22 @@
                     <h3 class="card-title">{{title}}</h3>
                     <p class="card-text">{{description}}</p>
                     <a href="/:id/page" class="btn btn-primary">Visit Resource</a>
-                    <button type="submit" id="likes" class="btn btn-secondary"><i class="fa fa-heart-o" aria-hidden="true"></i>{{likes}}</button>
                 </div>
             </div>
         {{/each}}
+    </div>
+</div>
+<div class="media">
+    <a class="media-left" href="#">
+        <img class="media-object" src="..." alt="Generic placeholder image">
+    </a>
+    <div class="media-body">
+      <a href="{{link}}">
+        <h4 class="media-heading">{{title}}</h4>
+      </a>
+      <p>
+        {{description}}
+      </p>
+      <button type="submit" id="likes" class="btn btn-secondary"><i class="fa fa-heart-o" aria-hidden="true"></i>{{likes}}</button>
     </div>
 </div>
