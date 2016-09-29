@@ -16,12 +16,13 @@ function getCommentPostbyId(id) {
   return knex('gflow_comments').where('question_post_id', id);
 }
 
-function newQuestionPost(username, title, question, user_id) {
+function newQuestionPost(username, title, question, user_id, tags) {
   return knex('gflow_questions').insert({
     username: username,
     user_id:user_id,
     title: title,
     question: question,
+    tags: tags,
     likes: 0,
     created_at: new Date(),
     updated_on: new Date()
@@ -55,14 +56,6 @@ function modifyQuestionPost(title, question, questionid) {
   })
 }
 
-function modifyQuestionComment(subject, comment, id) {
-  return knex('gflow_comments').where('id', id).update({
-    subject: subject,
-    comment: comment,
-    updated_on: new Date()
-  });
-}
-
 module.exports = {
   questionPosts: questionPosts,
   commentPosts,
@@ -72,6 +65,5 @@ module.exports = {
   newQuestionComment,
   deleteQuestionComment,
   deleteQuestionPost,
-  modifyQuestionPost,
-  modifyQuestionComment
+  modifyQuestionPost
 }

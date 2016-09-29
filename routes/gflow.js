@@ -28,7 +28,8 @@ router.post('/ask', function (req, res, next) {
   var title = req.body.title;
   var question = req.body.question;
   var user_id = req.user.id;
-  query.newQuestionPost(username, title, question, user_id)
+  var tags = req.body.tags;
+  query.newQuestionPost(username, title, question, user_id, tags)
   .then(() =>{
       res.redirect('/gflow')
     })
@@ -147,7 +148,8 @@ router.post('/:id/edit', function(req, res, next) {
       var username = req.user.username;
       var title = req.body.title;
       var question = req.body.question;
-      query.modifyQuestionPost(title, question, questionid)
+      var tags = req.body.tags;
+      query.modifyQuestionPost(title, question, tags, questionid)
         .then(function() {
           res.redirect('/gflow')
         })
