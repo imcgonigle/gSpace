@@ -187,5 +187,33 @@ router.post('/question/like/:id', function(req, res, next) {
                 })
         })
       })
+router.post('/question/views/:id', function(req, res, next) {
+
+    var question_post_id = req.params.id
+    query.getQuestionPostbyId(question_post_id)
+        .then(function(data) {
+            var views = data[0].views;
+            var id = data[0].questionid;
+            query.addViewsToQuestion(id, views)
+                .then(function(data) {
+                    console.log(data)
+                    res.send(data)
+                })
+        })
+      })
+router.post('/question/comments/:id', function(req, res, next) {
+
+  var question_post_id = req.params.id
+  query.getQuestionPostbyId(question_post_id)
+      .then(function(data) {
+          var comments = data[0].comments;
+          var id = data[0].questionid;
+          query.addNumOfCommentsToQuestion(id, comments)
+              .then(function(data) {
+                  console.log(data)
+                  res.send(data)
+              })
+      })
+    })
 
 module.exports = router;

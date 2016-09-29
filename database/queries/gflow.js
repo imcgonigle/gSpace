@@ -64,6 +64,31 @@ function getQuestionLikes (questionid) {
   return knex('gflow_questions').where('questionid', questionid)
 }
 
+function addViewsToQuestion(questionid, views) {
+  return knex('gflow_questions').where('questionid', questionid).update({
+  views: views +=1
+}).returning('views','questionid')
+}
+
+function getQuestionViews (questionid) {
+  return knex('gflow_questions').where('questionid', questionid)
+}
+
+
+function addNumOfCommentsToQuestion(questionid, comments) {
+  return knex('gflow_questions').where('questionid', questionid).update({
+  comments: comments +=1
+}).returning('comments','questionid')
+}
+
+function getQuestionComments (questionid) {
+  return knex('gflow_questions').where('questionid', questionid)
+}
+
+
+
+
+
 module.exports = {
   questionPosts: questionPosts,
   commentPosts,
@@ -75,5 +100,9 @@ module.exports = {
   deleteQuestionPost,
   modifyQuestionPost,
   addLikeToQuestion,
-  getQuestionLikes
+  getQuestionLikes,
+  addViewsToQuestion,
+  getQuestionViews,
+  addNumOfCommentsToQuestion,
+  getQuestionComments
 }

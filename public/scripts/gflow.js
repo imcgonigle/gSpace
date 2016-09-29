@@ -1,3 +1,7 @@
+jQuery(document).ready(function() {
+  jQuery("time.timeago").timeago();
+});
+
 
 $('.likeButton').on('click', function() {
 
@@ -20,11 +24,52 @@ $('.likeButton').on('click', function() {
   })
 })
 
-jQuery(document).ready(function() {
-  jQuery("time.timeago").timeago();
-});
+
 
 var clicks = 0;
 function linkClick() {
     document.getElementById('clicked').value = ++clicks;
 }
+
+
+$('.viewClick').on('click', function() {
+
+  var id = {
+    id: $(this).attr('id')
+  }
+  $.ajax({
+    type: "POST",
+    url: "/gflow/question/views/" + id.id,
+    success: function (data) {
+
+      var views = data
+
+      console.log(views)
+
+      $('#'+id.id).text(views[0])
+      $('#'+id.id).prepend('<i id="" class="" aria-hidden="true"></i>')
+      $('#').css("color", "green")
+    }
+  })
+})
+
+$('.commentClick').on('click', function() {
+
+  var id = {
+    id: $(this).attr('id')
+  }
+  $.ajax({
+    type: "POST",
+    url: "/gflow/question/comments/" + id.id,
+    success: function (data) {
+
+      var comments = data
+
+      console.log(comments)
+
+      $('#'+id.id).text(comments[0])
+      $('#'+id.id).prepend('<i id="" class="" aria-hidden="true"></i>')
+      $('#').css("color", "green")
+    }
+  })
+})
