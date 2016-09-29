@@ -10,7 +10,6 @@ $('button').on('click', function() {
 
       var likes = data
 
-      console.log(likes)
 
       $('#'+id.id).text(likes[0])
       $('#'+id.id).prepend('<i id="heart" class="fa fa-heart-o" aria-hidden="true"></i>')
