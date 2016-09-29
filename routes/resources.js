@@ -7,12 +7,12 @@ router.get('/', function(req, res, next) {
 
     queries.getResourceTags().then((resource) => {
 
-        res.render('resources/index', {
-            title: 'Resources Homepage',
-            resource: resource,
-            user: req.user
+            res.render('resources/index', {
+                title: 'Resources Homepage',
+                resource: resource,
+                user: req.user
             })
-                
+
         })
         .catch(function(error) {
             return next(error)
@@ -35,7 +35,7 @@ router.get('/page/:id', function(req, res, next) {
 router.post('/new', function(req, res, next) {
     queries.addResource(req.user.id, req.body.title, req.body.description, req.body.link)
         .then(function(data) {
-            res.redirect('/')
+            res.redirect('/resources')
         })
         .catch(function(error) {
             return next(error)
@@ -51,7 +51,6 @@ router.post('/new/like/:id', function(req, res, next) {
             var id = data[0].id
             queries.addLikeToResource(id, likes)
                 .then(function(data) {
-                    console.log(data)
                     res.send(data)
                 })
         })
@@ -78,7 +77,9 @@ router.get('/:id/delete', function(req, res, next) {
         queries.getResourceById(req.params.id)
             .then(function(data) {
                 var resource = data[0]
-                if (req.user.username == resource.users_id) {
+                  console.log(req.user.id, resource.users_id)
+                if (req.user.id == resource.users_id) {
+
                     queries.deleteResource(req.params.id)
                         .then(function() {
                             res.redirect('/resources/')
@@ -128,6 +129,7 @@ router.post('/:id/edit', function(req, res, next) {
             })
     }
 })
+
 
 
 

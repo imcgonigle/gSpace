@@ -73,13 +73,9 @@ module.exports = {
             }
           }
         }
-        console.log(resourceData)
         return resourceData
       })
     })
-    // .leftJoin('resources_tags', 'resource.id', 'resources_tags.resource_id')
-    // .join('tags', 'resources_tags.tag_id', 'tags.id')
-    // .orderBy('title')
 
   },
   addTagToResource: function (resource_id, tag_id ) {
@@ -93,5 +89,6 @@ module.exports = {
       name: name,
       created_at: new Date()
     })
+  },
+  
   }
-}
