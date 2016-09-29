@@ -9,6 +9,10 @@ function Projects_Users() {
 	return knex('projects_users');
 };
 
+function Comments() {
+	return knex('comments');
+};
+
 module.exports = {
 	getAllProjects: Projects,
 	getAllProjectsWithUsers: function() {
@@ -70,7 +74,10 @@ module.exports = {
 		return Comments().where({
 			uid: project_id,
 			type: 'project'
-		}).orderBy('created_on', 'desc')
+		})
+		.orderBy('created_on', 'desc')
+		.select('comments.body AS comment', 'username', 'comments.created_on AS posted_on')
+		.join('users', 'users_id', 'users.id');
 	}
 
 }
