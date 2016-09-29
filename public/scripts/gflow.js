@@ -1,16 +1,12 @@
-<<<<<<< HEAD
-$('button').on('click', function() {
-=======
 
-$('.likes').on('click', function() {
->>>>>>> 49793f39bbd4f9d5b22c5ffe15988b11b24fbed2
+$('.likeButton').on('click', function() {
 
   var id = {
     id: $(this).attr('id')
   }
   $.ajax({
     type: "POST",
-    url: "resources/new/like/" + id.id + "",
+    url: "/gflow/question/like/" + id.id,
     success: function (data) {
 
       var likes = data
@@ -24,3 +20,6 @@ $('.likes').on('click', function() {
   })
 })
 
+jQuery(document).ready(function() {
+  jQuery("time.timeago").timeago();
+});

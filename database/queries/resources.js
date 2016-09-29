@@ -12,9 +12,16 @@ function Comments()  {
   return knex('comments')
 }
 
+function Tags() {
+  return knex('tags')
+}
+
+
+
 module.exports = {
   getAllResources: function () {
-    return Resources().orderBy('created_on', 'desc')},
+    return Resources().orderBy('created_on', 'desc')
+  },
   getResourceById: function(resource_id) {
     return Resources().where('id', resource_id);
   },
@@ -48,5 +55,43 @@ module.exports = {
   },
   getResourceLikes: function (resource_id) {
     return Resources().where('id', resource_id)
+  },
+  getRourceComments: function (resource_id) {
+    return Resources().where('id')
+  },
+  getResourceTags: function (resource_id) {
+    return Resources().select('resource.id as resource_id', 'resource.title as resource_title', "resource.link as link", 'resource.likes as likes', 'description')
+    .then(function (resourceData) {
+      return Tags().join('resources_tags', 'tags.id', 'resources_tags.tag_id')
+      .then(function (tagData) {
+        // console.log(tagData)
+        for (var i = 0; i < resourceData.length; i++) {
+          resourceData[i].tags = []
+          for (var j = 0; j < tagData.length; j++) {
+            if (tagData[j].resource_id === resourceData[i].resource_id) {
+              resourceData[i]["tags"].push(tagData[j].name)
+            }
+          }
+        }
+        console.log(resourceData)
+        return resourceData
+      })
+    })
+    // .leftJoin('resources_tags', 'resource.id', 'resources_tags.resource_id')
+    // .join('tags', 'resources_tags.tag_id', 'tags.id')
+    // .orderBy('title')
+
+  },
+  addTagToResource: function (resource_id, tag_id ) {
+    return Resources_Tags().insert({
+        resource_id: resource_id,
+        tag_id:tag_id
+    })
+  },
+  addTag: function (resource_id, tag_id) {
+    return Tags().insert({
+      name: name,
+      created_at: new Date()
+    })
   }
 }
