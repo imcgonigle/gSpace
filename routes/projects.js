@@ -18,11 +18,7 @@ router.get('/:id/page', function(req, res, next) {
 	.then(function(data) {
 		var project = data[0];
 
-<<<<<<< HEAD
-		var isOwner = (req.isAuthenticated() && project.user_id == req.user.id);
-=======
 		var isOwner = (req.isAuthenticated() && project.creator_id == req.user.id);
->>>>>>> 1900f1fe6a618eb437006cbd0c8d06bdee74f1ba
 
 		res.render('projects/page', {
 			project: project,
