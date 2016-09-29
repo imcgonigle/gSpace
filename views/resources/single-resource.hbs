@@ -4,5 +4,9 @@
 <h3>{{resource.description}}</h3>
 <a href="{{resource.link}}">Visit Website</a>
 <h3>Created On: {{resource.created_on}}</h3>
-<a  href="/resources/{{resource.id}}/edit">Edit</a>
-<a href="/resources/{{resource.id}}/delete">Delete</a>
+{{#if isOwner}}
+  <div class="resource-user-control">
+    <a href="/resources/{{id}}/delete">Delete</a>
+    <a href="/resources/{{id}}/edit">Edit</a>
+  </div>
+{{/if}}

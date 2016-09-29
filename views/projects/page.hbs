@@ -1,72 +1,78 @@
 <h1>Project page</h1>
+<div class="container" style="background: red;">
+	<div class="project-page-container">
 
-<div class="project-page-container">
+		<div class="project-page-header">
 
-	<div class="project-page-header">
+			<h1>{{project.title}}</h1>
+			<h2>Repo URL: {{project.repository_url}}</h2>
 
-		<h1>{{project.title}}</h1>
-		<h2><a href="{{project.repository_url}}">{{project.repository_url}}</a></h2>
+			{{#if isOwner}}
 
-		{{#if isOwner}}
+				<div class="owner-controls">
 
-			<div class="owner-controls">
+					<a href="/projects/{{project.id}}/delete">Delete</a>
+					<a href="/projects/{{project.id}}/edit">Edit</a>
 
-				<a href="/projects/{{project.id}}/delete">Delete</a>
-				<a href="/projects/{{project.id}}/edit">Edit</a>
+				</div> {{!-- end of owner-controls --}}
 
-			</div> {{!-- end of owner-controls --}}
+			{{/if}}
 
-		{{/if}}
+		</div> {{!-- end of project-page-header --}}
 
-	</div> {{!-- end of project-page-header --}}
+		<div class="project-page-body">
 
-	<div class="project-page-body">
+			<!-- <p>
+				Proposal by: {{project.username}}
+			</p> -->
 
-		<!-- <p>
-			Proposal by: {{project.username}}
-		</p> -->
+			<p>
+				{{project.body}}
+			</p>
 
-		<p>
-			{{project.body}}
-		</p>
+		</div> {{!-- end of project-page-body --}}
 
-	</div> {{!-- end of project-page-body --}}
+		<div class="project-page-comments">
+			{{#if user}}
+			<div class="comment-form">
 
-	<div class="project-page-comments">
-		{{#if user}}
-		<div class="comment-form">
+				<form class="new-comment" action="/projects/{{project.id}}/page" method="post">
 
-			<form class="new-comment" action="/projects/{{project.id}}/page" method="post">
+					<textarea required='true' name="comment" rows="8" cols="40" placeholder="Comment..."></textarea>
 
-				<textarea name="comment" rows="8" cols="40" placeholder="Comment..."></textarea>
+					<button type="submit" name="new-comment-button">Post Comment</button>
 
-				<button type="submit" name="new-comment-button">Post Comment</button>
+				</form>
 
-			</form>
+			</div>{{!-- end of comment-form --}}
+			{{else}}
+			<p>
+				<a href="/login">Login</a> to comment.
+			</p>
+			{{/if}}
+			{{#each comments}}
 
-		</div>{{!-- end of comment-form --}}
-		{{else}}
-		<p>
-			<a href="/login">Login</a> to comment.
-		</p>
-		{{/if}}
-		{{#each comments}}
-		<div class="comment-card">
-			<div class="comment-header">
-				<h1>{{username}}</h1>
-			</div>
-			<div class="comment-body">
-				{{comment}}
-			</div>
-			<div class="comment-footer">
-				{{posted_on}}
-			</div>
-		</div>
-		{{/each}}
-	</div> {{!-- end of project-page-comments --}}
+			<div class="comment-card">
 
-	<div class="project-page-footer">
-		<span>{{project.likes}}</span>
-	</div> {{!-- end of project-page-footer --}}
+				<div class="comment-header">
+					<h1>{{username}}</h1>
+				</div> {{!-- end of comment-header --}}
 
-</div> {{!-- end of project-page-container --}}
+				<div class="comment-body">
+					{{comment}}
+				</div>{{!-- end of comment-body --}}
+
+				<div class="comment-footer">
+					{{posted_on}}
+				</div> {{!-- end of comment-footer --}}
+
+			</div> {{!-- end of comment-card --}}
+			{{/each}}
+		</div> {{!-- end of project-page-comments --}}
+
+		<div class="project-page-footer">
+			<span>{{project.likes}}</span>
+		</div> {{!-- end of project-page-footer --}}
+
+	</div> {{!-- end of project-page-container --}}
+</div>

@@ -11,7 +11,7 @@ function Projects_Users() {
 
 function Comments() {
 	return knex('comments');
-};
+}
 
 module.exports = {
 	getAllProjects: Projects,
