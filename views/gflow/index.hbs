@@ -7,16 +7,15 @@
               <div class="media resource">
                 <a class="media-left =" href="#">
                   <img class="media-object img-rounded" src="..." alt="Generic placeholder image">
-                  <h3 id="numOfViews"></h3>
-                  <h3 id="numOfComments"></h3>
                 </a>
+                <h3>Views: {{this.views}}</h3>
+                <h3>Comments: {{this.comments}}</h3>
                 <div class="questionDiv">
-                  <a href="/gflow/question/{{this.questionid}}" class="viewClick"><h2 class="postTitle">{{this.title}}</h2></a>
+                  <a href="/gflow/question/{{this.questionid}}" id='{{this.questionid}}' class="viewClick"><h2 class="postTitle">{{this.title}}</h2></a>
                   <h2>{{this.id}}</h2>
-                  <!-- <p class="postContent">{{this.question}}</p> -->
                   <p class="postContent"><strong>Tags: </strong>{{this.tags}}</p>
                   <p class="">asked <time class="timeago" datetime='{{alterDate this.created_at}}'>{{this.created_at}}</time>
- by {{this.username}}</p>
+                    by {{this.username}}</p>
                 </div>
                 {{/each}}
             </div>
