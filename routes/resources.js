@@ -60,9 +60,32 @@ router.post('/new/like/:id', function(req, res ,next) {
 	// })
 })
 
-router.delete('/delete/:id', function (req, res, next) {
-	query.getQuestionPostbyId(req.params.id)
-	.then(function(data))
+router.get('/:id/delete', function (req, res, next) {
+	if(req.isAuthenticated()) {
+		queries.getResourceById(req.params.id)
+		.then(function(data) {
+			var resource = data[0]
+			if(req.user.username == resource.creator) {
+				queries.deleteResource(req.params.id)
+				.then(function () {
+					res.redirect('/resources/')
+				})
+			} else {
+				res.redirect('/resources/')
+			}
+		})
+		.catch(function(error) {
+			return next(error)
+		})
+	} else {
+		res.redirect('/login')
+	}
+
+
+
+
+
+
 })
 
 
