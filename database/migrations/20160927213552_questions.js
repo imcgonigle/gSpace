@@ -4,7 +4,7 @@ exports.up = function(knex, Promise) {
 		table.string('username');
 		table.integer('users_id')
 		.references('id')
-		.inTable('users');
+		.inTable('users').onDelete('CASCADE');
 		table.string('title');
 		table.text('body');
 		table.integer('likes');
