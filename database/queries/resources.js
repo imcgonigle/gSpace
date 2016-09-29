@@ -60,9 +60,9 @@ module.exports = {
         return Resources().where('id')
     },
     getResourceTags: function(resource_id) {
-        return Resources().select('resource.id as resource_id', 'resource.title as resource_title', "resource.link as link", 'resource.likes as likes', 'description', 'users_id')
+        return Resources().join('users','resource.users_id','users.id').select('avatar_url','resource.id as resource_id', 'resource.title as resource_title', "resource.link as link", 'resource.likes as likes', 'description', 'users_id')
             .then(function(resourceData) {
-                return Tags().join('resources_tags', 'tags.id', 'resources_tags.tag_id').join('users', 'users.users_id')
+                return Tags().join('resources_tags', 'tags.id', 'resources_tags.tag_id')
                     .then(function(tagData) {
                         // console.log(tagData)
                         for (var i = 0; i < resourceData.length; i++) {
