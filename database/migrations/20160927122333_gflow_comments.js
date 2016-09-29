@@ -6,8 +6,7 @@ exports.up = function(knex, Promise) {
     table.text('comment').notNullable();
     table.string('username');
     table.integer('likes');
-    table.dateTime('created_at');
-    table.dateTime('updated_on');
+    table.timestamps(true,true);
     table.integer('user_id');
   })
 };

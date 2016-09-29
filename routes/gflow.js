@@ -28,7 +28,8 @@ router.post('/ask', function (req, res, next) {
   var title = req.body.title;
   var question = req.body.question;
   var user_id = req.user.id;
-  query.newQuestionPost(username, title, question, user_id)
+  var tags = req.body.tags;
+  query.newQuestionPost(username, title, question, user_id, tags)
   .then(() =>{
       res.redirect('/gflow')
     })
@@ -41,11 +42,15 @@ router.get('/question/:id',(req, res, next) => {
   var id = req.params.id;
   query.getQuestionPostbyId(id).then((posts) => {
   query.getCommentPostbyId(id).then((data) => {
+
+    var isOwner = (req.isAuthenticated() && posts[0].user_id == req.user.id);
+
     console.log(posts);
     res.render('gflow/question', {
       item:posts[0],
       data:data,
-      user:req.user
+      user:req.user,
+      isOwner:isOwner
       })
     })
   })
@@ -93,6 +98,7 @@ router.get('/delete/:id', function(req, res, next) {
   query.getQuestionPostbyId(req.params.id)
   .then(function(data) {
     console.log(data);
+
     if(req.user.username == data[0].username){
       query.deleteQuestionPost(req.params.id)
       .then(function() {
@@ -115,14 +121,18 @@ router.get('/:id/edit', function(req, res, next) {
   query.getQuestionPostbyId(post_id)
         .then(function(data) {
           console.log(data);
+
+          var isOwner = (req.isAuthenticated() && posts[0].user_id == req.user.id);
           var post = data[0];
+
             if (!post.user_id == req.user.id) {
                 res.redirect('/');
                 return;
             } else {
                 res.render('gflow/edit', {
                   item: post,
-                  user: req.user
+                  user: req.user,
+                  isOwner: isOwner
                 })
             }
         })
@@ -147,7 +157,8 @@ router.post('/:id/edit', function(req, res, next) {
       var username = req.user.username;
       var title = req.body.title;
       var question = req.body.question;
-      query.modifyQuestionPost(title, question, questionid)
+      var tags = req.body.tags;
+      query.modifyQuestionPost(title, question, tags, questionid)
         .then(function() {
           res.redirect('/gflow')
         })
@@ -164,5 +175,20 @@ router.post('/:id/edit', function(req, res, next) {
     })
   }
 })
+
+router.post('/question/like/:id', function(req, res, next) {
+
+    var question_post_id = req.params.id
+    query.getQuestionPostbyId(question_post_id)
+        .then(function(data) {
+            var likes = data[0].likes;
+            var id = data[0].questionid;
+            query.addLikeToQuestion(id, likes)
+                .then(function(data) {
+                    console.log(data)
+                    res.send(data)
+                })
+        })
+      })
 
 module.exports = router;

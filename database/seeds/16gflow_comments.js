@@ -13,7 +13,7 @@ exports.seed = function(knex, Promise) {
                     likes: 14,
                     user_id: 1,
                     created_at:'2003-01-02 00:01:00',
-                    updated_on:'2003-01-02 00:01:00'
+                    updated_at:'2003-01-02 00:01:00'
                 }),
                 knex('gflow_comments').insert({
                     id: 2,
@@ -24,7 +24,7 @@ exports.seed = function(knex, Promise) {
                     likes: 2,
                     user_id: 3,
                     created_at:'2003-01-02 00:01:00',
-                    updated_on:'2003-01-02 00:01:00'
+                    updated_at:'2003-01-02 00:01:00'
                 }),
                 knex('gflow_comments').insert({
                     id: 3,
@@ -35,7 +35,7 @@ exports.seed = function(knex, Promise) {
                     likes: 3,
                     user_id: 5,
                     created_at:'2003-01-02 00:01:00',
-                    updated_on:'2003-01-02 00:01:00'
+                    updated_at:'2003-01-02 00:01:00'
                 }),
                 knex('gflow_comments').insert({
                     id: 4,
@@ -46,7 +46,7 @@ exports.seed = function(knex, Promise) {
                     likes: 16,
                     user_id: 1,
                     created_at:'2003-01-02 00:01:00',
-                    updated_on:'2003-01-02 00:01:00'
+                    updated_at:'2003-01-02 00:01:00'
                 }),
                 knex('gflow_comments').insert({
                     id: 5,
@@ -57,7 +57,7 @@ exports.seed = function(knex, Promise) {
                     likes: 100000,
                     user_id: 8,
                     created_at:'2003-01-02 00:01:00',
-                    updated_on:'2003-01-02 00:01:00'
+                    updated_at:'2003-01-02 00:01:00'
                 }),
                 knex('gflow_comments').insert({
                     id: 6,
@@ -68,7 +68,7 @@ exports.seed = function(knex, Promise) {
                     likes: 12,
                     user_id: 1,
                     created_at:'2003-01-02 00:01:00',
-                    updated_on:'2003-01-02 00:01:00'
+                    updated_at:'2003-01-02 00:01:00'
                 })
             ]);
         });
