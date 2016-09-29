@@ -5,7 +5,8 @@ exports.up = function(knex, Promise) {
     table.string('title').notNullable();
     table.text('question').notNullable();
     table.integer('likes');
-    table.timestamp(true,true);
+    table.dateTime('created_at');
+    table.dateTime('updated_on');
     table.integer('user_id');
   })
 };
