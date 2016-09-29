@@ -15,7 +15,7 @@ function Comments()  {
 module.exports = {
   getAllResources: Resources,
   getResourceById: function(resource_id) {
-    return Projects().where('id', resource_id);
+    return Resources().where('id', resource_id);
   },
   addResource: function (users_id, title, description, link) {
     return Resources().insert({
@@ -43,6 +43,9 @@ module.exports = {
   addLikeToResource: function (resource_id, likes) {
     return Resources().where('id', resource_id).update({
       likes: likes +=1
-    })
+    }).returning('likes','id')
+  },
+  getResourceLikes: function (resource_id) {
+    return Resources().where('id', resource_id)
   }
 }

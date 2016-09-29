@@ -20,6 +20,7 @@ router.get('/:id/page', function(req, res, next) {
 
 		var isOwner = (req.isAuthenticated() && project.creator_id == req.user.id);
 
+
 		res.render('projects/page', {
 			project: project,
 			user: req.user,
@@ -71,7 +72,7 @@ router.post('/:id/edit', function(req, res, next) {
 
 			var project = data[0];
 
-			if(project.creator_id == req.user.id) {
+			if (project.creator_id == req.user.id) {
 
 				var title = req.body.title;
 				var body = req.body.body;
