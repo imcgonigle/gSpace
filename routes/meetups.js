@@ -8,7 +8,8 @@ router.get('/', function(req, res, next) {
         .then(function(data) {
             res.render('meetups/index', {
                 title: 'Meetups Homepage',
-                meetups: data
+                meetups: data,
+								user: req.user
             });
         })
         .catch(function(error) {
@@ -69,7 +70,7 @@ router.get('/:id/edit', function(req, res, next) {
                 res.redirect('/');
                 return;
             } else {
-                res.render('edit', { meetup: meetup });
+                res.render('edit', { meetup: meetup, user: req.user });
             }
         })
         .catch(function(error){

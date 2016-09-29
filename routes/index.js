@@ -20,7 +20,7 @@ router.get('/', function(req, res, next) {
 				} else {
 					queries.updateUserLogin(req.user.username)
 					.then(function (data) {
-						res.render('static/home')
+						res.render('static/home', {user: req.user});
 					})
 					.catch(function(error) {
 						return next(error)
