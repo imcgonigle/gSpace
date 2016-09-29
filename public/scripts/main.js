@@ -7,8 +7,13 @@ $('button').on('click', function() {
   $.ajax({
     type: "POST",
     url: "resources/new/like/" + id.id + "",
-    success: function () {
+    success: function (data) {
+
+      var likes = data
+      var id = 
+      console.log(likes)
       $('#heart').css("color", "red")
+      $('#id').text(data)
     }
   })
 })

@@ -39,7 +39,7 @@ router.post('/new/like/:id', function(req, res ,next) {
 		queries.addLikeToResource(id,likes)
 			.then(function(data) {
 				console.log(data)
-				res.send({data:data})
+				res.send(data)
 			})
 	})
 	// .catch(function(error) {
