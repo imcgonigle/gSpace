@@ -16,26 +16,23 @@ function getCommentPostbyId(id) {
   return knex('gflow_comments').where('question_post_id', id);
 }
 
-function newQuestionPost(username, title, question, user_id) {
+function newQuestionPost(username, title, question, user_id, tags) {
   return knex('gflow_questions').insert({
     username: username,
     user_id:user_id,
     title: title,
     question: question,
-    likes: 0,
-    created_at: new Date(),
-    updated_on: new Date()
+    tags: tags,
+    likes: 0
   }).returning('questionid');
 }
 
-function newQuestionComment(question_post_id, subject, comment, username, created_at, updated_at) {
+function newQuestionComment(question_post_id, subject, comment, username) {
   return knex('gflow_comments').insert({
     question_post_id:question_post_id,
     subject: subject,
     comment: comment,
-    username: username,
-    created_at: new Date(),
-    updated_on: new Date()
+    username: username
   }).returning('id');
 }
 
@@ -51,16 +48,18 @@ function modifyQuestionPost(title, question, questionid) {
   return knex('gflow_questions').where('questionid', questionid).update({
     title:title,
     question:question,
-    updated_on: new Date()
+    // updated_on: new Date()
   })
 }
 
-function modifyQuestionComment(subject, comment, id) {
-  return knex('gflow_comments').where('id', id).update({
-    subject: subject,
-    comment: comment,
-    updated_on: new Date()
-  });
+function addLikeToQuestion(questionid, likes) {
+  return knex('gflow_questions').where('questionid', questionid).update({
+  likes: likes +=1
+}).returning('likes','questionid')
+}
+
+function getQuestionLikes (questionid) {
+  return knex('gflow_questions').where('questionid', questionid)
 }
 
 module.exports = {
@@ -73,5 +72,6 @@ module.exports = {
   deleteQuestionComment,
   deleteQuestionPost,
   modifyQuestionPost,
-  modifyQuestionComment
+  addLikeToQuestion,
+  getQuestionLikes
 }

@@ -22,27 +22,6 @@ var collaborate = require('./routes/collaborate');
 
 var app = express();
 
-// hbs.registerHelper('navBarWithLinks', function(path) {
-//   var path = window.location.pathname;
-//   if (path !== 'static/home') {
-//     return <div class="topNavBar">
-//       <div class="logoContainer">
-//         <img src="../public/images/gSpace.jpg" alt="LOGO" class='logo'/>
-//       </div>
-//       <div class="navBarLinks">
-//         <a href="/resources" class="logout white">Resources</a>
-//         <a href="/gFlow" class="logout white">gFlow</a>
-//         <a href="/collaborate" class="logout white">Collaborate</a>
-//       </div>
-//       <div class="chatPicContainer">
-//         <img src="../public/images/chatIcon.jpg" alt="CHAT" class='chatButton'/>
-//         <img src="../public/images/userImg.jpg" alt="PIC" class='picButton'/>
-//       </div>
-//     </div>
-//   }else{
-//
-//     }
-// });
 
 hbs.registerHelper('dotdotdot', function(str) {
   if (str.length > 400)
@@ -54,6 +33,59 @@ hbs.registerHelper('shortDate', function(str) {
   var date = str;
   var shorten = date.toString().split(" ");
   return shorten[1]+ ' ' +shorten[2]+ ', ' +shorten[3];
+});
+
+hbs.registerHelper('alterDate', function(str) {
+  var date = str;
+  var shorten = date.toString().split(" ");
+  var gmt = shorten[5].split("-");
+
+  function switchDate(x) {
+  switch(x) {
+    case "Jan":
+        text = '-01-';
+        break;
+    case "Feb":
+        text = '-02-';
+        break;
+    case "Mar":
+        text = '-03-';
+        break;
+    case "Apr":
+        text = '-04-';
+        break;
+    case "May":
+        text = '-05-';
+        break;
+    case "Jun":
+        text = '-06-';
+        break;
+    case "Jul":
+        text = '-07-';
+        break;
+    case "Aug":
+        text = '-08-';
+        break;
+    case "Sep":
+        text = '-09-';
+        break;
+    case "Oct":
+        text = '-10-';
+        break;
+    case "Nov":
+        text = '-11-';
+        break;
+    case "Dec":
+        text = '-12-';
+        break;
+    default:
+        text = "01";
+  }
+  return text;
+}
+  var month = switchDate(shorten[1]);
+  var altered = shorten[3]+month+shorten[2]+'T'+shorten[4]+'-'+gmt[1];
+  return altered.concat();
 });
 
 // view engine setup

@@ -5,7 +5,7 @@ exports.up = function(knex, Promise) {
     table.string('type');
     // id of the project/meetup/article
     table.integer('uid');
-    table.integer('users_id').references('id').inTable('users');
+    table.integer('users_id').references('id').inTable('users').onDelete('CASCADE');
 		table.text('body');
     table.integer('likes');
     table.dateTime('created_on');

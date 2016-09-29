@@ -41,7 +41,8 @@ router.get('/:id/page', function(req, res, next) {
 
 router.get('/new', function(req, res, next){
   res.render('meetups/new', {
-      title: 'Start a new meetup'
+      title: 'Start a new meetup',
+      user: req.user
   });
 });
 
@@ -50,14 +51,20 @@ router.post('/new', function(req, res, next) {
         var title = req.body.title;
         var description = req.body.description;
         var location = req.body.location;
-        var time = req.body.time;
+        var dateTime = req.body.time.split(' ');
+        var date = dateTime[0];
+        var time = dateTime[1];
+
+        // pass timestamp into moment which will parse it.
+        // take moment object, format out the time
+        // then format date
 
         // queries.addMeetup(id)
         // queries.addMeetup(req.params.id, req.body.title, req.body.description, req.body.location, req.body.time)
 
-        queries.addMeetup(user_id, title, description, location, time)
+        queries.addMeetup(user_id, title, description, location, time, date)
          .then(function(){
-            res.redirect('/id/page');
+            res.redirect('/meetups');
          })
          .catch(function(error){
            return next(error);
