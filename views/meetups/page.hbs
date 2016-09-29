@@ -2,13 +2,12 @@
 <button type="button" name="like">like</button>
 {{#if isOwner}}
     <a href="meetups/{{meetups.id}}/edit">edit</a>
-    <!-- {{#else}}<a href="/edit">for nonOwner</a> -->
 {{/if}}
 
 
-{{meetups.username}}
-{{meetups.description}}
-{{meetups.location}}
-{{meetups.time}}
-{{meetups.created_on}}
-{{meetups.time}}
+{{meetup.username}}
+{{meetup.description}}
+{{meetup.location}}
+{{meetup.time}}
+{{meetup.created_on}}
+{{meetup.time}}
