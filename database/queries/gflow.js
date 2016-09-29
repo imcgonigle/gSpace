@@ -16,12 +16,13 @@ function getCommentPostbyId(id) {
   return knex('gflow_comments').where('question_post_id', id);
 }
 
-function newQuestionPost(username, title, question, user_id, created_at, updated_at) {
+function newQuestionPost(username, title, question, user_id) {
   return knex('gflow_questions').insert({
     username: username,
+    user_id:user_id,
     title: title,
     question: question,
-    user_id:user_id,
+    likes: 0,
     created_at: new Date(),
     updated_on: new Date()
   }).returning('questionid');
@@ -46,15 +47,15 @@ function deleteQuestionComment(id) {
   return knex('gflow_comments').where('id', id).del();
 }
 
-function modifyQuestionPost(title, question, updated_on) {
-  return knex('gflow_questions').where('questionid', id).update({
+function modifyQuestionPost(title, question, questionid) {
+  return knex('gflow_questions').where('questionid', questionid).update({
     title:title,
     question:question,
     updated_on: new Date()
-  }).returning('questionid');
+  })
 }
 
-function modifyQuestionComment(subject, comment, updated_on) {
+function modifyQuestionComment(subject, comment, id) {
   return knex('gflow_comments').where('id', id).update({
     subject: subject,
     comment: comment,
