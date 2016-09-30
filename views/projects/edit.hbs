@@ -6,7 +6,12 @@
 			<nav class="navbar navbar-light" style="background-color: #e3f2fd; margin-bottom: 30px;">
 
 				<a class="navbar-brand" href="/projects/">Projects</a>
-
+				{{#if user.is_admin}}
+					<div class="admin-controls pull-xs-right">
+						<a style="margin-left: 5px;" class="btn btn-danger"href="/projects/{{project.id}}/delete">Delete</a>
+						<a class="btn btn-primary" href="/projects/{{project.id}}/edit">Edit</a>
+					</div>
+				{{/if}}
 				{{#if user}}
 					<a class="nav-link btn btn-success pull-xs-right" href="/projects/new">New Project</a>
 				{{else}}
