@@ -35,9 +35,9 @@
 				<div class="card">
 					<div class="card-block">
 
-						<h3 class="card-title">
+						<h4 class="card-title">
 							<a href="/projects/{{this.project_id}}/page">{{this.title}}</a>
-						</h3>
+						</h4>
 
 						<p class="card-text">
 							{{this.body}}
@@ -47,12 +47,11 @@
 
 					<div class="card-footer">
 						<p class="card-text">
-							{{this.created_on}}
-							{{this.likes}}
-
-							<span class="card-text pull-xs-right">
+							<span class="card-text">
 								Proposed by: {{this.username}}
 							</span>
+							<time datetime="{{alterDate created_on}}" class="timeago pull-xs-right"> {{created_on}}</time>
+							{{this.likes}}
 						</p>
 					</div>
 				</div>  {{!-- end of card-block --}}
@@ -63,9 +62,9 @@
 				<h3 class="card-header">Your Projects</h3>
 				<div class="card-blockt">
 					<ul class="list-group">
-						<li class="list-group-item">Owned</li>
-						<li class="list-group-item">Joined</li>
-						<li class="list-group-item">Following</li>
+						<li class="list-group-item">Owned <span style="font-weight: bold; color: darkblue; font-size: 1.2rem;">0</span></li>
+						<li class="list-group-item">Joined <span style="font-weight: bold; color: darkblue; font-size: 1.2rem;">0</span></li>
+						<li class="list-group-item">Following <span style="font-weight: bold; color: darkblue; font-size: 1.2rem;">0</span></li>
 					</ul>
 				</div>
 			</div>

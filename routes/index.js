@@ -33,6 +33,16 @@ router.get('/', function(req, res, next) {
 
 });
 
+router.get('/collaborate', function(req, res, next) {
+
+	if(req.isAuthenticated()) {
+		res.render('static/collaborate', {title: 'Collaborate', user: req.user})
+	} else{
+		res.redirect('/login')
+	};
+
+});
+
 router.get('/random', function(req,res, next) {
 	res.render('static/random', {user: req.user, title: "You shouldn't be here!!"});
 });

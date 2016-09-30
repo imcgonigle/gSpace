@@ -71,7 +71,7 @@
 
 
 								<div class="card-block">
-									<p><span style="font-weight: bold;"><a href="/random">{{username}}</a>	</span> <span class="pull-xs-right">{{posted_on}}</span></p>
+									<p><span style="font-weight: bold;"><a href="/random">{{username}}</a>	</span> <span class="pull-xs-right"><time datetime="{{alterDate posted_on}}" class="timeago">{{posted_on}}</time></span></p>
 									<p>
 										{{comment}}
 									</p>
@@ -93,9 +93,9 @@
 					<h3 class="card-header">Your Projects</h3>
 					<div class="card-blockt">
 						<ul class="list-group">
-							<li class="list-group-item">Owned</li>
-							<li class="list-group-item">Joined</li>
-							<li class="list-group-item">Following</li>
+							<li class="list-group-item">Owned <span style="font-weight: bold; color: darkblue; font-size: 1.2rem;">0</span></li>
+ 							<li class="list-group-item">Joined <span style="font-weight: bold; color: darkblue; font-size: 1.2rem;">0</span></li>
+ 							<li class="list-group-item">Following <span style="font-weight: bold; color: darkblue; font-size: 1.2rem;">0</span></li>
 						</ul>
 					</div>
 				</div>

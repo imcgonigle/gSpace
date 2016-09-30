@@ -6,6 +6,7 @@ exports.up = function(knex, Promise) {
 		.unique()
 		.primary();
 		table.string('username');
+		table.boolean('is_admin');
 		table.string('avatar_url');
 		table.text('biography');
 		table.string('name');
