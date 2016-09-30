@@ -137,7 +137,7 @@ router.get('/:id/delete', function(req, res, next) {
         queries.getResourceById(req.params.id)
             .then(function(data) {
                 var resource = data[0]
-                if (req.user.id == resource.users_id) {
+                if (req.user.id_admin || req.user.id == resource.users_id) {
 
                     queries.deleteResource(req.params.id)
                         .then(function() {
@@ -168,7 +168,7 @@ router.post('/:id/update', function(req, res, next) {
 
                 var resource = data[0]
 
-                if (resource_id.user_id == req.use.id) {
+                if (req.user.is_admin || resource_id.user_id == req.use.id) {
                     var title = req.body.title
                     var link =  req.body.link
                     var user_id = req.user.id
@@ -203,7 +203,7 @@ router.post('/:id/edit', function(req, res, next) {
             .then(function(data) {
                 var resource = data[0];
 
-                if (resource.users_id == req.user.id) {
+                if (req.user.is_admin || resource.users_id == req.user.id) {
                     var title = req.body.title;
                     var description = req.body.description;
                     var link = req.body.link;
