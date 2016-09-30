@@ -47,12 +47,11 @@
 
 					<div class="card-footer">
 						<p class="card-text">
-							{{this.created_on}}
-							{{this.likes}}
-
-							<span class="card-text pull-xs-right">
+							<span class="card-text">
 								Proposed by: {{this.username}}
 							</span>
+							<time datetime="{{alterDate created_on}}" class="timeago pull-xs-right"> {{created_on}}</time>
+							{{this.likes}}
 						</p>
 					</div>
 				</div>  {{!-- end of card-block --}}
