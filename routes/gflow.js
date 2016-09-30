@@ -251,5 +251,20 @@ router.post('/question/comments/:id', function(req, res, next) {
 	})
 })
 
+router.post('/question/favorite/:id', function(req, res, next) {
+  var id = req.params.id;
+  var user = req.user.id;
+  console.log(id);
+  query.addFavorite(id, user)
+  .then(function(data) {
+    console.log(data);
+    res.send(data)
+  })
+  .catch(function(err) {
+    console.log('error');
+    return next(err);
+  })
+})
+
 
 module.exports = router;

@@ -51,3 +51,27 @@ $('.commentClick').on('click', function() {
     }
   })
 })
+
+$('.favoriteQs').on('click', function() {
+
+  var id = {
+    id: $(this).attr('id')
+  }
+  $.ajax({
+    type: "POST",
+    url: "/gflow/question/favorite/" + id.id,
+    success: function (data) {
+
+      var favorite = data;
+      console.log(favorite);
+
+
+      $('#'+id.id ).text(favorite[0])
+      $('#'+id.id ).prepend('<i id="star {{this.question_id}}" class=" fa fa-star-o" aria-hidden="true"></i>')
+      $('#star').css("color", "yellow")
+    },
+    error: function(err){
+      console.log(err);
+    }
+  })
+})
