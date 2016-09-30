@@ -44,9 +44,9 @@ router.get('/page/:id', function(req, res, next) {
 })
 
 router.post('/search', function(req, res, nect) {
-    var tag = req.body.tag
-    console.log(tag)
-    queries.Search(tag)
+    var search = req.body.search
+    console.log(search)
+    queries.Search(search)
         .then(function(resource) {
             res.render('resources/index', {
                 resource: resource,
