@@ -102,6 +102,7 @@ router.post('/question/:id',(req, res, next) => {
 });
 
 router.post('/delete/:id', function(req, res, next) {
+
 	query.getQuestionPostbyId(req.params.id)
 	.then(function(data) {
 		if(req.isAuthenticated() && req.user.username == data[0].username){
@@ -119,6 +120,7 @@ router.post('/delete/:id', function(req, res, next) {
 	.catch((err)=>{
 		return next(err)
 	})
+
 });
 
 
@@ -190,6 +192,7 @@ router.post('/:id/edit', function(req, res, next) {
 
 router.post('/question/like/:id', function(req, res, next) {
 
+
   var question_post_id = req.params.id
   query.getQuestionPostbyId(question_post_id)
   .then(function(data) {
@@ -204,6 +207,48 @@ router.post('/question/like/:id', function(req, res, next) {
 		})
   })
 
+})
+
+
+router.post('/question/views/:id', function(req, res, next) {
+
+    var question_post_id = req.params.id;
+
+    query.getQuestionPostbyId(question_post_id)
+    .then(function(data) {
+      var views = data[0].views;
+      var id = data[0].questionid;
+      query.addViewsToQuestion(id, views)
+      .then(function(data) {
+        res.send(data)
+      })
+			.catch(function(err) {
+				return next(err);
+			})
+    })
+})
+
+router.post('/question/comments/:id', function(req, res, next) {
+
+  var question_post_id = req.params.id
+  query.getQuestionPostbyId(question_post_id)
+  .then(function(data) {
+
+    var comments = data[0].comments;
+    var id = data[0].questionid;
+
+    query.addNumOfCommentsToQuestion(id, comments)
+    .then(function(data) {
+      console.log(data)
+      res.send(data)
+    })
+		.catch(function(err) {
+			return next(err);
+		});
+  })
+	.catch(function(err) {
+		return next(err);
+	})
 })
 
 
