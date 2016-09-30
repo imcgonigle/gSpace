@@ -1,9 +1,16 @@
-.commentHead, .commentContainer{
-  text-align: center;
+// .commentHead, .commentContainer{
+//   text-align: center;
+// }
+// .subjectLabel {
+//   padding-right: 17px;
+// }
+// .commentHead, .commentButton{
+//   padding-left: 75px;
+// }
+.borderDiv{
+  border: black 2px solid !important;
 }
-.subjectLabel {
-  padding-right: 17px;
-}
-.commentHead, .commentButton{
-  padding-left: 75px;
+.floatLeft{
+  display: block;
+  float: left;
 }
