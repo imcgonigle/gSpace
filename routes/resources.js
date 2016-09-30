@@ -3,13 +3,16 @@ var router = express.Router();
 var queries = require('../database/queries/resources')
 var passport = require('../passport')
 
+var title = 'Resources | '
+
 router.get('/', function(req, res, next) {
 
     queries.getResourceTags().then((resource) => {
             res.render('resources/index', {
                 title: 'Resources Homepage',
                 resource: resource,
-                user: req.user.id,
+                user: req.user,
+								title: title + "Homepage"
             })
 
         })
@@ -27,7 +30,9 @@ router.get('/page/:id', function(req, res, next) {
 
             res.render('resources/single-resource', {
                 resource: resource,
-                isOwner: isOwner
+                isOwner: isOwner,
+								user: req.user,
+								title: title + resource.title
             })
         })
 })
@@ -37,20 +42,26 @@ router.post('/search', function(req,res,nect) {
   console.log(tag)
   queries.Search(tag)
     .then(function(resource) {
-      res.render('resources/index', {resource:resource})
+      res.render('resources/index', {resource:resource, user: req.user, title:
+			title + "Search"})
     })
 
 })
 
 router.post('/new', function(req, res, next) {
-    queries.addResource(req.user.id, req.body.title, req.body.description, req.body.link)
-        .then(function(data) {
-            res.redirect('/resources')
-        })
-        .catch(function(error) {
-            return next(error)
-        })
-})
+	if(req.isAuthenticated()){
+		queries.addResource(req.user.id, req.body.title, req.body.description, req.body.link)
+      .then(function(data) {
+          res.redirect('/resources')
+      })
+      .catch(function(error) {
+          return next(error)
+      })
+	} else {
+		res.redirect('/login');
+	}
+
+});
 
 router.post('/new/like/:id', function(req, res, next) {
 
@@ -77,7 +88,9 @@ router.get('/:id/edit', function(req, res, next) {
                 // 	res.redirect('/')
                 // } else {
             res.render('resources/edit', {
-                    resource: resource
+                    resource: resource,
+										user: req.user,
+										title: title + "Edit"
                 })
                 // }
         })
@@ -87,7 +100,6 @@ router.get('/:id/delete', function(req, res, next) {
         queries.getResourceById(req.params.id)
             .then(function(data) {
                 var resource = data[0]
-                  console.log(req.user.id, resource.users_id)
                 if (req.user.id == resource.users_id) {
 
                     queries.deleteResource(req.params.id)
@@ -122,7 +134,6 @@ router.post('/:id/update', function (req,res,next) {
       if (resource_id.user_id == req.use.id) {
         var title = req.body.title
         var link = req.body.link
-        console.log(link)
         var user_id = req.user.id
         var description = req.body.description
 
@@ -130,8 +141,17 @@ router.post('/:id/update', function (req,res,next) {
           .then(function(id) {
             res.redirect('/resources/page' + id)
           })
-      }
+					.catch(function(err) {
+						return next(err);
+					});
+      } else {
+				res.redirect('/resources/');
+			}
+
     })
+		.catch(function(err) {
+			return next(err);
+		});
   }
 })
 
