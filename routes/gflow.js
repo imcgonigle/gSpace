@@ -1,13 +1,14 @@
 var express = require('express');
 var router = express.Router();
 var query = require('../database/queries/gflow');
-
+var title = "gFlow | "
 router.get('/', function(req, res, next) {
   query.questionPosts()
   .then( (data) => {
     res.render('gflow/index', {
       items: data,
-      user: req.user
+      user: req.user,
+			title: title + "Home"
     })
   })
     .catch((err)=>{
@@ -17,7 +18,7 @@ router.get('/', function(req, res, next) {
 
 router.get('/ask', function(req, res, next) {
   if(req.isAuthenticated()){
-    res.render('gflow/ask', {user:req.user})
+    res.render('gflow/ask', {user:req.user, title: title + "Ask"})
   } else {
     res.redirect('/login')
     }
@@ -64,7 +65,8 @@ router.get('/question/:id',(req, res, next) => {
 	      item:posts[0],
 	      data:data,
 	      user:req.user,
-	      isOwner:isOwner
+	      isOwner:isOwner,
+				title: title + "Question"
 			});
 
     })
@@ -137,7 +139,8 @@ router.get('/:id/edit', function(req, res, next) {
       res.render('gflow/edit', {
         item: post,
         user: req.user,
-        isOwner: isOwner
+        isOwner: isOwner,
+				title: title + 'Edit'
       });
 
     };
