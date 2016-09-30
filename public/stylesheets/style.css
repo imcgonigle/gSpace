@@ -89,6 +89,10 @@ h1 {
   height: 100px;
   background: white; }
 
+.media-resource {
+  height: 100px;
+  background: white; }
+
 .resource {
   border-bottom: 1px;
   border-style: solid;
