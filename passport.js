@@ -9,6 +9,7 @@ passport.use(new GithubStrategy({
   callbackURL: process.env.GH_CALLBACK
 },
   function (accessToken, refreshToken, profile, done) {
+    // return done(null, profile);
 
     query.getUserByID(profile.id)
 		.then(function(data) {
