@@ -1,9 +1,29 @@
 {{#if user}}
-	<!-- <a href="gflow/ask"><h1>Ask a question!</h1></a> -->
 	<br>
-	<div class="text-xl-center">
+	<!-- <div class="text-xl-center">
 		<a href="gflow/ask" class="btn btn-primary"><h1>Ask a Question</h1></a>
-	</div>
+	</div> -->
+	<div class="container" id="gflow-feed">
+    <div class="row">
+        <div class="col-sm-4">
+            <h1 id="gflow-heading">gFlow</h1>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-2">
+          <a href="gflow/ask"><button type="button" class="btn btn-secondary"><i class="fa fa-plus" aria-hidden="true"></i>Ask a Question</button></a>
+            </div>
+            <div class="col-sm-6">
+                <form class="" action="/gflow/search" method="POST">
+                    <div class="input-group">
+                        <input name="search" type="text" class="form-control" placeholder="Tag"><span class="input-group-btn"><button class="btn btn-secondary" type="submit">Search</button></span>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
 {{else}}
 	<p>
 		<a href="/login">Login</a> to ask a question
@@ -13,29 +33,45 @@
 <div class="col-lg-3 offset-lg-9">
 	<div class="card">
 		<div class="list-group">
-			<a href="#" class="list-group-item">Favorite 1 <span class="tag tag-default tag-pill pull-xs-right">14</span><i class="fa fa-star" aria-hidden="true"></i></a>
+			<a href="#" class="list-group-item">Favorite 1 <span class="tag tag-default tag-pill pull-xs-right">1</span><i class="fa fa-star" aria-hidden="true"></i></a>
 			<a href="#" class="list-group-item">Favorite 2 <i class="fa fa-star" aria-hidden="true"></i></a>
 		</div>
 	</div>
 </div>
 
-<div class="row card-block">
-{{#each items}}
-	  <div class="col-lg-2">
-			<!-- {{#each meetups}}
-				<img class="card-img-left" src="{{user._json.avatar_url}}" alt="user avatar">
-				{{/each}} -->
-        <h3>Views: {{this.views}}</h3>
-      	<h3>Comments: {{this.comments}}</h3>
+<div class="container">
+	<div class="row card-block">
+		<div class="col-sm-10">
+			{{#each items}}
+			<div class="media resource">
+        <a class="media-left =" href="#">
+          <img id="profile-image" class="media-object img-circle" src="{{avatar_url}}" alt="profile-image">
+        </a>
+	    	<div class="media-body">
+					<div class="media-left">
+						<p class="">asked <time class="timeago" datetime='{{alterDate this.created_at}}'>{{alterDate this.created_at}}</time>
+							by {{this.username}}</p>
+					</div>
+        	<a href="/gflow/question/{{this.questionid}}" id='{{this.questionid}}' class="viewClick"><h2 class="postTitle">{{this.title}}</h2></a>
+					<p> {{dotdotdot this.question}} </p>
+
+					<div class="row">
+						<!-- <div class="col-sm-2">
+  						<button type="button" id="{{item.questionid}}" class="likeButton btn btn-secondary likes"><i id="heart" class="fa fa-heart-o" aria-hidden="true"></i>{{likes}}</button>
+						</div> -->
+						<div class="col-sm-2">
+  						<a href="/gflow/question/{{this.questionid}}" id='{{this.questionid}}' class="viewClick"><button type="views" id="{{item.questionid}}" class=" btn btn-secondary "><i  class="fa" aria-hidden="true"></i>views {{this.views}}</button></a>
+						</div>
+						<div class="col-sm-2">
+  						<a href="/gflow/question/{{this.questionid}}" id='{{this.questionid}}' class="viewClick"><button type="comments" id="{{item.questionid}}" class=" btn btn-secondary "><i class="fa" aria-hidden="true"></i>comments {{this.comments}}</button></a>
+						</div>
+						<div class="col-sm-6">
+							<span class="tag tag-default tag-pill">{{this.tags}}</span>
+						</div>
+	    		</div>
+				</div>
+			</div>
+			{{/each}}
 		</div>
-		<div class="col-lg-10 border-top">
-	    <div class="questionDiv">
-	      <a href="/gflow/question/{{this.questionid}}" id='{{this.questionid}}' class="viewClick"><h2 class="postTitle">{{this.title}}</h2></a>
-	      <h2>{{this.id}}</h2>
-	      <p><span class="tag tag-default tag-pill">{{this.tags}}</span></p>
-	      <p class="">asked <time class="timeago" datetime='{{alterDate this.created_at}}'>{{alterDate this.created_at}}</time>
-	        by {{this.username}}</p>
-	    </div>
-		</div>
-{{/each}}
+	</div>
 </div>
