@@ -1,4 +1,10 @@
-<a href="gflow/ask"><h1>Ask a question!</h1></a>
+{{#if user}}
+	<a href="gflow/ask"><h1>Ask a question!</h1></a>
+{{else}}
+	<p>
+		<a href="/login">Login</a> to ask a question
+	</p>
+{{/if}}
 
 <div class="container">
         <div class="row">
@@ -8,14 +14,14 @@
                 <a class="media-left =" href="#">
                   <img class="media-object img-rounded" src="..." alt="Generic placeholder image">
                 </a>
+                <h3>Views: {{this.views}}</h3>
+                <h3>Comments: {{this.comments}}</h3>
                 <div class="questionDiv">
-                  <h2 class="postTitle">{{this.title}}</h2>
+                  <a href="/gflow/question/{{this.questionid}}" id='{{this.questionid}}' class="viewClick"><h2 class="postTitle">{{this.title}}</h2></a>
                   <h2>{{this.id}}</h2>
-                  <p class="postContent">{{this.question}}</p>
                   <p class="postContent"><strong>Tags: </strong>{{this.tags}}</p>
                   <p class="">asked <time class="timeago" datetime='{{alterDate this.created_at}}'>{{this.created_at}}</time>
- by {{this.username}}</p>
-                  <a href="/gflow/question/{{this.questionid}}" class="read_more_button">Read More</a>
+                    by {{this.username}}</p>
                 </div>
                 {{/each}}
             </div>

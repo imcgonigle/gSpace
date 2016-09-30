@@ -15,9 +15,109 @@
                     <p class="card-text">{{this.description}}</p>
                     <p class="card-text">{{this.location}}</p>
                     <a href="/meetups/{{this.id}}/page" class="btn btn-primary">View Meetup</a>
-                    <button type="submit" id="likes" class="btn btn-secondary"><i class="fa fa-heart-o" aria-hidden="true"></i>{{likes}}</button>
+
+                    <button type="button" id="{{meetups.id}}" class="btn btn-secondary meetupLikes"><i id="heart" class="fa fa-heart-o" aria-hidden="true"></i>{{likes}}</button>
+
                 </div>
             </div>
         {{/each}}
+    </div>
+</div>
+
+
+
+
+<div class="container" id="meetups-feed">
+    <h1>Meetups Feed</h1>
+
+    <!-- Button trigger modal -->
+    <div class="row">
+        <div class="col-sm-1">
+            <button type="button" class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#add-meetup"><i class="fa fa-plus" aria-hidden="true"></i></button>
+        </div>
+
+        <form class="" action="/meetups/search" method="POST">
+            <div class="col-sm-3">
+                <div class=" input-group">
+                    <input name="search" type="text" class="form-control" placeholder="Search tags...">
+                    <span class="input-group-btn">
+                  <button class="btn btn-secondary" type="submit">Go!</button>
+                </span>
+                </div>
+            </div>
+        </form>
+
+    </div>
+
+
+    <!-- Modal -->
+    <form class="meetups" action="/meetups/new" method="POST">
+
+        <div class="modal fade" id="add-meetup" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <h2>Add New Meetup</h2>
+                    </div>
+                    <div class="modal-body">
+                        <div class="input-group input-group-lg">
+                            <input name="title" type="text" class="form-control" placeholder="Title" aria-describedby="sizing-addon1">
+                        </div>
+                        <div class="input-group">
+                            <span class="input-group-addon" id="basic-addon3">https://</span>
+                            <input id="link" placeholder="Enter Link" name="link" type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+                        </div>
+                        <div class="input-group">
+                            <textarea placeholder="Description" name="description" class="form-control"></textarea>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                {{#each meetup}}
+                    <div class="media meetup">
+                        <a class="media-left =" href="#">
+                            <img id="profile-image" class="media-object img-circle" src="{{avatar_url}}" alt="profile-image">
+                        </a>
+                        <div class="media-body">
+                            <a id="header" href="/meetups/page/{{meetup_id}}">
+                                <h4 class="media-heading">{{meetup_title}}</h4>
+                            </a>
+                            <p>
+                                {{description}} Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis
+                                aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                            </p>
+                            <button type="button" id="{{meetup_id}}" class="btn btn-secondary likes"><i id="heart" class="fa fa-heart-o" aria-hidden="true"></i>{{likes}}</button>
+                            {{#each tags}}
+                                <span class="tag tag-default">{{this}}</span>
+                            {{/each}}
+                        </div>
+                    </div>
+
+                {{/each}}
+            </div>
+            <div class="col-lg-6">
+                <div class="card">
+                    <div class="list-group">
+                        <a href="#" class="list-group-item">Favorite 1 <span class="tag tag-default tag-pill pull-xs-right">14</span><i class="fa fa-star" aria-hidden="true"></i></a>
+                        <a href="#" class="list-group-item">Favorite 2 <i class="fa fa-star" aria-hidden="true"></i></a>
+                        <a href="#" class="list-group-item">Morbi leo risus <i class="fa fa-star" aria-hidden="true"></i></a>
+                        <a href="#" class="list-group-item">Porta ac consectetur ac</a>
+                        <a href="#" class="list-group-item">Vestibulum at eros</a>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>

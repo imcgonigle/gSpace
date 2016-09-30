@@ -1,4 +1,4 @@
-$('button').on('click', function() {
+$('.likes').on('click', function() {
 
   var id = {
     id: $(this).attr('id')
@@ -17,4 +17,5 @@ $('button').on('click', function() {
     }
   })
 });
+
 

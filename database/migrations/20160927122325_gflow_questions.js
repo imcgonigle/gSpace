@@ -8,6 +8,8 @@ exports.up = function(knex, Promise) {
     table.timestamps(true,true);
     table.integer('user_id');
     table.string('tags');
+    table.integer('views');
+    table.integer('comments');
   })
 };
 

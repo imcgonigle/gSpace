@@ -123,6 +123,9 @@ module.exports = {
     getResourceTags: function (resource_id) {
         return Resources().join('users', 'resource.users_id', 'users.id').select('avatar_url', 'resource.id as resource_id', 'resource.title as resource_title', "resource.link as link", 'resource.likes as likes', 'description', 'users_id')
             .then(function (resourceData) {
+    getResourceTags: function(resource_id) {
+        return Resources().join('users', 'resource.users_id', 'users.id').select('avatar_url', 'resource.id as resource_id', 'resource.title as resource_title', "resource.link as link", 'resource.likes as likes', 'description', 'users_id')
+            .then(function(resourceData) {
                 return Tags().join('resources_tags', 'tags.id', 'resources_tags.tag_id')
                     .then(function (tagData) {
                         // console.log(tagData)
@@ -149,5 +152,27 @@ module.exports = {
             name: name,
             created_at: new Date()
         })
+
+    },
+    Search: function(tag) {
+
+        return Tags().join('resources_tags', 'tags.id', 'resources_tags.tag_id')
+        // .select('avatar_url', 'resource.id as resource_id', 'resource.title as resource_title', "resource.link as link", 'resource.likes as likes', 'description', 'users_id')
+            .select
+            .then(function(resourceData) {
+                return Tags().join('resources_tags', 'tags.id', 'resources_tags.tag_id')
+                    .then(function(tagData) {
+                        // console.log(tagData)
+                        for (var i = 0; i < resourceData.length; i++) {
+                            resourceData[i].tags = []
+                            for (var j = 0; j < tagData.length; j++) {
+                                if (tagData[j].resource_id === resourceData[i].resource_id) {
+                                    resourceData[i]["tags"].push(tagData[j].name)
+                                }
+                            }
+                        }
+                        return resourceData
+                    })
+            })
     }
 }
