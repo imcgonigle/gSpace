@@ -4,16 +4,13 @@ var query = require('../database/queries/gflow');
 var title = "gFlow | "
 router.get('/', function(req, res, next) {
   query.questionPosts()
-  .then( (data) => {
+  .then(data => {
     res.render('gflow/index', {
-      items: data,
-      user: req.user,
-			title: title + "Home"
-    })
-  })
-    .catch((err)=>{
-      return next(err)
-    })
+		items: data,
+		user: req.user,
+		title: title + "Home"
+	})
+  }).catch(err => next(err))
 })
 
 router.get('/ask', function(req, res, next) {

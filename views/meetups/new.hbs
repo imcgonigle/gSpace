@@ -1,10 +1,3 @@
-<head>
-    <link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/css/bootstrap-combined.min.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" media="screen"
-          href="http://tarruda.github.com/bootstrap-datetimepicker/assets/css/bootstrap-datetimepicker.min.css">
-</head>
-<body>
-
 <div class="container cards">
     <div class="row">
         <div class="col-sm-6">
@@ -19,10 +12,7 @@
                     <div><label for="description">description</label>
                         <textarea type="text" rows="3" id="description" name="description"></textarea>
                     </div>
-                    <div>
-                        <label for="location">location</label>
-                        <input type="text" id="location" name="location">
-                    </div>
+
 
                     <div id="datetimepicker" class="input-append date">
                         <label for="time">Time</label>
@@ -32,30 +22,29 @@
                       </span>
                     </div>
 
-                    <button type="submit" id="likes" class="btn btn-secondary"><i class="fa fa-heart-o"
-                                                                                  aria-hidden="true"></i>{{likes}}
-                    </button>
+                    <div class="googleMap">
+                        <div>
+                            <div>
+                                <!--prompt user to focus on an area of the city-->
+                                <!--zoom to keep page a little neater-->
+                                <input id="zoom-to-area" type="button" value="Zoom">
+                            </div>
+                        </div>
+                        <hr>
+                        <div>
+                            <!--<div>-->
+                                <!--<label for="location">location</label>-->
+                                <!--<input type="text" id="location" name="location">-->
+                            <!--</div>-->
+                            <input id="search-within-time-text" type="text"
+                                   placeholder="Ex: Denver, CO">
+                        </div>
+                        <hr>
+                    </div>
+
                     <button type="submit">save</button>
                 </form>
-                <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.8.3/jquery.min.js">
-                </script>
-                <script type="text/javascript"
-                        src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/js/bootstrap.min.js">
-                </script>
-                <script type="text/javascript"
-                        src="http://tarruda.github.com/bootstrap-datetimepicker/assets/js/bootstrap-datetimepicker.min.js">
-                </script>
-                <script type="text/javascript"
-                        src="http://tarruda.github.com/bootstrap-datetimepicker/assets/js/bootstrap-datetimepicker.pt-BR.js">
-                </script>
-                <script type="text/javascript">
-                    $('#datetimepicker').datetimepicker({
-                        format: 'MM/dd/yyyy hh:mm:ss',
-                        language: 'en'
-                    });
-                </script>
             </div>
         </div>
     </div>
 </div>
-</body>
