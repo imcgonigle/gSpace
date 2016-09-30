@@ -224,13 +224,7 @@ router.post('/new/favorite/:id', function(req, res, next) {
     var user = req.user.id
     queries.addFavorite(id, user)
         .then(function(data) {
-          function timeout () {
-              console.log('redirecting')
               res.redirect('/resources')
-            }
-            setTimeout(timeout, 3000)
-
-
         })
     .catch(function (error) {
       return next(error)
