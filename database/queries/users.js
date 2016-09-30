@@ -38,5 +38,8 @@ module.exports = {
       website: website,
       cohort: cohort
     }).returning('id')
-  }
+  },
+	getUserByID: function(user_id) {
+		return Users().where('id', user_id);
+	}
 }
