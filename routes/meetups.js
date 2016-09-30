@@ -3,29 +3,29 @@ var router = express.Router();
 var queries = require('../database/queries/meetups_queries');
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
+router.get('/', function (req, res, next) {
     queries.getMeetups()
-        .then(function(data) {
+        .then(function (data) {
             res.render('meetups/index', {
                 title: 'Meetups Homepage',
                 meetups: data,
-								user: req.user
+                user: req.user
             });
         })
-        .catch(function(error) {
+        .catch(function (error) {
             return next(error);
         })
 });
 
-router.post('/new/like/:id', function(req, res, next) {
+router.post('/new/like/:id', function (req, res, next) {
 
     var meetup_id = req.params.id
     queries.getMeetup(id)
-        .then(function(data) {
+        .then(function (data) {
             var likes = data[0].likes
             var id = data[0].id
             queries.addLikeToMeetup(id, likes)
-                .then(function(data) {
+                .then(function (data) {
                     console.log(data)
                     res.send(data)
                 })
@@ -35,9 +35,9 @@ router.post('/new/like/:id', function(req, res, next) {
     // })
 });
 
-router.get('/:id/page', function(req, res, next) {
+router.get('/:id/page', function (req, res, next) {
     queries.getMeetup(req.params.id)
-        .then(function(data) {
+        .then(function (data) {
             if (data[0].user_id == req.user.id) {
                 res.render('meetups/page', {
                     meetup: data[0],
@@ -52,101 +52,97 @@ router.get('/:id/page', function(req, res, next) {
                 })
             }
         })
-        .catch(function(error) {
+        .catch(function (error) {
             return next(error);
         })
 });
 
-router.get('/new', function(req, res, next){
-  res.render('meetups/new', {
-      title: 'Start a new meetup',
-      user: req.user
-  });
+router.get('/new', function (req, res, next) {
+    res.render('meetups/new', {
+        title: 'Start a new meetup',
+        user: req.user
+    });
 });
 
-router.post('/new', function(req, res, next) {
-        var user_id = req.user.id;
-        var title = req.body.title;
-        var description = req.body.description;
-        var location = req.body.location;
-        var dateTime = req.body.time.split(' ');
-        var date = dateTime[0];
-        var time = dateTime[1];
+router.post('/new', function (req, res, next) {
+    var user_id = req.user.id;
+    var title = req.body.title;
+    var description = req.body.description;
+    var location = req.body.location;
+    var dateTime = req.body.time.split(' ');
+    var date = dateTime[0];
+    var time = dateTime[1];
 
-        // pass timestamp into moment which will parse it.
-        // take moment object, format out the time
-        // then format date
+    // pass timestamp into moment which will parse it.
+    // take moment object, format out the time
+    // then format date
 
-        // queries.addMeetup(id)
-        // queries.addMeetup(req.params.id, req.body.title, req.body.description, req.body.location, req.body.time)
+    // queries.addMeetup(id)
+    // queries.addMeetup(req.params.id, req.body.title, req.body.description, req.body.location, req.body.time)
 
-        queries.addMeetup(user_id, title, description, location, time, date)
-         .then(function(){
+    queries.addMeetup(user_id, title, description, location, time, date)
+        .then(function () {
             res.redirect('/meetups');
-         })
-         .catch(function(error){
-           return next(error);
-         })
+        })
+        .catch(function (error) {
+            return next(error);
+        })
 });
 
-router.get('/:id/edit', function(req, res, next) {
+router.get('/:id/edit', function (req, res, next) {
     queries.getMeetup(req.params.id)
-        .then(function(data) {
-          var meetup = data[0];
+        .then(function (data) {
+            var meetup = data[0];
             if (!req.user.id == meetup.user_id) {
                 console.log('user ' + req.user.id + 'is not meetup owner');
                 res.redirect('/');
                 return;
             } else {
-                res.render('edit', { meetup: meetup, user: req.user });
+                res.render('edit', {meetup: meetup, user: req.user});
             }
         })
-        .catch(function(error){
-          return next(error);
+        .catch(function (error) {
+            return next(error);
         })
 });
 
-router.post('/:id/edit', function(req, res, next) {
-        var id = req.params.id;
-        var title = req.body.title;
-        var description = req.body.description;
-        var location = req.body.location;
-        var time = req.body.time;
+router.post('/:id/edit', function (req, res, next) {
+    var id = req.params.id;
+    var title = req.body.title;
+    var description = req.body.description;
+    var location = req.body.location;
+    var time = req.body.time;
 
-        queries.updateMeetup(id, description, title, location, time)
-        .then(function() {
+    queries.updateMeetup(id, description, title, location, time)
+        .then(function () {
             res.redirect('/id/page')
         })
-        .catch(function(error){
-          return next(error);
+        .catch(function (error) {
+            return next(error);
         })
 });
 
-router.post('/:id/delete', function(req, res, next) {
-  queries.getMeetup(req.params.id)
-  .then(function(data){
-    if(req.user.id == data[0].user_id){
-      queries.deleteMeetup(req.params.id)
-      .then(function(data){
-        res.redirect('/meetups')
-      })
-      .catch(function(error){
-        return next(error);
-      })
-    } else {
-      res.redirect('/')
-    }
-  })
-  .catch(function(error){
-    return next(error);
-  })
+router.post('/:id/delete', function (req, res, next) {
+    queries.getMeetup(req.params.id)
+        .then(function (data) {
+            if (req.user.id == data[0].user_id) {
+                queries.deleteMeetup(req.params.id)
+                    .then(function (data) {
+                        res.redirect('/meetups')
+                    })
+                    .catch(function (error) {
+                        return next(error);
+                    })
+            } else {
+                res.redirect('/')
+            }
+        })
+        .catch(function (error) {
+            return next(error);
+        })
 });
 
 module.exports = router;
-
-
-
-
 
 
 // var express = require('express');

@@ -1,8 +1,26 @@
 <div class="container" id="resources-feed">
-    <h1>Resources Feed</h1>
+    <div class="row">
+        <div class="col-sm-4">
+            <h1 id="resources-heading">Resources Feed</h1>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-2">
+                <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#add-resource"><i class="fa fa-plus" aria-hidden="true"></i> Add Resource</button>
+            </div>
+            <div class="col-sm-6">
+                <form class="" action="/resources/search" method="POST">
+                    <div class="input-group">
+                        <input name="search" type="text" class="form-control" placeholder="Tag"><span class="input-group-btn"><button class="btn btn-secondary" type="submit">Search</button></span>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
 
     <!-- Button trigger modal -->
-    <button type="button" class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#add-resource"><i class="fa fa-plus" aria-hidden="true"></i></button>
 
     <!-- Modal -->
     <form class="resources" action="/resources/new" method="POST">
@@ -38,35 +56,44 @@
     </form>
     <div class="container">
         <div class="row">
-            <div class="col-lg-6">
+            <div class="col-sm-8">
                 {{#each resource}}
                     <div class="media resource">
                         <a class="media-left =" href="#">
                             <img id="profile-image" class="media-object img-circle" src="{{avatar_url}}" alt="profile-image">
                         </a>
                         <div class="media-body">
-                            <a id="header" href="/resources/page/{{resource_id}}">
+                            <a id="header" href="{{link}}">
                                 <h4 class="media-heading">{{resource_title}}</h4>
                             </a>
                             <p>
                                 {{description}} Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis
                                 aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
                             </p>
-                            <button type="button" id="{{resource_id}}" class="btn btn-secondary likes"><i id="heart" class="fa fa-heart-o" aria-hidden="true"></i>{{likes}}</button>
-                            {{#each tags}}
-                            <span class="tag tag-default">{{this}}</span>
-                            {{/each}}
+
+                            <div class="row">
+                                <div class="col-sm-2">
+                                    <button type="button" id="{{resource_id}}" class="btn btn-secondary likes"><i id="heart" class="fa fa-heart-o" aria-hidden="true"></i>{{likes}}</button>
+                                </div>
+                                <div class="col-sm-2">
+                                    <button type="button" id="{{resource_id}}" class="btn btn-secondary favorites"><i id="star" class="fa fa-star-o" aria-hidden="true"></i>{{likes}}</button>
+                                </div>
+                                <div class="col-sm-8">
+                                    {{#each tags}}
+                                        <span class="tag tag-default">{{this}}</span>
+                                    {{/each}}
+                                </div>
+                            </div>
                         </div>
                     </div>
-
                 {{/each}}
             </div>
-            <div class="col-lg-4">
+            <div class="col-sm-4">
                 <div class="card">
                     <div class="list-group">
-                      {{#each favorites}}
-                        <a href="{{link}}" class="list-group-item">{{title}}<span class="tag tag-default tag-pill pull-xs-right"></span><i class="fa fa-star" aria-hidden="true"></i></a>
-                      {{/each}}
+                        {{#each favorites}}
+                            <a href="{{link}}" class="list-group-item">{{title}}<span class="tag tag-default tag-pill pull-xs-right"></span><i class="fa fa-star" aria-hidden="true"></i></a>
+                        {{/each}}
                     </div>
                 </div>
             </div>

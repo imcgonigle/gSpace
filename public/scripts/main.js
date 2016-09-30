@@ -28,12 +28,12 @@ $('.favorites').on('click', function() {
     url: "/resources/new/favorite/" + id.id + "",
     success: function (data) {
 
-      var likes = data
+      var favorite = data
 
 
       $('#'+id.id ).text(likes[0])
-      $('#'+id.id ).prepend('<i id="heart" class="fa fa-heart-o" aria-hidden="true"></i>')
-      $('#heart').css("color", "red")
+      $('#'+id.id ).prepend('<i id="star" class="fa fa-heart-o" aria-hidden="true"></i>')
+      $('#star').css("color", "red")
     }
   })
 })
