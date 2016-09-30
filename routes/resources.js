@@ -164,13 +164,13 @@ router.post('/:id/update', function(req, res, next) {
 
                 if (resource_id.user_id == req.use.id) {
                     var title = req.body.title
-                    var link = req.body.link
+                    var link =  req.body.link
                     var user_id = req.user.id
                     var description = req.body.description
 
                     query.updateProject(resource.id, title, description, link)
                         .then(function(id) {
-                            res.redirect('/resources/page' + id)
+                            res.redirect('/resources/')
                         })
                         .catch(function(err) {
                             return next(err);
