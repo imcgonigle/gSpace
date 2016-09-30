@@ -34,7 +34,7 @@ exports.seed = function(knex, Promise) {
           created_on: '2006-04-10T13:48:23.83-05:00',
           updated_on: '2006-04-10T13:49:23.83-05:00',
         }),
-				knex.raw('ALTER SEQUENCE meetups_id_seq RESTART WITH 6;')
+				knex.raw('ALTER SEQUENCE meetups_id_seq RESTART WITH 4;')
       ]);
     });
 };

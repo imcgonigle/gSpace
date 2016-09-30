@@ -69,7 +69,9 @@ exports.seed = function(knex, Promise) {
                     user_id: 1,
                     created_at:'2003-01-02 00:01:00',
                     updated_at:'2003-01-02 00:01:00'
-                })
+                }),
+								knex.raw('ALTER SEQUENCE meetups_id_seq RESTART WITH 7;')
+
             ]);
         });
 };
