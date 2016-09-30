@@ -1,41 +1,73 @@
 <div class="container">
-	<div class="project-page-container">
+	<div class="row">
+		<div class="col-lg-11">
+			<nav class="navbar navbar-light" style="background-color: #e3f2fd; margin-bottom: 30px;">
 
-		<div class="project-page-header">
+				<a class="navbar-brand" href="/projects/">Projects</a>
 
-			<h1>{{project.title}}</h1>
-			<h2><a href="{{project.repository_url}}">{{project.repository_url}}</a></h2>
+				{{#if user}}
+					<a class="nav-link btn btn-success pull-xs-right" href="/projects/new">New Project</a>
+				{{else}}
+					<p class=" pull-xs-right"><a href="/login">Login</a> to create a new project</p>
+				{{/if}}
+				<!-- <form class="form-inline pull-xs-right">
+					<input class="form-control" type="text" placeholder="Search">
+					<button class="btn btn-outline-success" type="submit">Search</button>
+				</form> -->
 
-			{{#if isOwner}}
+			</nav>
+		</div>
+	</div>
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-8">
+				<div class="card">
+					<h1 class="card-title">{{project.title}}</h1>
 
-				<div class="functions">
+					<div class="card-block">
 
-					<a href="/projects/{{project.id}}/delete">Delete</a>
-					<a href="/projects/{{project.id}}/edit">Edit</a>
+						<h4>Repo URL: {{project.repository_url}}</h2>
 
-				</div> {{!-- end of functions --}}
+						<p>
+							Proposal By: {{proposal.username}}
+							<span class="pull-xs-right">Likes: {{project.likes}}</span>
+						</p>
+						<p>
+							{{project.body}}
+						</p>
+						{{#if isOwner}}
+						<div class="owner-controls pull-xs-right">
+							<a class="btn btn-danger"href="/projects/{{project.id}}/delete">Delete</a>
+							<a class="btn btn-primary" href="/projects/{{project.id}}/edit">Edit</a>
+						</div>
 
-			{{/if}}
+						{{/if}}
+					</div>
 
-		</div> {{!-- end of project-page-header --}}
+				</div>
+				<div class="card">
+					<div class="card-block">
+						<form class="delete" action="/projects/{{project.id}}/delete" method="post">
+							<button class="form-control btn btn-danger" type="submit" name="delete">Delete This Project</button>
+						</form>
+					</div>
+				</div>
 
-		<div class="project-page-body">
+			</div>
 
-			<!-- <p>
-				Proposal by: {{project.username}}
-			</p> -->
+			<div class="col-lg-3">
+				<div class="card">
+					<h3 class="card-header">Your Projects</h3>
+					<div class="card-blockt">
+						<ul class="list-group">
+							<li class="list-group-item">Owned</li>
+							<li class="list-group-item">Joined</li>
+							<li class="list-group-item">Following</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
 
-			<p>
-				{{project.body}}
-			</p>
-		</div> {{!-- end of project-page-body --}}
-
-		<div class="project-page-footer">
-			<span>{{project.likes}}</span>
-		</div> {{!-- end of project-page-footer --}}
-		<form class="delete" action="/projects/{{project.id}}/delete" method="post">
-			<button type="submit" name="delete">Delete This Project</button>
-		</form>
-	</div> {{!-- end of project-page-container --}}
-
+	</div>
 </div>
