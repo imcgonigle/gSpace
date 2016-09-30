@@ -85,7 +85,7 @@ router.get('/:id/edit', function(req, res, next) {
 
 		var project = data[0];
 
-		if(req.isAuthenticated() && project.creator_id== req.user.id){
+		if(req.isAuthenticated() && project.creator_id== req.user.id || req.user.is_admin){
 
 			res.render('projects/edit', {
 				user: req.user,
@@ -117,7 +117,7 @@ router.post('/:id/edit', function(req, res, next) {
 
 			var project = data[0];
 
-			if (project.creator_id == req.user.id) {
+			if (req.user.is_admin || project.creator_id == req.user.id) {
 
 				var title = req.body.title;
 				var body = req.body.body;
@@ -153,7 +153,7 @@ router.get('/:id/delete', function(req, res, next) {
 		.then(function(data) {
 			var project = data[0];
 
-			if(req.user.id == project.creator_id) {
+			if(req.user.is_admin || req.user.id == project.creator_id) {
 				res.render('projects/delete', {
 					project: project,
 					user: req.user,
@@ -183,7 +183,7 @@ router.post('/:id/delete', function(req, res, next) {
 
 			var project = data[0];
 
-			if(req.user.id == project.creator_id) {
+			if(req.user.is_admin || req.user.id == project.creator_id) {
 
 				query.deleteProject(project.id)
 				.then(function(data) {
