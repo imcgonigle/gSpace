@@ -64,11 +64,9 @@
             <div class="col-lg-4">
                 <div class="card">
                     <div class="list-group">
-                        <a href="#" class="list-group-item">Favorite 1 <span class="tag tag-default tag-pill pull-xs-right">14</span><i class="fa fa-star" aria-hidden="true"></i></a>
-                        <a href="#" class="list-group-item">Favorite 2 <i class="fa fa-star" aria-hidden="true"></i></a>
-                        <a href="#" class="list-group-item">Morbi leo risus <i class="fa fa-star" aria-hidden="true"></i></a>
-                        <a href="#" class="list-group-item">Porta ac consectetur ac</a>
-                        <a href="#" class="list-group-item">Vestibulum at eros</a>
+                      {{#each favorites}}
+                        <a href="{{link}}" class="list-group-item">{{title}}<span class="tag tag-default tag-pill pull-xs-right"></span><i class="fa fa-star" aria-hidden="true"></i></a>
+                      {{/each}}
                     </div>
                 </div>
             </div>
