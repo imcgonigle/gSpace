@@ -1,3 +1,20 @@
+<div class="row">
+    <div class="col-md-6">
+        <button type="button" class="btn btn-secondary ">
+            <a href="meetups/new"><i class="fa fa-plus" aria-hidden="true"></i>
+                Add New Meetup</a>
+        </button>
+    </div>
+</div>
+
+<div class="container cards">
+    <div class="row">
+        <div class="col-sm-6">
+            <div id="map"></div>
+        </div>
+    </div>
+</div>
+
 <div class="container cards">
     <div class="row">
         <div class="col-sm-6">
@@ -8,9 +25,6 @@
                 <p class="card-text">{{meetup.username}}</p>
                 <p class="card-text">{{meetup.description}}</p>
                 <p class="card-text">{{meetup.location}}</p>
-                <button type="submit" id="{{meetup.id}}" class="btn btn-secondary"><i class="fa fa-heart-o meetupLikes"
-                                                                                      aria-hidden="true"></i>{{likes}}
-                </button>
                 {{#if isOwner}}
                     <a href="meetups/{{meetups.id}}/edit">edit</a>
                 {{/if}}
@@ -18,9 +32,6 @@
         </div>
     </div>
 </div>
-
-<a href="/meetups/new">start your own meetup</a>
-
 
 <div class="googleMap">
     <div>
@@ -63,3 +74,5 @@
 <script async defer
         src="https://maps.googleapis.com/maps/api/js?libraries=geometry,places,drawing&key=AIzaSyAK_jsF0g2cc8rGCCrNfd595o5IxxAujOs&callback=initMap"></script>
 
+
+<a href="/meetups/new">start your own meetup</a>
