@@ -32,6 +32,16 @@ router.get('/page/:id', function(req, res, next) {
         })
 })
 
+router.post('/search', function(req,res,nect) {
+  var tag = req.body.tag
+  console.log(tag)
+  queries.Search(tag)
+    .then(function(resource) {
+      res.render('resources/index', {resource:resource})
+    })
+
+})
+
 router.post('/new', function(req, res, next) {
     queries.addResource(req.user.id, req.body.title, req.body.description, req.body.link)
         .then(function(data) {
@@ -159,7 +169,7 @@ router.post('/:id/edit', function(req, res, next) {
 })
 
 router.post('/search', function(req,res,next) {
-  
+
 })
 
 

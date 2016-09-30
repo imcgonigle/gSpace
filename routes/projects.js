@@ -2,12 +2,14 @@ var express = require('express');
 var router = express.Router();
 var query = require('../database/queries/projects');
 
+var title = "Projects | "
+
 router.get('/', function(req, res, next) {
 
 	query.getAllProjectsWithUsers()
 	.then(function(data) {
 
-		res.render('projects/index', {user: req.user, projects: data})
+		res.render('projects/index', {user: req.user, projects: data, title: title + 'Homepage'})
 
 	})
 	.catch(function(err){
@@ -36,7 +38,8 @@ router.get('/:id/page', function(req, res, next) {
 				project: project,
 				comments: data,
 				user: req.user,
-				isOwner: isOwner
+				isOwner: isOwner,
+				title: title + 'Project ' + project.id
 			});
 
 		})
@@ -86,7 +89,8 @@ router.get('/:id/edit', function(req, res, next) {
 
 			res.render('projects/edit', {
 				user: req.user,
-				project: project
+				project: project,
+				title: title + 'Edit'
 			});
 
 		} else{
@@ -152,7 +156,8 @@ router.get('/:id/delete', function(req, res, next) {
 			if(req.user.id == project.creator_id) {
 				res.render('projects/delete', {
 					project: project,
-					user: req.user
+					user: req.user,
+					title: title + 'Delete'
 				});
 			} else {
 				res.redirect('/projects/');
@@ -206,7 +211,7 @@ router.post('/:id/delete', function(req, res, next) {
 router.get('/new', function(req, res, next) {
 
 	if(req.isAuthenticated()) {
-		res.render('projects/new', {user: req.user})
+		res.render('projects/new', {user: req.user, title: title + "New"})
 	} else {
 		res.redirect('/login')
 	};
