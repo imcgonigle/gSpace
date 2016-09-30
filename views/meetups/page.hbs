@@ -8,7 +8,7 @@
                     <p class="card-text">{{meetup.username}}</p>
                     <p class="card-text">{{meetup.description}}</p>
                     <p class="card-text">{{meetup.location}}</p>
-                    <button type="submit" id="likes" class="btn btn-secondary"><i class="fa fa-heart-o" aria-hidden="true"></i>{{likes}}</button>
+                    <button type="submit" id="{{meetup.id}}" class="btn btn-secondary"><i class="fa fa-heart-o meetupLikes" aria-hidden="true"></i>{{likes}}</button>
                     {{#if isOwner}}
                         <a href="meetups/{{meetups.id}}/edit">edit</a>
                     {{/if}}

@@ -1,4 +1,3 @@
-
 $('.likes').on('click', function() {
 
   var id = {
