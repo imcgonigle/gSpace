@@ -6,7 +6,7 @@ $('.likes').on('click', function() {
   }
   $.ajax({
     type: "POST",
-    url: "resources/new/like/" + id.id + "",
+    url: "/resources/new/like/" + id.id + "",
     success: function (data) {
 
       var likes = data
