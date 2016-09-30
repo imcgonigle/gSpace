@@ -1,7 +1,7 @@
 var knex = require('./knex.js');
 
 function questionPosts() {
-  return knex('gflow_questions');
+  return knex('gflow_questions').orderBy('created_at', 'desc');
 }
 
 function commentPosts() {
@@ -85,8 +85,26 @@ function getQuestionComments (questionid) {
   return knex('gflow_questions').where('questionid', questionid)
 }
 
+function questions_tags() {
+    return knex('questions_tags')
+}
 
+function questions_favorites() {
+  return knex('gflowQuestions_favorites')
+}
 
+function getFavorites (user) {
+      return questions_favorites().join('users', 'gflow_questions_favorites.user_id', 'users.id')
+        .where('user_id', user)
+        .join('question', 'gflow_questions_favorites.gflow_questions_id', 'question.question_id')
+      }
+
+function addFavorite (gflow_questions_id, user_id) {
+      return knex('gflowQuestions_favorites').insert({
+        user_id : user_id,
+        gflow_questions_id : gflow_questions_id
+      }).returning('gflow_questions_id')
+    }
 
 
 module.exports = {
@@ -104,5 +122,9 @@ module.exports = {
   addViewsToQuestion,
   getQuestionViews,
   addNumOfCommentsToQuestion,
-  getQuestionComments
+  getQuestionComments,
+  questions_tags,
+  questions_favorites,
+  getFavorites,
+  addFavorite
 }
