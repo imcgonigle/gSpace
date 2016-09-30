@@ -118,4 +118,8 @@ h1 {
   padding-top: 2%;
   min-height: 300px; }
 
+.404 {
+  background-image: url("https://unsplash.com/random");
+  background-size: cover; }
+
 /*# sourceMappingURL=style.css.map */
