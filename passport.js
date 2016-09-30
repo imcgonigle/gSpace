@@ -9,13 +9,19 @@ passport.use(new GithubStrategy({
   callbackURL: process.env.GH_CALLBACK
 },
   function (accessToken, refreshToken, profile, done) {
+    // return done(null, profile);
+
     query.getUserByID(profile.id)
 		.then(function(data) {
-			profile.is_admin = data[0].is_admin;
-			return done(null, profile);
+			if(data[0] == undefined) {
+				return done(null, profile);
+			} else {
+				profile.is_admin = data[0].is_admin;
+				return done(null, profile);
+			}
 		})
     .catch(function(err) {
-			return next(err);
+			return (err);
 		})
   }
 ))
