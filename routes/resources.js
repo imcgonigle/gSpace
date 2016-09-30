@@ -11,7 +11,7 @@ router.get('/', function(req, res, next) {
         var user = req.user.id
         queries.getFavorites(user)
             .then(function(favorites) {
-                console.log(favorites)
+                // console.log(favorites)
 
                 res.render('resources/index', {
                     title: 'Resources Homepage',
@@ -64,19 +64,28 @@ router.post('/new', function(req, res, next) {
         queries.addResource(req.user.id, req.body.title, req.body.description, req.body.link, req.body.tags)
             .then(function(id) {
                 var id = id[0]
-                var argument = {}
                 var tagArray = []
                 for (var i = 0; i < tags.length; i++) {
-                  tagArray.push({
-                    name: tags[i],
-                    resource_id: id,
-                    created_at: new Date()
-                  })
+                    tagArray.push({
+                        name: tags[i],
+                        created_at: new Date()
+                    })
                 }
-                console.log(tagArray)
                 queries.addTag(tagArray)
                     .then(function(data) {
-                        res.redirect('/resources')
+                        console.log(data)
+                        tagRelationArray = []
+                        for (var i = 0; i < data.length; i++) {
+                            tagRelationArray.push({
+                                tag_id: data[i],
+                                resource_id: id
+                            })
+                        }
+                        queries.addTagResourceRelation(tagRelationArray)
+                            .then(function(data) {
+                                res.redirect('/resources')
+
+                            })
                     })
             })
 
@@ -215,8 +224,17 @@ router.post('/new/favorite/:id', function(req, res, next) {
     var user = req.user.id
     queries.addFavorite(id, user)
         .then(function(data) {
-            res.render('resources/index')
+          function timeout () {
+              console.log('redirecting')
+              res.redirect('/resources')
+            }
+            setTimeout(timeout, 3000)
+
+
         })
+    .catch(function (error) {
+      return next(error)
+    })
 })
 
 
