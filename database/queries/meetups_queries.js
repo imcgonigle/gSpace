@@ -71,49 +71,7 @@ module.exports = {
     getMeetups: getMeetups,
     getMeetup: getMeetup,
     updateMeetup: updateMeetup,
-    deleteMeetup: deleteMeetup,
-    addLikeToMeetup: function (meetups.id, likes) {
-        return Meetups().where('id', meetups.id).update({
-            likes: likes +=1
-        }).returning('likes','id')
-    },
-    getMeetupLikes: function (meetup_id) {
-        return Meetups().where('id', meetup_id)
-    },
-    getMeetupComments: function (meetup_id) {
-        return Meetups().where('id')
-    },
-    getMeetupTags: function (meetup_id) {
-        return Meetups().select('meetup.id as meetup_id', 'meetup.title as meetup_title', "meetup.link as link", 'meetup.likes as likes', 'description')
-            .then(function (meetupData) {
-                return Tags().join('meetups_tags', 'tags.id', 'meetups_tags.tag_id')
-                    .then(function (tagData) {
-                        // console.log(tagData)
-                        for (var i = 0; i < meetupData.length; i++) {
-                            meetupData[i].tags = []
-                            for (var j = 0; j < tagData.length; j++) {
-                                if (tagData[j].meetup_id === meetupData[i].meetup_id) {
-                                    meetupData[i]["tags"].push(tagData[j].name)
-                                }
-                            }
-                        }
-                        console.log(meetupData)
-                        return meetupData
-                    })
-            })
-    },
-    addTagToMeetup: function (meetup_id, tag_id ) {
-        return Meetups_Tags().insert({
-            meetup_id: meetup_id,
-            tag_id:tag_id
-        })
-    },
-    addTag: function (meetup_id, tag_id) {
-        return Tags().insert({
-            name: name,
-            created_at: new Date()
-        })
-    }
+    deleteMeetup: deleteMeetup
 };
 
 

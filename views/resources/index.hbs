@@ -1,28 +1,8 @@
 <div class="container" id="resources-feed">
     <h1>Resources Feed</h1>
 
-    <br>
     <!-- Button trigger modal -->
-    <div class="row">
-        <div class="col-sm-2">
-            <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#add-resource"><i class="fa fa-plus" aria-hidden="true"></i> Add Resource</button>
-        </div>
-
-        <form class="" action="/resources/search" method="POST">
-            <div class="col-sm-3">
-                <div class=" input-group">
-                    <input name="tag" type="text" class="form-control" placeholder="Search tags...">
-                    <span class="input-group-btn">
-                  <button class="btn btn-secondary" type="submit">Go!</button>
-                </span>
-                </div>
-            </div>
-        </form>
-
-    </div>
-
-    <br>
-
+    <button type="button" class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#add-resource"><i class="fa fa-plus" aria-hidden="true"></i></button>
 
     <!-- Modal -->
     <form class="resources" action="/resources/new" method="POST">
@@ -58,7 +38,7 @@
     </form>
     <div class="container">
         <div class="row">
-            <div class="col-lg-8">
+            <div class="col-lg-6">
                 {{#each resource}}
                     <div class="media resource">
                         <a class="media-left =" href="#">
@@ -72,33 +52,10 @@
                                 {{description}} Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis
                                 aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
                             </p>
-                            <div class="row">
-                              <div class="col-sm-2">
-                                <button type="button" id="{{resource_id}}" class="btn btn-secondary likes"><i id="heart" class="fa fa-heart-o" aria-hidden="true"></i>{{likes}}</button>
-                              </div>
-                              <!-- <div class="col-sm-7">
-                                <form class="" action="/resources/search" method="POST">
-                                        <div class=" input-group">
-                                            <input name="tag" type="text" class="form-control" placeholder="Tag">
-                                            <span class="input-group-btn"><button class="btn btn-secondary" type="submit">Add Tag</button></span>
-                                        </div>
-                                </form>
-                              </div> -->
-                              <div class="col-sm-2">
-                                <button type="button" id="{{resource_id}}" class="btn btn-secondary favorites"><i id="heart" class="fa fa-star" aria-hidden="true"></i></button>
-                              </div>
-                              <div class="col-sm-8">
-                                {{#each tags}}
-                                    <span class="tag tag-default">{{this}}</span>
-                                {{/each}}
-                              </div>
-                              </div>
-                              <div class="row">
-
-                              </div>
-
-
-
+                            <button type="button" id="{{resource_id}}" class="btn btn-secondary likes"><i id="heart" class="fa fa-heart-o" aria-hidden="true"></i>{{likes}}</button>
+                            {{#each tags}}
+                            <span class="tag tag-default">{{this}}</span>
+                            {{/each}}
                         </div>
                     </div>
 
