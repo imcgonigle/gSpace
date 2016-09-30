@@ -10,12 +10,12 @@
         <div class="row">
             <div class="col-lg-6">
               {{#each items}}
-              <div class="media resource">
-                <a class="media-left =" href="#">
-                  <img class="media-object img-rounded" src="..." alt="Generic placeholder image">
-                </a>
+							<!-- <div class="borderDiv"> -->
+							<div class="floatLeft">
+								<img class="card-img-top img-fluid img-thumbnail" style="max-width:100%; height:250px; width:250px;" src="{{user.avatar_url}}" alt="user avatar">
                 <h3>Views: {{this.views}}</h3>
                 <h3>Comments: {{this.comments}}</h3>
+							</div>
                 <div class="questionDiv">
                   <a href="/gflow/question/{{this.questionid}}" id='{{this.questionid}}' class="viewClick"><h2 class="postTitle">{{this.title}}</h2></a>
                   <h2>{{this.id}}</h2>
@@ -24,6 +24,7 @@
                     by {{this.username}}</p>
                 </div>
                 {{/each}}
+							<!-- </div> -->
             </div>
             <div class="col-lg-6">
                 <div class="card">
@@ -36,4 +37,3 @@
             </div>
           </div>
         </div>
-      </div>
