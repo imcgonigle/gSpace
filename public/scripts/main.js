@@ -1,4 +1,3 @@
-
 $('.likes').on('click', function() {
 
   var id = {
@@ -17,4 +16,6 @@ $('.likes').on('click', function() {
       $('#heart').css("color", "red")
     }
   })
-})
+});
+
+

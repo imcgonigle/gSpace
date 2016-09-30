@@ -6,11 +6,11 @@ exports.seed = function(knex, Promise) {
                 // Inserts seed entries
                 knex('users').insert({
                     id: 1,
-                    username: 'username1',
-                    avatar_url: 'avatar_url1',
-                    biography: 'biography1',
-                    name: 'first_name1',
-                    cohort: '1',
+                    username: 'avaBean',
+                    avatar_url: 'http://rs795.pbsrc.com/albums/yy236/terminatoraf/Funny/mrbeabn.jpg~c200',
+                    biography: 'I mean I can do it when Im very relaxed, and with good friends, then I think I can be amusing.',
+                    name: 'Mr Bean',
+                    cohort: '100',
                     location: 'city1',
                     linkedin_url: 'linkedin_url1',
                     github_url: 'github_url1',
@@ -21,8 +21,8 @@ exports.seed = function(knex, Promise) {
                 }),
                 knex('users').insert({
                     id: 2,
-                    username: 'username2',
-                    avatar_url: 'avatar_url2',
+                    username: 'poshVader',
+                    avatar_url: 'http://static.boredpanda.com/blog/wp-content/uploads/2015/11/the-daily-life-of-darth-vader-is-my-latest-365-day-photo-project-33__880.jpg',
                     biography: 'biography2',
                     name: 'first_name2',
                     cohort: '2',
@@ -36,8 +36,8 @@ exports.seed = function(knex, Promise) {
                 }),
                 knex('users').insert({
                     id: 3,
-                    username: 'username3',
-                    avatar_url: 'avatar_url3',
+                    username: 'emoRen',
+                    avatar_url: 'http://vignette2.wikia.nocookie.net/starwars/images/c/ca/KyloRenHS-TFA.png/revision/latest?cb=20160417032040',
                     biography: 'biography3',
                     name: 'first_name3',
                     cohort: '3',
@@ -51,8 +51,8 @@ exports.seed = function(knex, Promise) {
                 }),
                 knex('users').insert({
                     id: 4,
-                    username: 'username4',
-                    avatar_url: 'avatar_url4',
+                    username: 'duckFace4Eva',
+                    avatar_url: 'http://blog.orangecarton.com/wp-content/uploads/2013/05/mona_lisa_iphone.jpg',
                     biography: 'biography4',
                     name: 'first_name4',
                     cohort: '31',
@@ -65,9 +65,9 @@ exports.seed = function(knex, Promise) {
                     last_login: '2006-04-10T13:42:23.83-05:00'
                 }),
                 knex('users').insert({
-                    id: 500,
-                    username: 'username500',
-                    avatar_url: 'avatar_url500',
+                    id: 5,
+                    username: 'nope',
+                    avatar_url: 'http://animalsadda.com/wp-content/uploads/2015/03/Grumpy-Cat-6.jpg',
                     biography: 'biography500',
                     name: 'first_name500',
                     cohort: '310',
@@ -79,6 +79,6 @@ exports.seed = function(knex, Promise) {
                     first_login: '2006-04-10T13:42:23.83-05:00',
                     last_login: '2006-04-10T13:42:23.83-05:00'
                 })
-            ]);
+            ])
         });
 };

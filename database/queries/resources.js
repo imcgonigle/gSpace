@@ -27,22 +27,22 @@ module.exports = {
     },
     addResource: function(users_id, title, description, link) {
         return Resources().insert({
-                users_id: users_id,
-                title: title,
-                description: description,
-                link: link,
-                created_on: new Date(),
-                updated_on: new Date()
-            })
+            users_id: users_id,
+            title: title,
+            description: description,
+            link: link,
+            created_on: new Date(),
+            updated_on: new Date()
+        })
             .returning('id');
     },
     updateResource: function(resource_id, title, description, link) {
         return Resources().where('id', resource_id).update({
-                title: title,
-                description: description,
-                link: link,
-                updated_on: new Date()
-            })
+            title: title,
+            description: description,
+            link: link,
+            updated_on: new Date()
+        })
             .returning('id');
     },
     deleteResource: function(resource_id) {
@@ -91,8 +91,8 @@ module.exports = {
     },
     Search: function(tag) {
         return Resources().join('resources_tags', 'resource_id', 'resource.id')
-        .innerJoin('tags', 'tags.id', 'tag_id')
-        .where('name', tag)
+            .innerJoin('tags', 'tags.id', 'tag_id')
+            .where('name', tag)
     }
 
 
