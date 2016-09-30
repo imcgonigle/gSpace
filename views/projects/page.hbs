@@ -1,78 +1,107 @@
-<h1>Project page</h1>
-<div class="container" style="background: red;">
-	<div class="project-page-container">
+<div class="container">
+	<div class="row">
+		<div class="col-lg-11">
+			<nav class="navbar navbar-light" style="background-color: #e3f2fd; margin-bottom: 30px;">
 
-		<div class="project-page-header">
+				<a class="navbar-brand" href="/projects/">Projects</a>
 
-			<h1>{{project.title}}</h1>
-			<h2>Repo URL: {{project.repository_url}}</h2>
+				{{#if user}}
+					<a class="nav-link btn btn-success pull-xs-right" href="/projects/new">New Project</a>
+				{{else}}
+					<p class=" pull-xs-right"><a href="/login">Login</a> to create a new project</p>
+				{{/if}}
+				<!-- <form class="form-inline pull-xs-right">
+					<input class="form-control" type="text" placeholder="Search">
+					<button class="btn btn-outline-success" type="submit">Search</button>
+				</form> -->
 
-			{{#if isOwner}}
+			</nav>
+		</div>
+	</div>
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-8">
+				<div class="card">
+					<h1 class="card-title">{{project.title}}</h1>
 
-				<div class="owner-controls">
+					<div class="card-block">
 
-					<a href="/projects/{{project.id}}/delete">Delete</a>
-					<a href="/projects/{{project.id}}/edit">Edit</a>
+						<h4>Repo URL: {{project.repository_url}}</h2>
 
-				</div> {{!-- end of owner-controls --}}
+						<p>
+							Proposal By: {{proposal.username}}
+							<span class="pull-xs-right">Likes: {{project.likes}}</span>
+						</p>
+						<p>
+							{{project.body}}
+						</p>
+						{{#if isOwner}}
+						<div class="owner-controls pull-xs-right">
+							<a class="btn btn-danger"href="/projects/{{project.id}}/delete">Delete</a>
+							<a class="btn btn-primary" href="/projects/{{project.id}}/edit">Edit</a>
+						</div>
 
-			{{/if}}
 
-		</div> {{!-- end of project-page-header --}}
+						{{/if}}
+					</div>
 
-		<div class="project-page-body">
+				</div>
+				<div class="card">
+					<div class="card-block">
+						{{#if user}}
+							<div class="comment-form">
 
-			<!-- <p>
-				Proposal by: {{project.username}}
-			</p> -->
+							<form class="new-comment" action="/projects/{{project.id}}/page" method="post">
 
-			<p>
-				{{project.body}}
-			</p>
+							<textarea class="form-control" required='true' name="comment" rows="3" cols="40" placeholder="Comment..."></textarea>
 
-		</div> {{!-- end of project-page-body --}}
+							<button class='form-control btn btn-primary btn-sm pull-xs-right' type="submit" name="new-comment-button">Post Comment</button>
 
-		<div class="project-page-comments">
-			{{#if user}}
-			<div class="comment-form">
+							</form>
 
-				<form class="new-comment" action="/projects/{{project.id}}/page" method="post">
+							</div>{{!-- end of comment-form --}}
+						{{else}}
+							<p>
+								<a href="/login">Login</a> to comment.
+							</p>
+						{{/if}}
+						<hr>
+						{{#each comments}}
 
-					<textarea required='true' name="comment" rows="8" cols="40" placeholder="Comment..."></textarea>
+							<div style="margin-top: 35px;" class="card">
 
-					<button type="submit" name="new-comment-button">Post Comment</button>
 
-				</form>
+								<div class="card-block">
+									<p><span style="font-weight: bold;"><a href="/random">{{username}}</a>	</span> <span class="pull-xs-right">{{posted_on}}</span></p>
+									<p>
+										{{comment}}
+									</p>
+								</div>
 
-			</div>{{!-- end of comment-form --}}
-			{{else}}
-			<p>
-				<a href="/login">Login</a> to comment.
-			</p>
-			{{/if}}
-			{{#each comments}}
+								<div class="comment-footer">
 
-			<div class="comment-card">
+								</div>
 
-				<div class="comment-header">
-					<h1>{{username}}</h1>
-				</div> {{!-- end of comment-header --}}
+							</div>
+						{{/each}}
+					</div>
+				</div>
 
-				<div class="comment-body">
-					{{comment}}
-				</div>{{!-- end of comment-body --}}
+			</div>
 
-				<div class="comment-footer">
-					{{posted_on}}
-				</div> {{!-- end of comment-footer --}}
+			<div class="col-lg-3">
+				<div class="card">
+					<h3 class="card-header">Your Projects</h3>
+					<div class="card-blockt">
+						<ul class="list-group">
+							<li class="list-group-item">Owned</li>
+							<li class="list-group-item">Joined</li>
+							<li class="list-group-item">Following</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
 
-			</div> {{!-- end of comment-card --}}
-			{{/each}}
-		</div> {{!-- end of project-page-comments --}}
-
-		<div class="project-page-footer">
-			<span>{{project.likes}}</span>
-		</div> {{!-- end of project-page-footer --}}
-
-	</div> {{!-- end of project-page-container --}}
+	</div>
 </div>

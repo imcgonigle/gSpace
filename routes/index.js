@@ -33,6 +33,10 @@ router.get('/', function(req, res, next) {
 
 });
 
+router.get('/random', function(req,res, next) {
+	res.render('static/random', {user: req.user, title: "You shouldn't be here!!"});
+});
+
 router.get('/login', function(req, res, next) {
 
 	if (req.isAuthenticated()) {
