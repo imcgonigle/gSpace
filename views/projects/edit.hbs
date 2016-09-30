@@ -1,17 +1,73 @@
-<h1>Edit Project Proposal</h1>
+
 <div class="container">
-	<form class="new-project" action="/projects/{{project.id}}/edit" method="post">
+	<div class="row">
+		<div class="col-lg-11">
 
-		<label for="title">Project Title</label>
-		<input type="text" name="title" value="{{project.title}}">
+			<nav class="navbar navbar-light" style="background-color: #e3f2fd; margin-bottom: 30px;">
 
-		<label for="proposal-body">Proposal body</label>
-		<textarea name="body" rows="8" cols="40">{{project.body}}</textarea>
+				<a class="navbar-brand" href="/projects/">Projects</a>
 
-		<label for="repository_url">Repository URL</label>
-		<input type="text" name="repository_url" value="{{project.repository_url}}">
+				{{#if user}}
+					<a class="nav-link btn btn-success pull-xs-right" href="/projects/new">New Project</a>
+				{{else}}
+					<p class=" pull-xs-right"><a href="/login">Login</a> to create a new project</p>
+				{{/if}}
+			  <!-- <form class="form-inline pull-xs-right">
+			    <input class="form-control" type="text" placeholder="Search">
+			    <button class="btn btn-outline-success" type="submit">Search</button>
+			  </form> -->
 
-		<button type="submit" name="new-proposal">Edit Project</button>
+			</nav>
 
-	</form>
+		</div>
+
+	</div>
+	<div class="container">
+		<div class="row">
+			 <div class="col-lg-8">
+				 <div class="card">
+				 	<h1 class="card-title">Edit Project!</h1>
+				 </div>
+			 		<div class="card">
+						<div class="card-block">
+
+							<form styl="margin: 20px;" class="new-project" action="/projects/{{project.id}}/edit" method="post">
+
+								<div class="form-group">
+									<label for="title">Project Title</label>
+									<input class="form-control" type="text" name="title" value="{{project.title}}">
+								</div>
+
+								<div class="form-group">
+									<label for="proposal-body">Proposal body</label>
+									<textarea class="form-control" name="body" rows="8" cols="40" >{{project.body}}</textarea>
+								</div>
+
+								<div class="form-group">
+									<label for="repository_url">Repository URL</label>
+									<input class="form-control" type="text" name="repository_url" value="{{project.repository_url}}">
+								</div>
+
+								<input class='btn btn-primary pull-xs-right' type="submit" name="edit-project" value="Edit Project"">
+							</form>
+
+						</div>
+
+			 		</div>
+			 </div>
+			 <div class="col-lg-3">
+				 <div class="card">
+ 					<h3 class="card-header">Your Projects</h3>
+ 					<div class="card-blockt">
+ 						<ul class="list-group">
+ 							<li class="list-group-item">Owned</li>
+ 							<li class="list-group-item">Joined</li>
+ 							<li class="list-group-item">Following</li>
+ 						</ul>
+ 					</div>
+ 				</div>
+			 </div>
+		</div>
+	</div>
+
 </div>

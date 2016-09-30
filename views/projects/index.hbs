@@ -29,43 +29,50 @@
 <div class="container">
 	<div class="row">
 
-
-		{{#each projects}}
 		<div class="col-lg-8">
+
+			{{#each projects}}
+				<div class="card">
+					<div class="card-block">
+
+						<h3 class="card-title">
+							<a href="/projects/{{this.project_id}}/page">{{this.title}}</a>
+						</h3>
+
+						<p class="card-text">
+							{{this.body}}
+						</p>
+
+					</div>
+
+					<div class="card-footer">
+						<p class="card-text">
+							{{this.created_on}}
+							{{this.likes}}
+
+							<span class="card-text pull-xs-right">
+								Proposed by: {{this.username}}
+							</span>
+						</p>
+					</div>
+				</div>  {{!-- end of card-block --}}
+			{{/each}}
+		</div>
+		<div class="col-lg-3">
 			<div class="card">
-				<div class="card-block">
-
-
-					<h3 class="card-title">
-						<a href="/projects/{{this.project_id}}/page">{{this.title}}</a>
-					</h3>
-
-
-
-					<p class="card-text">
-						{{this.body}}
-					</p>
-
-
+				<h3 class="card-header">Your Projects</h3>
+				<div class="card-blockt">
+					<ul class="list-group">
+						<li class="list-group-item">Owned</li>
+						<li class="list-group-item">Joined</li>
+						<li class="list-group-item">Following</li>
+					</ul>
+				</div>
 			</div>
-
-			<div class="card-footer">
-				<p class="card-text">
-					{{this.created_on}}
-					{{this.likes}}
-
-					<span class="card-text pull-xs-right">
-						Proposed by: {{this.username}}
-					</span>
-				</p>
-			</div>
-		</div>  {{!-- end of card-block --}}
+		</div>
+</div>
 
 
-
-	</div>
-
-		{{/each}}
 
 	</div>
 </div>
