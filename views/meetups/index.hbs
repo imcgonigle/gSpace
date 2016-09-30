@@ -1,77 +1,26 @@
 <div class="container" id="meetups-feed">
     <h1>Meetups Feed</h1>
-    <!-- Button trigger modal -->
     <div class="row">
-
         <div class="col-md-6">
-
-            <!--<button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#add-meetup"><i class="fa fa-plus" aria-hidden="true"></i> Add Meetup</button>-->
-
-            <button type="button" class="btn btn-secondary " data-toggle="modal" data-target="#add-meetup">
+            <button type="button" class="btn btn-secondary ">
                 <a href="meetups/new"><i class="fa fa-plus" aria-hidden="true"></i>
-                Add New Meetup</a>
+                    Add New Meetup</a>
             </button>
         </div>
     </div>
 
-    <!-- Modal -->
-    <form action="/meetups/new" method="POST">
-
-        <div class="modal fade" id="add-meetup" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                        <h2>Add New Meetup</h2>
-                    </div>
-                    <div class="modal-body">
-                        <div class="input-group input-group-lg">
-                            <input name="title" type="text" class="form-control" placeholder="Title" aria-describedby="sizing-addon1" id="title">
-                        </div>
-
-                        <div class="input-group">
-                            <textarea placeholder="Description" name="description" class="form-control"></textarea>
-                        </div>
-                        <div class="input-group">
-                            <textarea placeholder="Location" name="location" class="form-control"></textarea>
-                        </div>
-
-                        <div class="input-group">
-                            <input id="zoom-to-area-text" type="text" placeholder="Enter your favorite area!">
-                            <!--zoom to keep page a little neater-->
-                            <input id="zoom-to-area" type="button" value="Zoom">
-                        </div>
-
-
-                    </div>
-
-                    <div id="datetimepicker" class="input-append date">
-                        <label for="time">Time</label>
-                        <input type="text" name="time" id="time">
-                        <span class="add-on">
-                        <i data-time-icon="icon-time" data-date-icon="icon-calendar"></i>
-                      </span>
-                    </div>
-
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary">Submit</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </form>
-
     <div class="container">
-        <div class="row">
-            <div class="col-lg-6">
-                {{#each meetups}}
+        {{#each meetups}}
+            <div class="row">
+                <div class="col-lg-6">
                     <div class="media meetups">
                         <a class="media-left =" href="#">
-                            <img id="profile-image" class="media-object img-circle" src="{{this.avatar_url}}" alt="profile-image">
+                            <img id="profile-image" class="media-object img-circle" src="{{this.avatar_url}}"
+                                 alt="profile-image">
                         </a>
+                        {{#each meetups}}
+                            <img src="{{avatar_url}}"/>
+                        {{/each}}
                         <div class="media-body">
                             <a id="header" href="/meetups/{{this.id}}/page">
                                 <h4 class="media-heading">{{this.title}}</h4>
@@ -79,14 +28,10 @@
                             <p>
                                 {{this.description}}
                             </p>
-                            <button type="button" id="{{this.id}}" class="btn btn-secondary likes"><i id="heart" class="fa fa-heart-o" aria-hidden="true"></i>{{likes}}</button>
-                            {{#each tags}}
-                                <span class="tag tag-default">{{this}}</span>
-                            {{/each}}
                         </div>
                     </div>
-                {{/each}}
+                </div>
             </div>
-        </div>
+        {{/each}}
     </div>
 </div>
