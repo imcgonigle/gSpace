@@ -202,7 +202,7 @@ router.post('/new/favorite/:id', function(req, res, next) {
   var user = req.user.id
   queries.addFavorite(id, user)
     .then(function(data) {
-      res.send(data)
+      res.render('resources/index')
     })
 })
 
