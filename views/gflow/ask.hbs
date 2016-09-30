@@ -1,20 +1,54 @@
-<h1 class='questionInput'></h1>
-<section class='createQuestion'>
-  <form class='add-item' action='/gflow/ask' method='post'>
-    <div>
-      <label for='item-title'>Title:  </label>
-      <input type='text' name='title' class="inputBox" placeholder="What's your programming question? Be specific." cols= '90' value=''></input>
+<div class="container text-xl-center">
+  <h1 class='questionInput'></h1>
+  <div class='row'>
+    <div class="col-lg-9 offset-lg-1">
+    <form class='add-item' action='/gflow/ask' method='post'>
+
+      <div class="form-group">
+        <label for='item-title'>Title:  </label>
+        <input type='text' name='title' class="inputBox form-control" placeholder="What's your programming question? Be specific."  value=''></input>
+      </div>
+
+      <div class="form-group">
+        <label for='item-question'>Question: </label>
+        <textarea name='question' placeholder='Ask your question here' class="inputBox postInputBox form-control" ></textarea>
+      </div>
+
+      <div class="form-group">
+        <label for='item-tags'>Tags: </label>
+        <input type='text' name='tags' class="inputBox form-control" placeholder="at least one such as (javaScript database)"  value=''></input>
+      </div>
+
+      <div>
+        <input type='submit' class="commentClick btn btn-primary " placeholder="Post Your Question"></input>
+      </div>
+
+      </form>
+  </div>
+</div>
+
+
+<!-- <div class="container text-xl-center">
+  <h2>Add Comments</h2>
+    <div class="row">
+      <div class="col-lg-9 offset-lg-1">
+        <form class='add-comment' action='/gflow/question/{{item.questionid}}' method='post'>
+
+          <div class="form-group">
+            <label for='comment-subject' class= "subjectLabel"><strong>Subject: </strong></label>
+            <textarea type='text' name='subject' placeholder='subject' class="subjectInputBox form-control" value=''></textarea>
+          </div>
+
+          <div class="form-group">
+            <label for='comment-comment'><strong>Comment: </strong></label>
+            <textarea name='comment' placeholder='comment' class="commentInputBox form-control" ></textarea>
+          </div>
+
+          <div class="commentButton">
+            <input type='submit' id='{{item.questionid}}' class='commentClick btn btn-primary pull-xs-right' value="Submit Comment"></input>
+          </div>
+
+        </form>
+      </div>
     </div>
-    <div>
-      <label for='item-question'>Question: </label>
-      <textarea name='question' placeholder='Insert your question here' class="inputBox postInputBox" rows='10' cols= '90'></textarea>
-    </div>
-    <div>
-      <label for='item-tags'>Tags: </label>
-      <input type='text' name='tags' class="inputBox" placeholder="at least one such as (javaScript database)" cols= '90' value=''></input>
-    </div>
-    <div>
-      <input type='submit' placeholder="Post Your Question"></input>
-    </div>
-  </form>
-</section>
+  </div> -->

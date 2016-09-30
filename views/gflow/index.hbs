@@ -33,7 +33,7 @@
 	      <a href="/gflow/question/{{this.questionid}}" id='{{this.questionid}}' class="viewClick"><h2 class="postTitle">{{this.title}}</h2></a>
 	      <h2>{{this.id}}</h2>
 	      <p><span class="tag tag-default tag-pill">{{this.tags}}</span></p>
-	      <p class="">asked <time class="timeago" datetime='{{alterDate this.created_at}}'>{{this.created_at}}</time>
+	      <p class="">asked <time class="timeago" datetime='{{alterDate this.created_at}}'>{{alterDate this.created_at}}</time>
 	        by {{this.username}}</p>
 	    </div>
 		</div>
