@@ -53,12 +53,12 @@ router.post('/new', function (req, res, next) {
     var user_id = req.user.id;
     var title = req.body.title;
     var description = req.body.description;
-    var location = req.body.location;
     var dateTime = req.body.time.split(' ');
     var date = dateTime[0];
     var time = dateTime[1];
+    var location = req.body.address;
 
-    queries.addMeetup(user_id, title, description, location, time, date)
+    queries.addMeetup(user_id, title, description, location, time, date )
         .then(function () {
             res.redirect('/meetups');
         })
