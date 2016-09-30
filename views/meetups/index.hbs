@@ -6,23 +6,11 @@
         <div class="col-sm-1">
             <button type="button" class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#add-meetup"><i class="fa fa-plus" aria-hidden="true"></i></button>
         </div>
-
-        <form class="" action="/meetups/search" method="POST">
-            <div class="col-sm-3">
-                <div class=" input-group">
-                    <input name="search" type="text" class="form-control" placeholder="Search tags...">
-                    <span class="input-group-btn">
-                  <button class="btn btn-secondary" type="submit">Go!</button>
-                </span>
-                </div>
-            </div>
-        </form>
-
     </div>
 
 
     <!-- Modal -->
-    <form class="meetups" action="/meetups/new" method="POST">
+    <form action="/meetups/new" method="POST">
 
         <div class="modal fade" id="add-meetup" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
@@ -63,7 +51,7 @@
                             <img id="profile-image" class="media-object img-circle" src="{{this.avatar_url}}" alt="profile-image">
                         </a>
                         <div class="media-body">
-                            <a id="header" href="/meetups/page/{{this.id}}">
+                            <a id="header" href="/meetups/{{this.id}}/page">
                                 <h4 class="media-heading">{{this.title}}</h4>
                             </a>
                             <p>
@@ -73,17 +61,8 @@
                             {{#each tags}}
                                 <span class="tag tag-default">{{this}}</span>
                             {{/each}}
-                            <form class="" action="/meetups/search" method="POST">
-
-                                <div class=" input-group">
-                                    <input name="tag" type="text" class="form-control" placeholder="Tag">
-                                    <span class="input-group-btn"><button class="btn btn-secondary" type="submit">Add Tag</button></span>
-                                </div>
-
-                            </form>
                         </div>
                     </div>
-
                 {{/each}}
             </div>
         </div>
