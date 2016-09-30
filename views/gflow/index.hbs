@@ -22,6 +22,10 @@
 {{#each items}}
 	  <div class="col-lg-3">
 				<img class="card-img-left" src="{{user.avatar_url}}" alt="user avatar">
+				<img class="card-img-left" src="{{this.avatar_url}}" alt="user avatar">
+				<img class="card-img-left" src="{{user.profileUrl}}" alt="user.profileUrl">
+				<img class="card-img-left" src="{{this.profileUrl}}" alt="user avatar">
+				<img class="card-img-left" src="{{req.user.profileUrl}}" alt="user avatar">
         <h3>Views: {{this.views}}</h3>
       	<h3>Comments: {{this.comments}}</h3>
 		</div>
