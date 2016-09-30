@@ -4,18 +4,16 @@
             <div class="card card-block">
                 <form action="/meetups/new" method="POST">
                     <div>
-                        <label for="title">title</label>
-
+                        <label for="title">Title</label>
                         <input type="text" id="title" name="title">
                     </div>
 
-                    <div><label for="description">description</label>
+                    <div><label for="description">Description</label>
                         <textarea type="text" rows="3" id="description" name="description"></textarea>
                     </div>
 
-
                     <div id="datetimepicker" class="input-append date">
-                        <label for="time">Time</label>
+                        <label for="time">Date & Time</label>
                         <input type="text" name="time" id="time">
                         <span class="add-on">
                         <i data-time-icon="icon-time" data-date-icon="icon-calendar"></i>
@@ -23,26 +21,15 @@
                     </div>
 
                     <div class="googleMap">
-                        <div>
-                            <div>
-                                <!--prompt user to focus on an area of the city-->
-                                <!--zoom to keep page a little neater-->
-                                <input id="zoom-to-area" type="button" value="Zoom">
-                            </div>
-                        </div>
                         <hr>
-                        <div>
-                            <!--<div>-->
-                                <!--<label for="location">location</label>-->
-                                <!--<input type="text" id="location" name="location">-->
-                            <!--</div>-->
-                            <input id="search-within-time-text" type="text"
-                                   placeholder="Ex: Denver, CO">
+                        <label for="location" id="location">Location</label>
+                        <div class="input-group">
+                            <input id="zoom-to-area-text" name="address" type="text">
                         </div>
                         <hr>
                     </div>
-
                     <button type="submit">save</button>
+                        <div id="map"></div>
                 </form>
             </div>
         </div>
