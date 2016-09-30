@@ -16,6 +16,14 @@ function Tags() {
     return knex('tags')
 }
 
+function Users() {
+  return knex('users')
+}
+
+function Favorites() {
+  return knex('favorites')
+}
+
 
 
 module.exports = {
@@ -27,22 +35,22 @@ module.exports = {
     },
     addResource: function(users_id, title, description, link) {
         return Resources().insert({
-                users_id: users_id,
-                title: title,
-                description: description,
-                link: link,
-                created_on: new Date(),
-                updated_on: new Date()
-            })
+            users_id: users_id,
+            title: title,
+            description: description,
+            link: link,
+            created_on: new Date(),
+            updated_on: new Date()
+        })
             .returning('id');
     },
     updateResource: function(resource_id, title, description, link) {
         return Resources().where('id', resource_id).update({
-                title: title,
-                description: description,
-                link: link,
-                updated_on: new Date()
-            })
+            title: title,
+            description: description,
+            link: link,
+            updated_on: new Date()
+        })
             .returning('id');
     },
     deleteResource: function(resource_id) {
@@ -93,6 +101,21 @@ module.exports = {
         return Resources().join('resources_tags', 'resource_id', 'resource.id')
         .innerJoin('tags', 'tags.id', 'tag_id')
         .where('name', tag)
+    },
+    getFavorites: function(user) {
+      return Favorites().join('users', 'favorites.user_id', 'users.id')
+        .where('user_id', user)
+        .join('resource', 'favorites.resource_id', 'resource.id')
+    },
+    addFavorite: function(resource_id, user_id) {
+      var user = user
+      var resource_id = resource_id
+      return Favorites().insert({
+        user_id : user_id,
+        resource_id : resource_id
+      }).returning('resource_id')
+
+
     }
 
 

@@ -1,8 +1,11 @@
+<<<<<<< HEAD
+=======
 jQuery(document).ready(function() {
   jQuery("time.timeago").timeago();
 });
 
 
+>>>>>>> 7a24d0beef7b1232ffecac6126d87defa7a1013e
 $('.likeButton').on('click', function() {
 
   var id = {
@@ -24,6 +27,12 @@ $('.likeButton').on('click', function() {
   })
 })
 
+<<<<<<< HEAD
+jQuery(document).ready(function() {
+  jQuery("time.timeago").timeago();
+});
+
+=======
 
 $('.viewClick').on('click', function() {
 
@@ -52,3 +61,4 @@ $('.commentClick').on('click', function() {
     }
   })
 })
+>>>>>>> 7a24d0beef7b1232ffecac6126d87defa7a1013e
