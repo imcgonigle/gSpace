@@ -91,11 +91,10 @@ module.exports = {
             tag_id: tag_id
         })
     },
-    addTag: function(resource_id, tag_id) {
-        return Tags().insert({
-            name: name,
-            created_at: new Date()
-        })
+    addTag: function(tagArray) {
+        return Tags()
+        .join('resources_tags', 'tags.id', 'resources_tags.tag_id')
+        .insert(tagArray)
     },
     Search: function(tag) {
         return Resources().join('resources_tags', 'resource_id', 'resource.id')

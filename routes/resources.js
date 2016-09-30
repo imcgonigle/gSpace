@@ -6,12 +6,12 @@ var passport = require('../passport')
 var title = 'Resources | '
 
 router.get('/', function(req, res, next) {
-        queries.getResourceTags().then((resource) => {
-            var resource = resource
-            var user = req.user.id
-            queries.getFavorites(user)
+    queries.getResourceTags().then((resource) => {
+        var resource = resource
+        var user = req.user.id
+        queries.getFavorites(user)
             .then(function(favorites) {
-              console.log(favorites)
+                console.log(favorites)
 
                 res.render('resources/index', {
                     title: 'Resources Homepage',
@@ -21,12 +21,12 @@ router.get('/', function(req, res, next) {
                     title: title + "Homepage"
                 })
             })
-        })
+    })
 
     .catch(function(error) {
         return next(error)
     })
-  })
+})
 router.get('/page/:id', function(req, res, next) {
     var resource_id = req.params.id
     queries.getResourceById(resource_id)
@@ -59,17 +59,30 @@ router.post('/search', function(req, res, nect) {
 
 router.post('/new', function(req, res, next) {
     if (req.isAuthenticated()) {
-        queries.addResource(req.user.id, req.body.title, req.body.description, req.body.link)
-            .then(function(data) {
-                res.redirect('/resources')
+        var tags = req.body.tags
+        tags = tags.replace(/\s+/g, '').split(",")
+        queries.addResource(req.user.id, req.body.title, req.body.description, req.body.link, req.body.tags)
+            .then(function(id) {
+                var id = id[0]
+                var argument = {}
+                var tagArray = []
+                for (var i = 0; i < tags.length; i++) {
+                  tagArray.push({
+                    name: tags[i],
+                    resource_id: id,
+                    created_at: new Date()
+                  })
+                }
+                console.log(tagArray)
+                queries.addTag(tagArray)
+                    .then(function(data) {
+                        res.redirect('/resources')
+                    })
             })
-            .catch(function(error) {
-                return next(error)
-            })
+
     } else {
         res.redirect('/login');
     }
-
 });
 
 router.post('/new/like/:id', function(req, res, next) {
@@ -198,12 +211,12 @@ router.post('/:id/edit', function(req, res, next) {
 })
 
 router.post('/new/favorite/:id', function(req, res, next) {
-  var id = req.params.id
-  var user = req.user.id
-  queries.addFavorite(id, user)
-    .then(function(data) {
-      res.render('resources/index')
-    })
+    var id = req.params.id
+    var user = req.user.id
+    queries.addFavorite(id, user)
+        .then(function(data) {
+            res.render('resources/index')
+        })
 })
 
 
