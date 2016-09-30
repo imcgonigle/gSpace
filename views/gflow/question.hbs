@@ -1,47 +1,59 @@
-<ul class="questionDivContainer">
-    <div class="questionDiv">
-      {{#if isOwner}}
-      <div class="change">
-        <span class='deleteItem'><a href="/gflow/delete/{{item.questionid}}"><strong>delete</strong></a></span>
-        <span class='modifyPost'><a href="/gflow/{{item.questionid}}/edit"><strong>edit</strong></a></span>
-      </div>
-      {{/if}}
-      <button type="button" id="{{item.questionid}}" class="likeButton btn btn-secondary likes"><i id="heart" class="fa fa-heart-o" aria-hidden="true"></i>{{likes}}</button>
-      <p class="createdDate"><strong>Posted on: </strong>{{shortDate item.created_at}}</p>
-      <h3 class="postTitle"><strong>Title: </strong>{{item.title}}</h3>
-      <p class="postContent"><strong>Question: </strong>{{item.question}}</p>
-      <p class="tags"><strong>Tags: </strong> {{item.tags}}</p>
-      <li class="postName"><strong>Written by: <strong>{{item.username}}</li>
+<div class="row">
+  <div class="col-lg-10 offset-lg-1">
+  <div class="questionDiv">
+    {{#if isOwner}}
+    <div class="change">
+      <span class='deleteItem'><a href="/gflow/delete/{{item.questionid}}"><strong>delete</strong></a></span>
+      <span class='modifyPost'><a href="/gflow/{{item.questionid}}/edit"><strong>edit</strong></a></span>
     </div>
-</ul>
+    {{/if}}
 
-
-<h1 class="Comments">Comments</h1>
-<div class="comment-card">
-    {{#each data}}
-    <div class="borderDiv">
-      {{#if isOwner}}
-      <div class="change">
-        <span class='deleteItem'><a href="/gflow/delete/{{this.id}}"><strong>delete</strong></a></span>
+  <div class="card text-xs-center">
+    <h3 class="card-header"><strong>Title: </strong>{{item.title}}</h3>
+    <p class="card-text"><strong>Question: </strong>{{item.question}}</p>
+    <p class="tags"><strong>Tags: </strong> {{item.tags}}</p>
+    <p class="postName"><strong>Written by: <strong>{{item.username}}</p>
+      <div class="text-xs-right">
+        <button type="button" id="{{item.questionid}}" class="likeButton btn btn-secondary likes"><i id="heart" class="fa fa-heart-o" aria-hidden="true"></i>{{likes}}</button>
       </div>
-      {{/if}}
-      <div class="comment-header">
-        <h3 class="commentSubject">{{this.subject}}</h3>
-      </div>
-      <div class="comment-body">
-      {{this.comment}}
-      </div>
-      <div class="comment-footer">
-        <p class="">commented on <time class="timeago" datetime='{{alterDate this.created_at}}'>{{this.created_at}}</time>
-          by {{this.username}}</p>
-      </div>
-      {{/each}}
+    <div class="card-footer text-muted">
+      <strong>posted on: </strong>{{shortDate item.created_at}}
     </div>
   </div>
 </div>
+</div>
+</div>
 
-<h2 class="commentHead">Add Comments</h2><br>
-  <div class="container">
+
+<div class="container">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="card card-block text-xs-center comment-card" style="width: 100%;">
+        <h1 class="Comments">Comments</h1>
+        {{#each data}}
+        {{#if isOwner}}
+        <div class="change">
+          <span class='deleteItem'><a href="/gflow/delete/{{this.id}}"><strong>delete</strong></a></span>
+        </div>
+        {{/if}}
+        <div class="card-header">
+          <p class="">commented on <time class="timeago" datetime='{{alterDate this.created_at}}'>{{this.created_at}}</time>
+            by {{this.username}}</p>
+        </div>
+        <div class="card-block">
+          <h3 class="card-title">{{this.subject}}</h3>
+          <p class="card-text">{{this.comment}}</p>
+        </div>
+        {{/each}}
+      </div>
+    </div>
+  </div>
+</div>
+<br>
+<br>
+
+<div class="container text-xl-center">
+  <h2>Add Comments</h2>
     <div class="row">
       <div class="col-lg-9 offset-lg-1">
         <form class='add-comment' action='/gflow/question/{{item.questionid}}' method='post'>

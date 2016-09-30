@@ -14,3 +14,21 @@
   display: block;
   float: left;
 }
+
+.text-left {
+  text-align: left;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.text-center {
+  text-align: center;
+}
+.comment-card {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin: 0 auto 100px;
+}

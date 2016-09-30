@@ -1,3 +1,5 @@
+
+
 {{#if user}}
 	<a href="gflow/ask"><h1>Ask a question!</h1></a>
 {{else}}
@@ -6,34 +8,31 @@
 	</p>
 {{/if}}
 
-<div class="container">
-        <div class="row">
-            <div class="col-lg-6">
-              {{#each items}}
-							<!-- <div class="borderDiv"> -->
-							<div class="floatLeft">
-								<img class="card-img-top img-fluid img-thumbnail" style="max-width:100%; height:250px; width:250px;" src="{{user.avatar_url}}" alt="user avatar">
-                <h3>Views: {{this.views}}</h3>
-                <h3>Comments: {{this.comments}}</h3>
-							</div>
-                <div class="questionDiv">
-                  <a href="/gflow/question/{{this.questionid}}" id='{{this.questionid}}' class="viewClick"><h2 class="postTitle">{{this.title}}</h2></a>
-                  <h2>{{this.id}}</h2>
-                  <p class="postContent"><strong>Tags: </strong>{{this.tags}}</p>
-                  <p class="">asked <time class="timeago" datetime='{{alterDate this.created_at}}'>{{this.created_at}}</time>
-                    by {{this.username}}</p>
-                </div>
-                {{/each}}
-							<!-- </div> -->
-            </div>
-            <div class="col-lg-6">
-                <div class="card">
-                    <div class="list-group">
-                        <a href="#" class="list-group-item">Favorite 1 <span class="tag tag-default tag-pill pull-xs-right">14</span><i class="fa fa-star" aria-hidden="true"></i></a>
-                        <a href="#" class="list-group-item">Favorite 2 <i class="fa fa-star" aria-hidden="true"></i></a>
-                        <a href="#" class="list-group-item">Morbi leo risus <i class="fa fa-star" aria-hidden="true"></i></a>
-                    </div>
-                </div>
-            </div>
-          </div>
-        </div>
+
+<div class="col-lg-3 offset-lg-9">
+	<div class="card">
+		<div class="list-group">
+			<a href="#" class="list-group-item">Favorite 1 <span class="tag tag-default tag-pill pull-xs-right">14</span><i class="fa fa-star" aria-hidden="true"></i></a>
+			<a href="#" class="list-group-item">Favorite 2 <i class="fa fa-star" aria-hidden="true"></i></a>
+		</div>
+	</div>
+</div>
+
+<div class="row card-block">
+{{#each items}}
+	  <div class="col-lg-3">
+				<img class="card-img-left" src="{{user.avatar_url}}" alt="user avatar">
+        <h3>Views: {{this.views}}</h3>
+      	<h3>Comments: {{this.comments}}</h3>
+		</div>
+		<div class="col-lg-8 border-top">
+	    <div class="questionDiv">
+	      <a href="/gflow/question/{{this.questionid}}" id='{{this.questionid}}' class="viewClick"><h2 class="postTitle">{{this.title}}</h2></a>
+	      <h2>{{this.id}}</h2>
+	      <p><span class="tag tag-default tag-pill">{{this.tags}}</span></p>
+	      <p class="">asked <time class="timeago" datetime='{{alterDate this.created_at}}'>{{this.created_at}}</time>
+	        by {{this.username}}</p>
+	    </div>
+		</div>
+		{{/each}}
+</div>
