@@ -79,5 +79,4 @@ module.exports = {
 		.select('comments.body AS comment', 'username', 'comments.created_on AS posted_on')
 		.join('users', 'users_id', 'users.id');
 	}
-
 }
