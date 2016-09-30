@@ -10,9 +10,8 @@ exports.up = function (knex, Promise) {
         table.string('title');
         table.integer('likes');
         table.text('description');
+        table.dateTime('time');
         table.string('location');
-        table.date('date');
-        table.time('time');
         table.timestamp('created_on').defaultTo(knex.fn.now());
         table.timestamp('updated_on').defaultTo(knex.fn.now());
     });
