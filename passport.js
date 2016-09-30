@@ -37,5 +37,4 @@ done(null, user)
 
 })
 
-
 module.exports = passport;

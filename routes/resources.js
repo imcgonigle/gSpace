@@ -6,7 +6,9 @@ var passport = require('../passport')
 var title = 'Resources | '
 
 router.get('/', function(req, res, next) {
-    queries.getResourceTags().then((resource) => {
+
+	if(req.isAuthenticated()){
+		queries.getResourceTags().then((resource) => {
         var resource = resource
         var user = req.user.id
         queries.getFavorites(user)
@@ -26,6 +28,10 @@ router.get('/', function(req, res, next) {
     .catch(function(error) {
         return next(error)
     })
+	} else{
+		res.redirect('/login');
+	}
+
 })
 router.get('/page/:id', function(req, res, next) {
     var resource_id = req.params.id
