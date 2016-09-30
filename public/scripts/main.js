@@ -30,9 +30,6 @@ $('.favorites').on('click', function() {
 
       var favorite = data
 
-
-      $('#'+id.id ).text(likes[0])
-      $('#'+id.id ).prepend('<i id="star" class="fa fa-heart-o" aria-hidden="true"></i>')
       $('#star').css("color", "red")
     }
   })

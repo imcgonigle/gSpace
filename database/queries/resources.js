@@ -72,7 +72,6 @@ module.exports = {
             .then(function(resourceData) {
                 return Tags().join('resources_tags', 'tags.id', 'resources_tags.tag_id')
                     .then(function(tagData) {
-                        // console.log(tagData)
                         for (var i = 0; i < resourceData.length; i++) {
                             resourceData[i].tags = []
                             for (var j = 0; j < tagData.length; j++) {
@@ -91,11 +90,15 @@ module.exports = {
             tag_id: tag_id
         })
     },
-    addTag: function(resource_id, tag_id) {
-        return Tags().insert({
-            name: name,
-            created_at: new Date()
-        })
+    addTag: function(tagArray) {
+        return Tags()
+        .join('resources_tags', 'tags.id', 'resources_tags.tag_id')
+        .insert(tagArray)
+        .returning('id')
+    },
+    addTagResourceRelation: function (tagRelationArray) {
+      return Resources_Tags().insert(tagRelationArray)
+      .returning('resource_id')
     },
     Search: function(tag) {
         return Resources().join('resources_tags', 'resource_id', 'resource.id')
