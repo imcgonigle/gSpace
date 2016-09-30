@@ -1,4 +1,10 @@
-<a href="gflow/ask"><h1>Ask a question!</h1></a>
+{{#if user}}
+	<a href="gflow/ask"><h1>Ask a question!</h1></a>
+{{else}}
+	<p>
+		<a href="/login">Login</a> to ask a question
+	</p>
+{{/if}}
 
 <div class="container">
         <div class="row">
