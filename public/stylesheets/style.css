@@ -46,83 +46,21 @@ table {
   border-collapse: collapse;
   border-spacing: 0; }
 
-.homepage .topNavBar {
-  color: #f57a02;
+.main-nav {
+  background-color: #9ba8b0 !important;
+  color: white !important; }
+
+body {
+  background-color: #ededed !important; }
+
+.vcenter {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: black;
-  max-height: 70px;
-  min-height: 60px;
-  width: 100%;
-  min-width: 100%;
-  padding: 15px; }
+  justify-content: center;
+  padding-top: 15%;
+  align-items: center; }
 
-.homepage .logoContainer {
-  display: flex;
-  justify-content: flex-start; }
-
-.homepage .logo {
-  padding-left: 10px;
-  display: flex;
-  justify-content: flex-start;
-  max-height: 70px; }
-
-.homepage .chatButton, .homepage .picButton, .homepage .logo {
-  max-height: 70px; }
-
-.homepage .chatPicContainer {
-  padding: 10px;
-  display: flex;
-  justify-content: flex-end; }
-
-.homepage html {
-  height: 100%; }
-
-.homepage body {
-  margin: 0;
-  padding: 0;
-  height: 100%;
-  font-size: 16px;
-  font-family: Arial;
-  background-image: url("../images/stack_of_books.jpg"); }
-
-.homepage h1, .homepage a {
-  text-align: center;
-  text-decoration: none;
-  margin: 0;
-  padding: 250px 0;
-  font-size: 2em;
-  color: white; }
-
-.homepage .textBackground {
-  background: #cccccc;
-  /* Fallback for older browsers without RGBA-support */
-  background: rgba(204, 204, 204, 0.5);
-  padding: 25px 10px 10px 10px;
-  border-radius: 5px; }
-
-.homepage .diagonal {
-  overflow: hidden;
-  position: relative;
-  transform: skewY(4deg); }
-
-.homepage .diagonal .background {
-  background-image: url("../images/Collaboration.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: 0 0;
-  position: absolute;
-  top: -50%;
-  bottom: -50%;
-  left: 0;
-  right: 0;
-  transform: skewY(-4deg); }
-
-.homepage .diagonal .content {
-  position: relative;
-  z-index: 1;
-  transform: skewY(-4deg); }
+h1 {
+  text-align: center; }
 
 .background-image {
   background-image: url("../images/homepage.jpeg");

@@ -17,8 +17,7 @@
 
 
 <h1 class="Comments">Comments</h1>
-<div class="commentPostDiv">
-  <ul class="comments">
+<div class="comment-card">
     {{#each data}}
     <div class="borderDiv">
       {{#if isOwner}}
@@ -26,31 +25,42 @@
         <span class='deleteItem'><a href="/gflow/delete/{{this.id}}"><strong>delete</strong></a></span>
       </div>
       {{/if}}
-      <h3 class="commentSubject"><strong>Subject: </strong>{{this.subject}}</h3>
-      <p class="postContent"><strong>Comment: </strong>{{this.comment}}</p>
-      <p class="">commented on <time class="timeago" datetime='{{alterDate this.created_at}}'>{{this.created_at}}</time>
-      by {{this.username}}</p>    {{/each}}
+      <div class="comment-header">
+        <h3 class="commentSubject">{{this.subject}}</h3>
+      </div>
+      <div class="comment-body">
+      {{this.comment}}
+      </div>
+      <div class="comment-footer">
+        <p class="">commented on <time class="timeago" datetime='{{alterDate this.created_at}}'>{{this.created_at}}</time>
+          by {{this.username}}</p>
+      </div>
+      {{/each}}
     </div>
-  </ul>
+  </div>
 </div>
 
 <h2 class="commentHead">Add Comments</h2><br>
-  <div class="commentContainer">
-    <div class="Comments">
-      <section>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-9 offset-lg-1">
         <form class='add-comment' action='/gflow/question/{{item.questionid}}' method='post'>
-          <div>
+
+          <div class="form-group">
             <label for='comment-subject' class= "subjectLabel"><strong>Subject: </strong></label>
-            <textarea type='text' name='subject' placeholder='subject' class="subjectInputBox" cols= '80' value=''></textarea>
+            <textarea type='text' name='subject' placeholder='subject' class="subjectInputBox form-control" value=''></textarea>
           </div>
-          <div>
+
+          <div class="form-group">
             <label for='comment-comment'><strong>Comment: </strong></label>
-            <textarea name='comment' placeholder='comment' class="commentInputBox" rows='10' cols= '80'></textarea>
+            <textarea name='comment' placeholder='comment' class="commentInputBox form-control" ></textarea>
           </div>
+
           <div class="commentButton">
-            <input type='submit' id='{{item.questionid}}' class='commentClick' value="Submit Comment"></input>
+            <input type='submit' id='{{item.questionid}}' class='commentClick btn btn-primary pull-xs-right' value="Submit Comment"></input>
           </div>
-          </form>
-        </section>
+
+        </form>
       </div>
     </div>
+  </div>
