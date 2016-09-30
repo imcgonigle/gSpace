@@ -41,8 +41,8 @@
                         </div>
                         <br>
                         <div class="input-group">
-                            <span class="input-group-addon" id="basic-addon3">https://</span>
-                            <input id="link" placeholder="Enter Link" name="link" type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+                            <!-- <span class="input-group-addon" id="basic-addon3">https://</span> -->
+                            <input id="link" placeholder="Enter Link" name="link" type="url" class="form-control" id="basic-url" aria-describedby="basic-addon3">
                         </div>
                         <br>
                         <div class="input-group">
@@ -74,18 +74,19 @@
                                 <h4 class="media-heading">{{resource_title}}</h4>
                             </a>
                             <p>
-                                {{description}} Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis
-                                aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                {{description}}
                             </p>
 
                             <div class="row">
                                 <div class="col-sm-2">
                                     <button type="button" id="{{resource_id}}" class="btn btn-secondary likes"><i id="heart" class="fa fa-heart-o" aria-hidden="true"></i>{{likes}}</button>
                                 </div>
-                                <div class="col-sm-2">
+                                <div class="col-sm-4">
                                     <button type="button" id="{{resource_id}}" class="btn btn-secondary favorites"><i id="star" class="fa fa-star-o" aria-hidden="true"></i></button>
+                                    <a href="/resources/{{resource_id}}/edit"><button type="button" class="btn btn-secondary" name="edit"><i class="fa fa-pencil" aria-hidden="true"></i></button></a>
+                                    <a href="/resources/{{resource_id}}/delete"><button type="button" class="btn btn-secondary" name="edit"><i class="fa fa-trash-o" aria-hidden="true"></i></button></a>
                                 </div>
-                                <div class="col-sm-8">
+                                <div class="col-sm-6">
                                     {{#each tags}}
                                         <span class="tag tag-default">{{this}}</span>
                                     {{/each}}
