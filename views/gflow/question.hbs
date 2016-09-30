@@ -7,8 +7,8 @@
       </div>
       {{/if}}
       <button type="button" id="{{item.questionid}}" class="likeButton btn btn-secondary likes"><i id="heart" class="fa fa-heart-o" aria-hidden="true"></i>{{likes}}</button>
-      <p class="createdDate"><strong>Posted on: </strong>{{item.created_at}}</p>
-      <h2 class="postTitle"><strong>Title: </strong>{{item.title}}</h2>
+      <p class="createdDate"><strong>Posted on: </strong>{{shortDate item.created_at}}</p>
+      <h3 class="postTitle"><strong>Title: </strong>{{item.title}}</h3>
       <p class="postContent"><strong>Question: </strong>{{item.question}}</p>
       <p class="tags"><strong>Tags: </strong> {{item.tags}}</p>
       <li class="postName"><strong>Written by: <strong>{{item.username}}</li>
@@ -26,11 +26,10 @@
         <span class='deleteItem'><a href="/gflow/delete/{{this.id}}"><strong>delete</strong></a></span>
       </div>
       {{/if}}
-      <p class="createdDate dateSmall"><strong>Posted on:</strong> {{shortDate this.created_at}}</p>
       <h3 class="commentSubject"><strong>Subject: </strong>{{this.subject}}</h3>
       <p class="postContent"><strong>Comment: </strong>{{this.comment}}</p>
-      <p class="postName"><strong>Written by: </strong>{{this.username}}</p>
-    {{/each}}
+      <p class="">commented on <time class="timeago" datetime='{{alterDate this.created_at}}'>{{this.created_at}}</time>
+      by {{this.username}}</p>    {{/each}}
     </div>
   </ul>
 </div>
@@ -49,7 +48,7 @@
             <textarea name='comment' placeholder='comment' class="commentInputBox" rows='10' cols= '80'></textarea>
           </div>
           <div class="commentButton">
-            <input type='submit' id='commentSubmit' value="Submit Comment"></input>
+            <input type='submit' id='{{item.questionid}}' class='commentClick' value="Submit Comment"></input>
           </div>
           </form>
         </section>
