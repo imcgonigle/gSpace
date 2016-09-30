@@ -9,12 +9,15 @@ passport.use(new GithubStrategy({
   callbackURL: process.env.GH_CALLBACK
 },
   function (accessToken, refreshToken, profile, done) {
+
+    // return done(null, profile);
     query.getUserByID(profile.id)
 		.then(function(data) {
 			profile.is_admin = data[0].is_admin;
 			return done(null, profile);
 		})
     .catch(function(err) {
+      console.log(err);
 			return next(err);
 		})
   }
