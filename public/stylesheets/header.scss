@@ -1,7 +1,28 @@
-.main-nav{
-  background-color: $grey !important;
-  color: $white !important;
+.main-nav {
+  background-color: $grey;
+  height: 80px;
+
+  a.navbar-brand {
+    height: 100%;
+    padding: 10px;
+    > img {
+      height: 100%;
+    }
+  }
+
+  .navbar-nav {
+    margin-top: 6px;
+    .nav-link {
+      color: $white;
+      &:hover {
+        transform: scale(1.2);
+        transform-origin: center center;
+        background-color: inherit;
+        //box-shadow: 2px 2px 2px black;
+      }
+    }
+
+  }
 }
-body {
-  background-color: $lightgrey !important;
-}
+
+

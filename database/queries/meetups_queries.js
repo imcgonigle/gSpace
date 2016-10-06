@@ -37,7 +37,7 @@ function getMeetups() {
 
 function addMeetup(meetup) {
     if (!meetup || !meetup.title || !meetup.description || !meetup.location || !meetup.start_date) {
-        return
+        return;
     }
     return Meetups().insert(meetup)
         .returning('id')

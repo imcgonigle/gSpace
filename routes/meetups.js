@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var queries = require('../database/queries/meetups_queries');
+var moment = require('moment');
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
@@ -45,6 +46,7 @@ router.get('/:id/page', function (req, res, next) {
 router.get('/new', function (req, res, next) {
     res.render('meetups/new', {
         title: 'Start a new meetup',
+        defaultMeetupDateTime: moment().add(1, 'days').format("YYYY-MM-DD[T]h:mm"),
         user: req.user
     });
 });
@@ -56,7 +58,7 @@ router.post('/new', function (req, res, next) {
         title: req.body.title,
         description: req.body.description,
         location: req.body.address,
-        start_date: start_date
+        start_date: req.body.start_date
     })
     .then(function () {
         res.redirect('/meetups');

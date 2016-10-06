@@ -1,1 +1,10 @@
-
+.content-body {
+  position: absolute;
+  top: 80px;
+  left: 0;
+  right: 0;
+  bottom: 20px;
+  box-sizing: border-box;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
