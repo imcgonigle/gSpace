@@ -24,7 +24,7 @@ function getMeetup(id) {
             'meetups.likes',
             'meetups.description',
             'meetups.location',
-            'meetups.time',
+            'meetups.start_date',
             'meetups.created_on',
             'meetups.users_id'
         )
@@ -35,19 +35,11 @@ function getMeetups() {
         .join('users', 'meetups.users_id', '=', 'users.id')
 }
 
-function addMeetup(users_id, title, description, location, time, date) {
-    if (!title || !description || !location || !time || !date) {
-        return false
+function addMeetup(meetup) {
+    if (!meetup || !meetup.title || !meetup.description || !meetup.location || !meetup.start_date) {
+        return
     }
-    return Meetups().insert({
-            users_id: users_id,
-            title: title,
-            description: description,
-            location: location,
-            time: time,
-            date: date
-            // created_on: new Date()
-        })
+    return Meetups().insert(meetup)
         .returning('id')
 }
 

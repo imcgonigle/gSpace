@@ -6,8 +6,8 @@ var queries = require('../database/queries/meetups_queries');
 router.get('/', function (req, res, next) {
     queries.getMeetups()
         .then(function (data) {
-            console.log("user: ", req.user);
-            console.log("data[0].avatar_url: ", data[0].avatar_url);
+            // console.log("user: ", req.user);
+            // console.log("data[0].avatar_url: ", data[0].avatar_url);
 
             res.render('meetups/index', {
                 title: 'Meetups Homepage',
@@ -50,21 +50,20 @@ router.get('/new', function (req, res, next) {
 });
 
 router.post('/new', function (req, res, next) {
-    var user_id = req.user.id;
-    var title = req.body.title;
-    var description = req.body.description;
-    var dateTime = req.body.time.split(' ');
-    var date = dateTime[0];
-    var time = dateTime[1];
-    var location = req.body.address;
 
-    queries.addMeetup(user_id, title, description, location, time, date )
-        .then(function () {
-            res.redirect('/meetups');
-        })
-        .catch(function (error) {
-            return next(error);
-        })
+    queries.addMeetup({
+        users_id: req.user.id,
+        title: req.body.title,
+        description: req.body.description,
+        location: req.body.address,
+        start_date: start_date
+    })
+    .then(function () {
+        res.redirect('/meetups');
+    })
+    .catch(function (error) {
+        return next(error);
+    })
 });
 
 router.get('/:id/edit', function (req, res, next) {
