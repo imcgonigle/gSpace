@@ -1,79 +1,37 @@
-<div class="row">
-    <div class="col-md-6">
-        <button type="button" class="btn btn-secondary ">
-            <a href="meetups/new"><i class="fa fa-plus" aria-hidden="true"></i>
-                Add New Meetup</a>
-        </button>
-    </div>
-</div>
+<div class="container">
+    <div class="container meetups">
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="card card-block">
+                    <div>
+                        <a class="media-left" href="#">
+                            <img id="profile-image" class="media-object img-circle" src="{{meetup.avatar_url}}"
+                                 alt="profile-image">
+                        </a>
+                        <h3 class="card-title">
+                            {{meetup.title}}
+                        </h3>
+                    </div>
 
-<div class="container cards">
-    <div class="row">
-        <div class="col-sm-6">
-            <div class="card card-block">
-                <h3 class="card-title">
-                    {{meetup.title}}
-                </h3>
-                <p class="card-text">{{meetup.username}}</p>
-                <p class="card-text">{{meetup.description}}</p>
-                <p class="card-text">{{meetup.location}}</p>
-                {{#if isOwner}}
-                    <a href="meetups/{{meetups.id}}/edit">edit</a>
-                {{/if}}
-                <div id="map"></div>
+                    <p class="card-text">{{meetup.username}}</p>
+                    <p class="card-text">{{meetup.description}}</p>
+                    <p class="card-text">{{meetup.location}}</p>
+                    {{#if isOwner}}
+                        <a href="meetups/{{meetups.id}}/edit">edit</a>
+                    {{/if}}
 
-            </div>
-            <div class="container cards">
-                <div class="row">
-                    <div class="col-sm-6">
-                        <div id="map"></div>
+                </div>
+                <div class="container cards">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div id="map"></div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
+        <a href="meetups/new" class="new">
+            <i class="fa fa-plus" aria-hidden="true" style="margin-right: 5px;"></i>Add New Meetup
+        </a>
     </div>
 </div>
-
-<div class="googleMap">
-    <div>
-        <!--<h1> Connect the dots</h1>-->
-        <div>
-            <!--prompt user to focus on an area of the city-->
-            <input id="zoom-to-area-text" type="text" placeholder="Enter your favorite area!">
-            <!--zoom to keep page a little neater-->
-            <input id="zoom-to-area" type="button" value="Zoom">
-        </div>
-    </div>
-    <hr>
-    <div>
-        <h1> Within </h1>
-        <select id="max-duration">
-            <option value="60">1 hour</option>
-            <option value="120">2 hour</option>
-            <option value="180">3 hour</option>
-            <option value="240">4 hour</option>
-            <option value="300">5 hour</option>
-        </select>
-        <select id="mode">
-            <option value="DRIVING">drive</option>
-            <option value="WALKING">walk</option>
-            <option value="BICYCLING">bike</option>
-            <option value="TRANSIT">transit ride</option>
-        </select>
-        <hr>
-        <h1 class="text">of</h1>
-        <hr>
-        <input id="search-within-time-text" type="text"
-               placeholder="Ex: Star Fleet Academy,  Fort Baker, California">
-        <input id="search-within-time" type="button" value="Go">
-    </div>
-    <hr>
-</div>
-
-<div id="map"></div>
-<script src="main.js"></script>
-<script async defer
-        src="https://maps.googleapis.com/maps/api/js?libraries=geometry,places,drawing&key=AIzaSyAK_jsF0g2cc8rGCCrNfd595o5IxxAujOs&callback=initMap"></script>
-
-
-<a href="/meetups/new">start your own meetup</a>

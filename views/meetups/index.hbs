@@ -1,12 +1,8 @@
 <div class="container meetups">
-    <h1>Meetups Feed</h1>
-    <div class="toolbar">
-        <button type="button" class="btn btn-secondary ">
-            <a href="meetups/new"><i class="fa fa-plus" aria-hidden="true"></i>
-                Add New Meetup</a>
-        </button>
-    </div>
-
+    <h1 class="new" style="margin-right: 7px;">All The Meetups</h1>
+    <a href="meetups/new">
+        <i class="fa fa-plus" aria-hidden="true"></i>
+    </a>
     <div class="container">
         {{#each meetups}}
             <div class="card">
@@ -25,4 +21,8 @@
             </div>
         {{/each}}
     </div>
+
+    <a href="meetups/new" class="new">
+        <i class="fa fa-plus" aria-hidden="true" style="margin-right: 5px;"></i>Add New Meetup
+    </a>
 </div>

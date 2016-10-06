@@ -26,7 +26,9 @@ function getMeetup(id) {
             'meetups.location',
             'meetups.start_date',
             'meetups.created_on',
-            'meetups.users_id'
+            'meetups.users_id',
+            'users.username',
+            'users.avatar_url'
         )
 }
 

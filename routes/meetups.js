@@ -7,7 +7,7 @@ var moment = require('moment');
 router.get('/', function (req, res, next) {
     queries.getMeetups()
         .then(function (data) {
-            // console.log("user: ", req.user);
+            console.log("user: ", req.user);
             // console.log("data[0].avatar_url: ", data[0].avatar_url);
 
             res.render('meetups/index', {
@@ -24,7 +24,7 @@ router.get('/', function (req, res, next) {
 router.get('/:id/page', function (req, res, next) {
     queries.getMeetup(req.params.id)
         .then(function (data) {
-            if (data[0].user_id == req.user.id) {
+            if (req.user && data[0].users_id == req.user.id) {
                 res.render('meetups/page', {
                     meetup: data[0],
                     isOwner: true,
