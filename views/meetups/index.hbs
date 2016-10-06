@@ -1,32 +1,26 @@
-<div class="container" id="meetups-feed">
+<div class="container meetups">
     <h1>Meetups Feed</h1>
-    <div class="row">
-        <div class="col-md-6">
-            <button type="button" class="btn btn-secondary ">
-                <a href="meetups/new"><i class="fa fa-plus" aria-hidden="true"></i>
-                    Add New Meetup</a>
-            </button>
-        </div>
+    <div class="toolbar">
+        <button type="button" class="btn btn-secondary ">
+            <a href="meetups/new"><i class="fa fa-plus" aria-hidden="true"></i>
+                Add New Meetup</a>
+        </button>
     </div>
 
     <div class="container">
         {{#each meetups}}
-            <div class="row">
-                <div class="col-lg-6">
-                    <div class="media meetups">
-                        <a class="media-left =" href="#">
-                            <img id="profile-image" class="media-object img-circle" src="{{this.avatar_url}}"
-                                 alt="profile-image">
-                        </a>
-                        <div class="media-body">
-                            <a id="header" href="/meetups/{{this.id}}/page">
-                                <h4 class="media-heading">{{this.title}}</h4>
-                            </a>
-                            <p>
-                                {{this.description}}
-                            </p>
-                        </div>
-                    </div>
+            <div class="card">
+                <a class="media-left" href="#">
+                    <img id="profile-image" class="media-object img-circle" src="{{this.avatar_url}}"
+                         alt="profile-image">
+                </a>
+                <div class="media-body">
+                    <a id="header" href="/meetups/{{this.id}}/page">
+                        <h4 class="media-heading">{{this.title}}</h4>
+                    </a>
+                    <p>
+                        {{this.description}}
+                    </p>
                 </div>
             </div>
         {{/each}}

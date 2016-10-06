@@ -1,79 +1,101 @@
-{{#if user}}
-	<br>
-	<!-- <div class="text-xl-center">
-		<a href="gflow/ask" class="btn btn-primary"><h1>Ask a Question</h1></a>
-	</div> -->
-	<div class="container" id="gflow-feed">
-    <div class="row">
-        <div class="col-sm-4">
-            <h1 id="gflow-heading">gFlow</h1>
-        </div>
-    </div>
-    <div class="container">
+<div>
+    {{#if user}}
+        <br>
+        <!-- <div class="text-xl-center">
+            <a href="gflow/ask" class="btn btn-primary"><h1>Ask a Question</h1></a>
+        </div> -->
+    <div class="container" id="gflow-feed">
         <div class="row">
-            <div class="col-sm-2">
-          <a href="gflow/ask"><button type="button" class="btn btn-secondary"><i class="fa fa-plus" aria-hidden="true"></i>Ask a Question</button></a>
-						</div>
-            <div class="col-sm-6">
-                <form class="" action="/gflow/search" method="POST">
-                    <div class="input-group">
-                        <input name="search" type="text" class="form-control" placeholder="Tag"><span class="input-group-btn"><button class="btn btn-secondary" type="submit">Search</button></span>
-                    </div>
-                </form>
+            <div class="col-sm-4">
+                <h1 id="gflow-heading">gFlow</h1>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-2">
+                    <a href="gflow/ask">
+                        <button type="button" class="btn btn-secondary"><i class="fa fa-plus" aria-hidden="true"></i>Ask
+                            a Question
+                        </button>
+                    </a>
+                </div>
+                <div class="col-sm-6">
+                    <form class="" action="/gflow/search" method="POST">
+                        <div class="input-group">
+                            <input name="search" type="text" class="form-control" placeholder="Tag"><span
+                                class="input-group-btn"><button class="btn btn-secondary" type="submit">Search</button></span>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    {{else}}
+        <p>
+            <a href="/login">Login</a> to ask a question
+        </p>
+    {{/if}}
+
+    <div class="col-lg-3 offset-lg-9">
+        <div class="card">
+            <div class="list-group">
+                <a href="#" class="list-group-item">Favorite 1 <span
+                        class="tag tag-default tag-pill pull-xs-right">1</span><i class="fa fa-star"
+                                                                                  aria-hidden="true"></i></a>
+                <a href="#" class="list-group-item">Favorite 2 <i class="fa fa-star" aria-hidden="true"></i></a>
             </div>
         </div>
     </div>
 
-{{else}}
-	<p>
-		<a href="/login">Login</a> to ask a question
-	</p>
-{{/if}}
+    <div class="row card-block">
+        <div class="col-sm-10">
+            {{#each items}}
+                <div class="media resource">
+                    <a class="media-left =" href="#">
+                        <img id="profile-image" class="media-object img-circle"
+                             src="https://avatars0.githubusercontent.com/u/18668181?v=3&u=c8da5c6b3c96760cfaa3c65c39b0dfaa692a688a&s=140"
+                             alt="profile-image">
+                    </a>
+                    <div class="media-body">
+                        <div class="media-left">
+                            <p class="">asked
+                                <time class="timeago" datetime='{{alterDate this.created_at}}'>{{alterDate
+                                        this.created_at}}</time>
+                                by {{this.username}}</p>
+                        </div>
+                        <a href="/gflow/question/{{this.questionid}}" id='{{this.questionid}}' class="viewClick"><h2
+                                class="postTitle">{{this.title}}</h2></a>
+                        <p> {{dotdotdot this.question}} </p>
 
-<div class="col-lg-3 offset-lg-9">
-	<div class="card">
-		<div class="list-group">
-			<a href="#" class="list-group-item">Favorite 1 <span class="tag tag-default tag-pill pull-xs-right">1</span><i class="fa fa-star" aria-hidden="true"></i></a>
-			<a href="#" class="list-group-item">Favorite 2 <i class="fa fa-star" aria-hidden="true"></i></a>
-		</div>
-	</div>
+                        <div class="row">
+
+                            <div class="col-sm-2">
+                                <button type="button" id="{{this.questionid}}" class="btn btn-secondary favoriteQs"><i
+                                        class="fa fa-star-o" aria-hidden="true"></i>{{this.question_id}}</button>
+                            </div>
+
+                            <div class="col-sm-2">
+                                <a href="/gflow/question/{{this.questionid}}" id='{{this.questionid}}'
+                                   class="viewClick">
+                                    <button type="views" id="{{item.questionid}}" class=" btn btn-secondary "><i
+                                            class="fa" aria-hidden="true"></i>views {{this.views}}</button>
+                                </a>
+                            </div>
+                            <div class="col-sm-2">
+                                <a href="/gflow/question/{{this.questionid}}" id='{{this.questionid}}'
+                                   class="viewClick">
+                                    <button type="comments" id="{{item.questionid}}" class=" btn btn-secondary "><i
+                                            class="fa" aria-hidden="true"></i>comments {{this.comments}}</button>
+                                </a>
+                            </div>
+                            <div class="col-sm-6">
+                                <span class="tag tag-default tag-pill">{{this.tags}}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {{/each}}
+        </div>
+    </div>
 </div>
-
-<div class="container">
-	<div class="row card-block">
-		<div class="col-sm-10">
-			{{#each items}}
-			<div class="media resource">
-        <a class="media-left =" href="#">
-          <img id="profile-image" class="media-object img-circle" src="https://avatars0.githubusercontent.com/u/18668181?v=3&u=c8da5c6b3c96760cfaa3c65c39b0dfaa692a688a&s=140" alt="profile-image">
-        </a>
-	    	<div class="media-body">
-					<div class="media-left">
-						<p class="">asked <time class="timeago" datetime='{{alterDate this.created_at}}'>{{alterDate this.created_at}}</time>
-							by {{this.username}}</p>
-					</div>
-        	<a href="/gflow/question/{{this.questionid}}" id='{{this.questionid}}' class="viewClick"><h2 class="postTitle">{{this.title}}</h2></a>
-					<p> {{dotdotdot this.question}} </p>
-
-					<div class="row">
-
-						<div class="col-sm-2">
-							<button type="button" id="{{this.questionid}}" class="btn btn-secondary favoriteQs"><i  class="fa fa-star-o" aria-hidden="true"></i>{{this.question_id}}</button>
-						</div>
-
-						<div class="col-sm-2">
-  						<a href="/gflow/question/{{this.questionid}}" id='{{this.questionid}}' class="viewClick"><button type="views" id="{{item.questionid}}" class=" btn btn-secondary "><i  class="fa" aria-hidden="true"></i>views {{this.views}}</button></a>
-						</div>
-						<div class="col-sm-2">
-  						<a href="/gflow/question/{{this.questionid}}" id='{{this.questionid}}' class="viewClick"><button type="comments" id="{{item.questionid}}" class=" btn btn-secondary "><i class="fa" aria-hidden="true"></i>comments {{this.comments}}</button></a>
-						</div>
-						<div class="col-sm-6">
-							<span class="tag tag-default tag-pill">{{this.tags}}</span>
-						</div>
-	    		</div>
-				</div>
-			</div>
-			{{/each}}
-		</div>
-	</div>
 </div>
