@@ -1,0 +1,55 @@
+.profile {
+  margin-bottom: 40px;
+  .card {
+    padding: 20px;
+    margin: 10px 0 25px 0;
+    box-shadow: 1px 1px 2px 1px rgba(0, 0, 0, 0.3)
+  }
+  .new {
+    display: inline-block;
+    text-align: center;
+    margin: 20px;
+  }
+  a {
+    color: hsla(32, 93%, 54%, 1);
+    &:hover {
+      transform: scale(1.2);
+      transform-origin: center center;
+    }
+  }
+  .btn-primary {
+    background-color: $orange;
+  }
+  .form {
+    margin-bottom: 60px;
+  }
+}
+
+.profile-card {
+  width: 290px;
+  display: inline-block;
+}
+
+//.menu {
+//  width: 240px;
+//  box-shadow: 0 3px 20px rgba(89, 105, 129, .3), 0 1px 2px rgba(0, 0, 0, .05), 0 0 0 1px rgba(89, 105, 129, .1);
+//  position: absolute;
+//  background-color: #fff;
+//  opacity: 0;
+//  pointer-events: none;
+//  border-radius: 3px;
+//  background-clip: content-box;
+//  z-index: 9991;
+//  transform: translateY(-4px);
+//  transition: transform ease 0.1s, opacity ease 0.1s;
+//  .menu-open {
+//    max-height: calc(100vH - 64px);
+//    overflow: auto;
+//    opacity: 1;
+//    pointer-events: auto;
+//    position: absolute;
+//    right: 8px;
+//    top: 56px;
+//    transform: translateY(0px);
+//  }
+//}
