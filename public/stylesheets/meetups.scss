@@ -12,6 +12,16 @@
   }
   a {
     color: hsla(32, 93%, 54%, 1);
+    &:hover {
+      transform: scale(1.2);
+      transform-origin: center center;
+    }
+  }
+  .btn-primary {
+    background-color: $orange;
+  }
+  .form {
+    margin-bottom: 60px;
   }
 }
 
