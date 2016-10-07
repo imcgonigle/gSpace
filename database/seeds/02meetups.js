@@ -60,7 +60,7 @@ exports.seed = function(knex, Promise) {
         })
       ])
           .then(function(){
-            return knex.raw('ALTER SEQUENCE meetups_id_seq RESTART WITH 100;')
+            return knex.raw('ALTER SEQUENCE meetups_id_seq RESTART WITH 10;')
           })
     });
 };

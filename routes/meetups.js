@@ -7,7 +7,9 @@ var moment = require('moment');
 router.get('/', function (req, res, next) {
     queries.getMeetups()
         .then(function (data) {
-            console.log("user: ", req.user);
+            // console.log("user: ", req.user);
+            // console.log("data[0].users_id: ", data[0].users_id, "req.user.id: ", req.user.id, "req.user: " , req.user);
+
             // console.log("data[0].avatar_url: ", data[0].avatar_url);
 
             res.render('meetups/index', {
@@ -22,9 +24,18 @@ router.get('/', function (req, res, next) {
 });
 
 router.get('/:id/page', function (req, res, next) {
+    // var currentUser = req.user.id;
+    // console.log("req.params.id: " , req.params.id);
+
     queries.getMeetup(req.params.id)
         .then(function (data) {
-            if (req.user && data[0].users_id == req.user.id) {
+            // var meetupOwner = data[0].users_id;
+
+            // console.log("data[0].users_id: ", data[0].users_id, "req.user.id: ", req.user.id, "req.user: " , req.user);
+
+            // if (meetupOwner == currentUser) {
+            // if (data[0].user_id == req.user.id) {
+            if (req.params.id == req.user.id) {
                 res.render('meetups/page', {
                     meetup: data[0],
                     isOwner: true,
@@ -33,7 +44,6 @@ router.get('/:id/page', function (req, res, next) {
             } else {
                 res.render('meetups/page', {
                     meetup: data[0],
-                    isOwner: false,
                     user: req.user
                 })
             }
@@ -46,7 +56,7 @@ router.get('/:id/page', function (req, res, next) {
 router.get('/new', function (req, res, next) {
     res.render('meetups/new', {
         title: 'Start a new meetup',
-        defaultMeetupDateTime: moment().add(1, 'days').format("YYYY-MM-DD[T]h:mm"),
+        defaultMeetupDateTime: moment().add(1, 'days').format("YYYY-MM-DD[T]hh:mm"),
         user: req.user
     });
 });
@@ -59,8 +69,6 @@ router.post('/new', function (req, res, next) {
         description: req.body.description,
         location: req.body.address,
         start_date: req.body.start_date
-    //    starting to work on putting google maps API back in
-    //    var location = req.body.address;
     })
     .then(function () {
         res.redirect('/meetups');
