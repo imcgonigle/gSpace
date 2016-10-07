@@ -21,10 +21,12 @@
                         </div>
 
                         <div class="form-group">
-                            <label class="col-lg-2 control-label" for="location">Location</label>
+                            <hr>
+                            <label class="col-lg-2 control-label" for="address" id="location">Location</label>
                             <div class="col-lg-10">
-                                <input class="form-control" type="text" id="location" name="location">
+                                <input class="form-control" id="zoom-to-area-text" name="address" type="text">
                             </div>
+                            <hr>
                         </div>
 
                         <div class="form-group">
@@ -33,6 +35,7 @@
                                 <input class="form-control" type="datetime-local" name="start_date" id="start_date"
                                        value="{{defaultMeetupDateTime}}">
                             </div>
+                            <div id="map"></div>
                         </div>
                             <button type="submit" class="btn btn-primary pull-right">Submit</button>
                     </form>

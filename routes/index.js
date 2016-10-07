@@ -1,8 +1,8 @@
 // var passport = require('../passport');
 var express = require('express');
 var router = express.Router();
-var passport = require('../passport')
-var queries = require('../database/queries/users')
+var passport = require('../passport');
+var queries = require('../database/queries/users');
 
 router.get('/', function(req, res, next) {
 	if (req.isAuthenticated()) {

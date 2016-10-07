@@ -78,12 +78,7 @@ module.exports = {
 
 
 
-// var knex = require('./knex.js')
-//
-// function Meetups() {
-//     return knex('meetup')
-// }
-//
+
 // function Meetups_Tags() {
 //     return knex('meetups_tags')
 // }

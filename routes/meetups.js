@@ -59,6 +59,8 @@ router.post('/new', function (req, res, next) {
         description: req.body.description,
         location: req.body.address,
         start_date: req.body.start_date
+    //    starting to work on putting google maps API back in
+    //    var location = req.body.address;
     })
     .then(function () {
         res.redirect('/meetups');
