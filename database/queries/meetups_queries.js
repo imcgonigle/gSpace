@@ -20,6 +20,7 @@ function getMeetup(id) {
     return Meetups().where('meetups.id', id)
         .join('users', 'meetups.users_id', '=', 'users.id')
         .select(
+            'meetups.id',
             'meetups.title',
             'meetups.likes',
             'meetups.description',
@@ -35,6 +36,18 @@ function getMeetup(id) {
 function getMeetups() {
     return Meetups()
         .join('users', 'meetups.users_id', '=', 'users.id')
+        .select(
+            'meetups.id',
+            'meetups.title',
+            'meetups.likes',
+            'meetups.description',
+            'meetups.location',
+            'meetups.start_date',
+            'meetups.created_on',
+            'meetups.users_id',
+            'users.username',
+            'users.avatar_url'
+        )
 }
 
 function addMeetup(meetup) {
