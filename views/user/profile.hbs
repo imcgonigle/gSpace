@@ -1,21 +1,80 @@
-
-<div class="container cards">
+<div class="container profile">
     <div class="row">
-      <div class="col-sm-6">
-        <div class="card card-block">
-          <img class="card-img-top img-fluid img-thumbnail" style="max-width:100%; height:250px; width:250px;" src="{{user.avatar_url}}" alt="user avatar">
-          <h4 class="card-title">{{user.name}}</h4>
-          <h2 class="card-title">{{user.location}}</h3>
-          <h2 class="card-title">{{user.cohort}}</h3>
-          <h2 class="card-title">{{user.email}}</h3>
-          <h3 class="card-title">{{user.biography}}</h3>
-          <a href="{{user.website}}" class="btn-link">Website</a>
-          <a href="{{user.github_url}}" class="btn-link">Github</a>
-          <a href="{{user.linkedin_url}}" class="btn-link">LinkedIn</a>
-          <a href="users/edit" class="btn-link">edit profile</a>
-          <!-- for adding tags -->
-          <a href="users/customize" class="btn-link">customize experience (adding/deleting tags)</a>
-      </div>
+        <div class="col-sm-5">
+            <div class="card card-block profile-card">
+                <img class="card-img-top img-fluid img-thumbnail" style="max-width:100%; height:250px; width:250px;"
+                     src="{{user.avatar_url}}" alt="user avatar">
+                <h2 class="card-title">{{user.username}}</h2>
+                <h4 class="card-title">{{user.cohort}}</h4>
+                <h4 class="card-title">{{user.email}}</h4>
+                <h3 class="card-title">{{user.biography}}</h3>
+                <h4 class="card-title">{{user.location}}</h4>
+
+                <div class="row">
+                    <div class="col-sm-4">
+                        <a href="{{user.website}}" class="btn-link">Website</a>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-4">
+                        <a href="{{user.github_url}}" class="btn-link">Github</a>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-4">
+                        <a href="{{user.linkedin_url}}" class="btn-link">LinkedIn</a>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-4">
+                        <a href="users/edit" class="btn-link">edit profile</a>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-4">
+                        <!-- for adding tags -->
+                        <a href="users/customize" class="btn-link">add/delete
+                            tags</a></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="card card-block profile-card">
+                <h3 class="card-header">Your Projects</h3>
+                <div class="card-block">
+                    <ul class="list-group">
+                        <li class="list-group-item">Owned <span
+                                style="font-weight: bold; color: darkblue; font-size: 1.2rem;">0</span></li>
+                        <li class="list-group-item">Joined <span
+                                style="font-weight: bold; color: darkblue; font-size: 1.2rem;">0</span></li>
+                        <li class="list-group-item">Following <span
+                                style="font-weight: bold; color: darkblue; font-size: 1.2rem;">0</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6 offset-lg-9">
+            <div class="card card-block profile-card">
+                <h3 class="card-header">Your Favorites</h3>
+                <div class="list-group">
+                    <a href="#" class="list-group-item">Favorite 1 <span
+                            class="tag tag-default tag-pill pull-xs-right">1</span><i class="fa fa-star"
+                                                                                      aria-hidden="true"></i></a>
+                    <a href="#" class="list-group-item">Favorite 2 <i class="fa fa-star" aria-hidden="true"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-2 offset-lg-9">
+            <div class="card card-block profile-card">
+                <h3 class="card-header">Your Meetups</h3>
+                <div class="list-group">
+                    <a href="#" class="list-group-item">Upcoming Meetups<span
+                            class="tag tag-default tag-pill pull-xs-right">1</span>
+                    </a>
+                    <a href="#" class="list-group-item">Past Meetups
+                    </a>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
 </div>

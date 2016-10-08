@@ -32,3 +32,13 @@ router.post('/', function(req, res, next) {
 })
 
 module.exports = router;
+//
+// <img class="card-img-top img-fluid img-thumbnail" style="max-width:100%; height:250px; width:250px;" src="{{user.avatar_url}}" alt="user avatar">
+//     <h4 class="card-title">{{user.name}}</h4>
+// <h2 class="card-title">{{user.location}}</h3>
+// <h2 class="card-title">{{user.cohort}}</h3>
+// <h2 class="card-title">{{user.email}}</h3>
+// <h3 class="card-title">{{user.biography}}</h3>
+// <a href="{{user.website}}" class="btn-link">Website</a>
+//     <a href="{{user.github_url}}" class="btn-link">Github</a>
+//     <a href="{{user.linkedin_url}}" class="btn-link">LinkedIn</a>

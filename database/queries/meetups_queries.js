@@ -1,4 +1,5 @@
 var knex = require('./knex');
+var moment = require('moment');
 
 function Meetups() {
     return knex('meetups');
@@ -20,34 +21,51 @@ function getMeetup(id) {
     return Meetups().where('meetups.id', id)
         .join('users', 'meetups.users_id', '=', 'users.id')
         .select(
+            'meetups.id',
             'meetups.title',
             'meetups.likes',
             'meetups.description',
             'meetups.location',
-            'meetups.time',
+            'meetups.start_date',
             'meetups.created_on',
-            'meetups.users_id'
-        )
+            'meetups.users_id',
+            'users.username',
+            'users.avatar_url'
+        ).then(function(data){
+            data[0].start_date = moment(data[0].start_date).format("YYYY-MM-DD[T]hh:mm");
+            return data;
+        });
 }
 
 function getMeetups() {
     return Meetups()
         .join('users', 'meetups.users_id', '=', 'users.id')
+        .select(
+            'meetups.id',
+            'meetups.title',
+            'meetups.likes',
+            'meetups.description',
+            'meetups.location',
+            'meetups.start_date',
+            'meetups.created_on',
+            'meetups.users_id',
+            'users.username',
+            'users.avatar_url'
+        ).then(function(data){
+            // format start date for every meetup
+            data.map(function(meetup){
+                meetup.start_date = moment(meetup.start_date).format("MMMM Do YYYY, hh:mm a");
+                return meetup;
+            });
+            return data;
+        });
 }
 
-function addMeetup(users_id, title, description, location, time, date) {
-    if (!title || !description || !location || !time || !date) {
-        return false
+function addMeetup(meetup) {
+    if (!meetup || !meetup.title || !meetup.description || !meetup.location || !meetup.start_date) {
+        return;
     }
-    return Meetups().insert({
-            users_id: users_id,
-            title: title,
-            description: description,
-            location: location,
-            time: time,
-            date: date
-            // created_on: new Date()
-        })
+    return Meetups().insert(meetup)
         .returning('id')
 }
 
@@ -84,12 +102,7 @@ module.exports = {
 
 
 
-// var knex = require('./knex.js')
-//
-// function Meetups() {
-//     return knex('meetup')
-// }
-//
+
 // function Meetups_Tags() {
 //     return knex('meetups_tags')
 // }

@@ -78,6 +78,21 @@ exports.seed = function(knex, Promise) {
                     email: 'email500',
                     first_login: '2006-04-10T13:42:23.83-05:00',
                     last_login: '2006-04-10T13:42:23.83-05:00'
+                }),
+                knex('users').insert({
+                    id: 6,
+                    username: 'gHuman',
+                    avatar_url: 'https://media.glassdoor.com/sqll/825775/galvanize-squarelogo-1429039425588.png',
+                    biography: 'Work, Learn, do stuff.',
+                    name: 'gSquad',
+                    cohort: '31',
+                    location: 'Denver',
+                    linkedin_url: 'linkedin_url1',
+                    github_url: 'github_url1',
+                    website: 'website1',
+                    email: 'email1',
+                    first_login: '2006-04-10T13:40:23.83-05:00',
+                    last_login: '2006-04-10T13:40:23.83-05:00'
                 })
             ])
         });

@@ -10,8 +10,7 @@ exports.up = function (knex, Promise) {
         table.string('title');
         table.integer('likes');
         table.text('description');
-				table.string('date');
-        table.string('time');
+        table.timestamp('start_date');
         table.string('location');
         table.timestamp('created_on').defaultTo(knex.fn.now());
         table.timestamp('updated_on').defaultTo(knex.fn.now());
@@ -21,3 +20,4 @@ exports.up = function (knex, Promise) {
 exports.down = function (knex, Promise) {
     return knex.schema.dropTable('meetups');
 };
+

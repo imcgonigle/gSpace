@@ -4,7 +4,7 @@
 		<div class="form-group">
 			<label for="name" class="col-lg-2 control-label" maxlength="255">Name</label>
 			<div class="col-lg-10">
-				<input required="required" type="text" class="form-control" name="name" id="name" value="{{user.name}}">
+				<input required="required" type="text" class="form-control" name="name" id="name" value="{{user.login}}">
 			</div>
 		</div>
 		<div class="form-group">
@@ -13,6 +13,14 @@
 				<input required="required" name="email" type="email" class="form-control" id="email" value="{{user.email}}">
 			</div>
 		</div>
+
+        <div class="form-group">
+            <label for="avatar_url" class="col-lg-2 control-label">Avatar URL</label>
+            <div class="col-lg-10">
+                <input name="avatar_url" type="url" class="form-control" id="avatar_url" value="{{user.avatar_url}}">
+            </div>
+        </div>
+
 		<div class="form-group">
 			<label for="cohort" class="col-lg-2 control-label" maxlength="255">Cohort</label>
 			<div class="col-lg-10">
@@ -34,19 +42,20 @@
 		<div class="form-group">
 			<label for="github" class="col-lg-2 control-label">Github</label>
 			<div class="col-lg-10">
-				<input name "github_url" type="url" class="form-control" id="github" value="{{user.html_url}}">
+				<input name="github_url" type="url" class="form-control" id="github" value="{{user.html_url}}">
 			</div>
 		</div>
+
 		<div class="form-group">
 			<label for="linkedin" class="col-lg-2 control-label">LinkedIn</label>
 			<div class="col-lg-10">
-				<input name="linkedin_url" type="url" class="form-control" id="linkedin" placeholder="">
+				<input name="linkedin_url" type="url" class="form-control" id="linkedin" placeholder="https://www.linkedin.com/in/...">
 			</div>
 		</div>
 		<div class="form-group">
 			<label for="website" class="col-lg-2 control-label">Personal Website</label>
 			<div class="col-lg-10">
-				<input name="website" type="url" class="form-control" id="website" placeholder="">
+				<input name="website" type="url" class="form-control" id="website" placeholder="" value="{{user.blog}}">
 			</div>
 		</div>
 		<div class="form-group">

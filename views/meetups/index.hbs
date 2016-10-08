@@ -1,38 +1,32 @@
-<div class="container" id="meetups-feed">
-    <h1>Meetups Feed</h1>
-    <div class="row">
-        <div class="col-md-6">
-            <button type="button" class="btn btn-secondary ">
-                <a href="meetups/new"><i class="fa fa-plus" aria-hidden="true"></i>
-                    Add New Meetup</a>
-            </button>
-        </div>
-    </div>
-
+<div class="container meetups">
+    <h1 class="new" style="margin-right: 7px;">All The Meetups</h1>
+    <a href="meetups/new">
+        <i class="fa fa-plus" aria-hidden="true"></i>
+    </a>
     <div class="container">
         {{#each meetups}}
-            <div class="row">
-                <div class="col-lg-6">
-                    <div class="media meetups">
-                        <a class="media-left =" href="#">
-                            <img id="profile-image" class="media-object img-circle" src="{{this.avatar_url}}"
-                                 alt="profile-image">
-                        </a>
-                        {{#each meetups}}
-                            <img src="{{avatar_url}}"/>
-                            <img src="{{this.avatar_url}}"/>
-                        {{/each}}
-                        <div class="media-body">
-                            <a id="header" href="/meetups/{{this.id}}/page">
-                                <h4 class="media-heading">{{this.title}}</h4>
-                            </a>
-                            <p>
-                                {{this.description}}
-                            </p>
-                        </div>
-                    </div>
+            <div class="card">
+                <a class="media-left" href="#">
+                    <img id="profile-image" class="media-object img-circle" src="{{this.avatar_url}}"
+                         alt="profile-image">
+                </a>
+                <div class="media-body">
+                    <a id="header" href="/meetups/{{this.id}}/page">
+                        <h4 class="media-heading">{{this.title}}</h4>
+                    </a>
+                    <p>
+                        Description: {{this.description}}
+                    </p>
+                    <p>
+                        Location: {{this.location}}
+                    </p>
+                    {{this.start_date}}
                 </div>
             </div>
         {{/each}}
     </div>
+
+    <a href="meetups/new" class="new">
+        <i class="fa fa-plus" aria-hidden="true" style="margin-right: 5px;"></i>Add New Meetup
+    </a>
 </div>

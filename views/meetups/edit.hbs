@@ -1,26 +1,53 @@
-<form action="/meetups/{{meetup.id}}/edit" method="POST">
-    <h2>{{meetup.title}}</h2>
-    <textarea type="text" rows="10" id="description" name="description">
-        {{meetup.description}}
-      </textarea>
-    <label for="description">description</label>
+<div class="container">
+    <div class="container meetups">
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="card card-block">
 
-    <textarea type="text" rows="2" id="location" name="location">
-      {{meetup.location}}
-    </textarea>
-    <label for="location">location</label>
+                    <form action="/meetups/{{meetup.id}}/edit" class="form form-horizontal" method="POST">
+                        <div class="form-group">
+                            <label class="col-lg-2 control-label" for="title">
+                            </label>
+                            <div class="col-lg-10">
+                                <input class="form-control" type="text" id="title" name="title" value="{{meetup.title}}">
+                            </div>
+                        </div>
 
-    <textarea type="dateTime" rows="1" id="time" name="time">
-      {{meetup.time}}
-    </textarea>
-    <label for="time">time</label>
+                        <div class="form-group">
+                            <label class="col-lg-2 control-label" for="description">
+                            </label>
+                            <div class="col-lg-10">
+                                <textarea class="form-control" type="text" rows="3" id="description"
+                                          name="description">{{meetup.description}}
+                                </textarea>
+                            </div>
+                        </div>
 
-    <textarea type="dateTime" rows="1" id="created_on" name="created_on">
-      {{meetup.created_on}}
-    </textarea>
-    <label for="created_on">created on</label>
-
-    <button type="submit">save</button>
-
-    <button type="submit" formaction="delete">delete</button>
-</form>
+                        <div class="form-group">
+                            <hr>
+                            <label class="col-lg-2 control-label" for="address" id="location">Location</label>
+                            <div class="col-lg-10">
+                                <input class="form-control" id="zoom-to-area-text" name="address" type="text" value="{{meetup.location}}">
+                            </div>
+                            <hr>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-2 control-label" for="start_date">Date & Time</label>
+                            <div class="col-lg-10">
+                                <input class="form-control" type="datetime-local" name="start_date" id="start_date"
+                                       value="{{meetup.start_date}}">
+                            </div>
+                            <div id="map"></div>
+                        </div>
+                        <button type="submit" class="btn btn-primary pull-right">
+                            <i class="fa fa-floppy-o" aria-hidden="true"></i>
+                        </button>
+                        <button type="submit" class="btn btn-primary pull-right" formaction="delete">
+                            <i class="fa fa-trash-o" aria-hidden="true"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

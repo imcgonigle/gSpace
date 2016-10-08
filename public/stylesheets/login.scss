@@ -4,14 +4,14 @@
   background-size: cover;
   min-height: 100vh;
   h1 {
-    @include header-text
+    @include header-text;
     color: $orange;
     font-size: 5rem;
     padding-top: 10%;
     padding-left: 5%;
   }
   a {
-    @include header-text
+    @include header-text;
     background-color: $lightgrey;
     text-decoration: none;
     color: $black;
