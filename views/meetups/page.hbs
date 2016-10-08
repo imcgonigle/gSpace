@@ -1,47 +1,58 @@
-<div class="container">
-    <div class="container meetups">
-        <div class="row">
-            <div class="col-sm-6">
-                <div class="card card-block">
-                    <div class="card-img-top" id="map"></div>
-                    <div>
-                        <a class="media-left" href="#">
-                            <img id="profile-image" class="media-object img-circle" src="{{meetup.avatar_url}}"
-                                 alt="profile-image">
-                        </a>
-                        <h3 class="card-title">
-                            {{meetup.title}}
-                        </h3>
-                    </div>
+<div class="container meetups">
+    <div class="row">
+        <!--<div class="map-container">-->
+        <!--</div>-->
+        <div class="col-sm-6">
 
-                    <p class="card-text">{{meetup.username}}</p>
-                    <p class="card-text">{{meetup.description}}</p>
-                    <p class="card-text">{{meetup.location}}</p>
-                    {{#if isOwner}}
-                        ohai
-                        <a href="edit">
-                            <i class="fa fa-pencil btn btn-primary pull-right" aria-hidden="true"></i>
-                        </a>
-                    {{/if}}
+            <div class="card single-meetup-card">
+                <div id="map"></div>
+
+                <div>
+
+                    <h3 class="card-title">
+                        {{meetup.title}}
+                    </h3>
+                    <div class="divider"></div>
+                </div>
+
+                <div>
+                    <div class="host">
+                        <p class="card-text">
+                            Hosted by:
+                        </p>
+                        <p class="card-text">
+                            {{meetup.username}}
+                        </p>
+                    </div>
+                    <a href="#">
+                        <img id="profile-image" class="media-object pull-right img-circle meetup-profile-link" src="{{meetup.avatar_url}}"
+                             style="height:38px;width:38px;" alt="profile-image">
+                    </a>
+                    <div class="divider"></div>
 
                 </div>
-                <div class="container cards">
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <div id="map"></div>
-                        </div>
-                    </div>
-                </div>
+
+                <p class="card-text">Description: {{meetup.description}}</p>
+                <p class="card-text">Location: {{meetup.location}}</p>
+                <div class="divider"></div>
+
+                <i class="fa fa-map-o btn btn-primary pull-right" aria-hidden="true"></i>
+                {{#if isOwner}}
+                    <a href="edit">
+                        <i class="fa fa-pencil btn btn-primary pull-right" aria-hidden="true"></i>
+                    </a>
+                {{/if}}
+
             </div>
+
         </div>
-
-
-        <!--this results in a 404 rt now (app.js:139) fix later-->
-        <!--<a href="meetups/new" class="new">-->
-        <!--<i class="fa fa-plus" aria-hidden="true" style="margin-right: 5px;"></i>Add New Meetup-->
-        <!--</a>-->
-
     </div>
+
+    <!--this results in a 404 rt now (app.js:139) fix later-->
+    <!--<a href="meetups/new" class="new">-->
+    <!--<i class="fa fa-plus" aria-hidden="true" style="margin-right: 5px;"></i>Add New Meetup-->
+    <!--</a>-->
+
 </div>
 
 
