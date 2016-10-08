@@ -33,9 +33,7 @@ router.get('/:id/page', function (req, res, next) {
 
             // console.log("data[0].users_id: ", data[0].users_id, "req.user.id: ", req.user.id, "req.user: " , req.user);
 
-            // if (meetupOwner == currentUser) {
-            if (data[0].user_id == req.user.id) {
-            // if (req.params.id == req.user.id) {
+            if (data[0].users_id == req.user.id) {
                 res.render('meetups/page', {
                     meetup: data[0],
                     isOwner: true,
@@ -80,15 +78,13 @@ router.post('/new', function (req, res, next) {
 
 router.get('/:id/edit', function (req, res, next) {
     queries.getMeetup(req.params.id)
-        .then(function () {
-            // var meetup = data[0];
-            if (!req.params.id == req.user.id) {
-                // if (!req.user.id == meetup.user_id) {
-                console.log('user ' + req.user.id + 'is not meetup owner');
-                res.redirect('/');
+        .then(function (data) {
+            if (data[0].users_id == req.user.id) {
+                res.render('meetups/edit', {meetup: data[0]});
                 // return;
             } else {
-                res.render('edit', {meetup: meetup, user: req.user});
+                console.log('user ' + req.user.id + 'is not meetup owner');
+                res.redirect('/');
             }
         })
         .catch(function (error) {
@@ -105,7 +101,7 @@ router.post('/:id/edit', function (req, res, next) {
 
     queries.updateMeetup(id, description, title, location, time)
         .then(function () {
-            res.redirect('/id/page')
+            res.redirect('/meetups')
         })
         .catch(function (error) {
             return next(error);
@@ -115,17 +111,17 @@ router.post('/:id/edit', function (req, res, next) {
 router.post('/:id/delete', function (req, res, next) {
     queries.getMeetup(req.params.id)
         .then(function (data) {
-            if (req.user.id == data[0].user_id) {
-                queries.deleteMeetup(req.params.id)
-                    .then(function (data) {
-                        res.redirect('/meetups')
-                    })
-                    .catch(function (error) {
-                        return next(error);
-                    })
+            if (req.user.id == data[0].users_id) {
+                return data;
             } else {
-                res.redirect('/')
+                throw Error("cannot delete meetups created by other users");
             }
+        })
+        .then(function (data) {
+            return queries.deleteMeetup(req.params.id);
+        })
+        .then(function (data) {
+            res.redirect('/meetups')
         })
         .catch(function (error) {
             return next(error);
